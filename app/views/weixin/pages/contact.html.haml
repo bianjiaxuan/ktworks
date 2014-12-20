@@ -1,0 +1,34 @@
+= javascript_include_tag "jquery"
+
+:css
+  a { color: black; text-decoration: none; }
+  #text1 { font-size: 18px; font-weight: bold; }
+  #text2 { font-size: 16px; }
+  #text3 { font-size: 18px; font-weight: bold; }
+  #text4 { font-size: 16px; }
+
+.relative
+  .absolute
+    = image_tag("weixin/contact.jpg",class: "full-width", id: "img")
+  #text1.absolute.full-width
+    .text-center
+      上海俞泾港路11号金座171
+  #text2.absolute.full-width
+    .text-center
+      = link_to "http://www.ktfootball.com","http://www.ktfootball.com"
+  #text3.absolute.full-width
+    .text-center
+      = link_to "KT足球官方微博","http://weibo.com/pannako?topnav=1&wvr=5&topsug=1"
+  #text4.absolute.full-width
+    .text-center
+      = link_to "021-56435766","tel:56435766"
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      height = $("img#img").height()
+      $("#text1").css("top",(233/500*height)+"px")
+      $("#text2").css("top",(300/500*height)+"px")
+      $("#text3").css("top",(360/500*height)+"px")
+      $("#text4").css("top",(420/500*height)+"px")
+    , 300

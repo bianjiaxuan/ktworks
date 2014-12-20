@@ -1,0 +1,118 @@
+
+
+javascript:
+  function list_selected_sms() {
+    $.post('/admin/users/selected_sms', function(data){
+      $('#selected-users').html(data);
+    });
+  }
+  function select_sms(user_id) {
+    var is_checked = $('#check-u-' + user_id).is(':checked');
+    if (is_checked == true) {
+      var path = 'check_sms';
+    } else {
+      var path = 'uncheck_sms';
+    }
+    $.post('/admin/users/' + path, {user_id: user_id}, function(data){
+    });
+
+    list_selected_sms();
+  }
+
+  function cancel_selected_sms(user_id, nickname) {
+    doIt=confirm('你确定要取消 ' + nickname + ' 短信发送嘛');
+    if (doIt) {
+      $.post('/admin/users/uncheck_sms', {user_id: user_id}, function(data){
+      });
+
+      list_selected_sms();    
+    }
+
+  }
+
+
+
+  $(document).ready(function(){
+
+    $('#select-all').toggle(
+        function() {
+          $(".subscribed-user").each(function() {
+            $(this).attr('checked', true);
+            $.post('/admin/users/check_sms', {user_id: $(this).val()}, function(data){
+            });
+
+          });
+
+          list_selected_sms();
+        },
+        function() {
+          $(".subscribed-user").each(function() {
+            $(this).attr('checked', false);
+            $.post('/admin/users/uncheck_sms', {user_id: $(this).val()}, function(data){
+            });
+
+          });
+
+          list_selected_sms();
+        }
+    );
+
+
+  });
+
+
+
+
+= render "navigations"
+
+= form_tag admin_users_subscribed_sms_path, method: :get do
+  = label_tag '类型：'
+  = select_tag(:search_type, options_for_select([['Email', 'email'], ['昵称', 'nickname'], ['手机', 'phone'], ['会员', 'vip']], params[:search_type]))
+
+  = label_tag '关键字：'
+  = text_field_tag :keyword, params[:keyword]
+  = submit_tag '搜索'
+  i 可部分匹配
+
+
+form#sms-users-form action="/admin/users/select-sms" method="post"
+  table cellpadding="5" cellspacing="15"
+    tr
+      td valign='top'
+
+        table
+          tr
+            th
+              = link_to "选择", '#', :id => 'select-all'
+              = " / "
+              = "ID"
+            th 邮箱
+            th 昵称
+            th 等级
+            th 得分
+            th 手机
+            th 
+          - @users.each do |user|
+            tr height="45"
+              td
+                = check_box_tag 'selected-users[]', "#{user.id}", false, :class => "subscribed-user", :id => "check-u-#{user.id}", :onclick => "select_sms(#{user.id})"
+                = user.id
+                
+              td 
+                = user.email
+
+              td = user.nickname
+              td = user.grade
+              td = user.scores
+              td = user.phone
+              - if user.has_subscribed_sms
+                td = link_to '取消短信', admin_users_cancel_subscribed_sms_path( user_id: user.id ), method: :post, confirm: "你确定要取消 #{user.nickname} 短信订阅？"
+              - else
+                td = link_to '订阅短信', admin_users_confirm_subscribed_sms_path( user_id: user.id ), method: :post, confirm: "你确定要让 #{user.nickname} 短信订阅？"
+
+          = paginate @users
+
+        td valign="top"
+          p = '选中的用户'
+          div#selected-users
+            = render "selected_sms"

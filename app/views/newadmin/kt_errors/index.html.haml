@@ -1,0 +1,35 @@
+.font36.mt40.ml20
+  错误管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px; #{'border: none;' if !params[:is_solve].blank? }"}
+    = link_to "全部", newadmin_kt_errors_path,class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px; #{'border: none;' if params[:is_solve] != '1' }"}
+    = link_to "已解决", newadmin_kt_errors_path(:is_solve => 1),class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px; #{'border: none;' if params[:is_solve] != '0' }"}
+    = link_to "未解决", newadmin_kt_errors_path(:is_solve => 0),class: "grey9"
+.mt20.clearfix
+  .fl.ml20.pd20.font20{class: params[:klass] == "5" ? "byellow2" : "byellow1"}
+    = link_to "微信后台", newadmin_kt_errors_path(:klass => 5),class: "grey7"
+  .fl.ml10.pd20.font20{class: params[:klass] == "4" ? "byellow2" : "byellow1"}
+    = link_to "微信会员卡", newadmin_kt_errors_path(:klass => 4),class: "grey7"
+  .fl.ml10.pd20.font20{class: params[:klass] == "3" ? "byellow2" : "byellow1"}
+    = link_to "微信", newadmin_kt_errors_path(:klass => 3),class: "grey7"
+  .fl.ml10.pd20.font20{class: params[:klass] == "2" ? "byellow2" : "byellow1"}
+    = link_to "后台", newadmin_kt_errors_path(:klass => 2),class: "grey7"
+  .fl.ml10.pd20.font20{class: params[:klass] == "0" ? "byellow2" : "byellow1"}
+    = link_to "前台", newadmin_kt_errors_path(:klass => 0),class: "grey7"
+  .fl.ml10.pd20.font20{class: params[:klass] == "1" ? "byellow2" : "byellow1"}
+    = link_to "APP", newadmin_kt_errors_path(:klass => 1),class: "grey7"
+
+.pd20
+  .mt20{style: "border: 1px solid #bbb;"}
+    .font20.bgreye.textLeft.pd10.grey6
+      微信错误
+    - _collection = @collection.order("created_at desc").page(params[:page]).per(12)
+    - _collection.each_with_index do |_item|
+      .pd10.grey8.clearfix{style: "border-top: 1px solid #bbb;"}
+        .fl
+          死定了积分多少路口附近的
+        .fr
+          format_time _item.created_at
+= paginate _collection

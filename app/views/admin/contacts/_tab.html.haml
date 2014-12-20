@@ -1,0 +1,5 @@
+%ul.ul-hori
+  %li.mr10{class: action_name == "new" ? "active" : ""}
+    = link_to "用户提交", admin_contacts_path
+    = link_to "回复", admin_contact_replies_path(:is_solve => 1)
+%hr/

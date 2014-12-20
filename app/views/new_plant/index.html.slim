@@ -1,0 +1,60 @@
+div.scroll-pane.np-scroll-pane
+  .np-title.goal
+    h1.np-gold 2026计划背景
+
+  #np-bg-img.np-image-content.np-content
+    = image_tag 'new_plant/01.png'       , class: 'npb-first'
+    = image_tag 'new_plant/tihuan01.jpg' , class: 'npb-second'
+    = image_tag 'new_plant/tihuan02.jpg' , class: 'npb-three'
+    = image_tag 'new_plant/tihuan03.jpg' , class: 'npb-four'
+    = image_tag 'new_plant/02.png'       , class: 'npb-five'
+    = image_tag 'new_plant/03.png'       , class: 'npb-six'
+    = image_tag 'new_plant/tihuan04.jpg' , class: 'npb-seven'
+    a.more_stroy href=kicktempo_story_path
+      h3.np-gold style='width:130px' 更多足球梦故事 >>
+
+  .np-title.goal
+    h1.np-gold 2026计划介绍
+   
+  #np-plant-intro.np-image-content.np-content
+    = image_tag 'new_plant/04.jpg', class: 'plant-intro-img'
+    a.plant-join-link href=sign_up_path
+      = image_tag 'new_plant/button01.png'
+    a.plant-gas-link href=gas_intro_path
+      = image_tag 'new_plant/button02.png'
+
+  #shows_container.np-shows_container.np-content
+    - @shows.each do |show|
+      #np-show-art.show
+        - if show.article_link.blank?
+          = image_tag show.image_path
+        
+          .show_title
+            h5 = show.title
+          .show_desc
+            pre = show.description
+            
+        - else
+          = link_to image_tag(show.image_path), show.article_link
+          .show_title
+            h5 = link_to show.title, show.article_link, :style => 'color: #CCCC00;font-weight:bold;'
+          .show_desc
+            pre = link_to show.description, show.article_link
+    br
+    a.right href=plant_news_path
+      h3.more_news.np-gold 更多相关新闻 >>
+    .clear
+
+  #np-furture.np-image-content.np-content
+    = image_tag 'new_plant/05.png'       , class: 'npb-first'
+    = image_tag 'new_plant/tihuan07.jpg' , class: 'npb-second'
+    = image_tag 'new_plant/06.png'       , class: 'npb-three'
+    = image_tag 'new_plant/tihuan08.jpg' , class: 'npb-four'
+
+  #np-support.np-content
+    a.np-support-link href='/support_kicktempo'
+      = image_tag 'new_plant/2026.png'
+    div.des
+      '支持计划，只需点击一下
+      .sp_count
+        = "已有  <b id='nsp_count'>#{@supports_count.to_i}</b>  人支持这个项目".html_safe

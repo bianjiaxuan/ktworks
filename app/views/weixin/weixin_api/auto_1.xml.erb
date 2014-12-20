@@ -1,0 +1,20 @@
+<xml>
+    <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
+    <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
+    <CreateTime><%= Time.now.to_i %></CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <% material = Material.find(@service.auto_reply_content) %>
+    <ArticleCount>1</ArticleCount>
+    <Articles>
+        <item>
+            <Title><![CDATA[<%= material.name %>]]></Title>
+            <Description><![CDATA[<%= raw material.summary %>]]></Description>
+            <PicUrl><![CDATA[http://<%= HOME_URL + material.preview_img.url %>]]></PicUrl>
+            <% if material.link_type == "link" -%>
+            <Url><![CDATA[<%= material.link %>?wx_id=<%=@from_username%>]]></Url>
+            <% else -%>
+            <Url><![CDATA[http://<%= HOME_URL + preview_s_material_path(material)%>?wx_id=<%=@from_username%>]]></Url>
+            <% end -%>
+        </item>
+    </Articles>
+</xml>

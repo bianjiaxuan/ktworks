@@ -1,0 +1,57 @@
+= javascript_include_tag 'ckeditor/init'
+
+span() = link_to '新建页面', new_admin_article_path
+
+span(style="margin-left: 10px;") = link_to '页面列表', admin_articles_path
+
+fieldset.devise
+  legend 创建新页面
+  = form_for [:admin, @article] do |f|
+    - if @article.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@article.errors.count, "error")} prohibited this game from being saved:"
+        ul
+          - @article.errors.full_messages.each do |message|
+            li = message
+    .field
+      = f.label '标题'
+      = f.text_field :title
+
+    .field
+      = f.label '来自'
+      = f.text_field :from
+
+    .field
+      = f.label '标签'
+      = f.text_field :tags, :placeholder => "多个标签用逗号分隔"
+      
+    .field
+      = f.label '用途'
+      = f.select :art_types, [['', '']] + @selects, selected: f.object.art_types
+    .field
+      = f.label '图标'
+      = f.text_field :avatar
+    |
+      APP比赛介绍使用，例子：/assets/admin_logo.png
+    .field
+      = f.label '摘要'
+    |
+      APP比赛介绍使用，用100字左右描述文章内容
+    .field
+      = f.text_area :summary, :size => "100x3"
+
+    .field
+      = f.label 'banner'
+      = f.file_field(:banner)
+    .field
+      = image_tag(@article.banner(:slide))
+
+    .field
+      = f.label '内容'
+
+    .field
+      = cktext_area_tag("article[content]", "#{@article.content}", :height => 800)
+      / = f.kindeditor :content, :width => 800, :height => 300
+
+
+    .actions = f.submit '保存'

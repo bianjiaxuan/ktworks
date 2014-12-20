@@ -1,0 +1,24 @@
+
+#games_rank_list.game_rank.word_container
+  h5 style='float:left' 比赛积分
+  = form_tag('/games/scores_list', :method => 'get',:remote => true ) do |f|
+    table style='float:right'
+     tr
+      td = label_tag '性别'
+      td = select_tag('search[gender]', options_for_select([[''], ['MM', 'MM'], ['GG', 'GG']],params['search'].try(:[],'sex')) ) 
+      td = label_tag '年龄组'
+      td = select_tag('search[age_group]', options_for_select([''] + UserProfile::AGEGROUP, params['search'].try(:[], 'age_group')) )
+      td = label_tag "城市"
+      td = select_tag('search[city]', options_for_select([''] + Country.cities.map(&:name)) )
+      td 
+        span
+         = submit_tag "筛选",:remote => true,:id=> 'f-score-rank',:class=>'btn rank-search'
+  div#ranking-list 
+     =render :partial => 'ranking_list'
+
+javascript:
+  $(document).ready(function() {
+     $('#f-score-rank').click(function() {
+         $(this).parents('form:first').submit();
+     });
+   });

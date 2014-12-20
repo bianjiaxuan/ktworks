@@ -1,0 +1,43 @@
+= javascript_include_tag 'china_city/jquery.china_city'
+
+= f.input :name
+.city-group
+  .input
+    %label 省份
+    .fl
+      %select.city-select{name: "school_item[province]", style: "width:80px"}
+        %option --省份--
+        = options_for_select(ChinaCity.list,resource.province)
+  .input
+    %label 城市
+    .fl
+      %select.city-select{name: "school_item[city]", style: "width:80px"}
+        %option --城市--
+        - if resource.city.present?
+          - if resource.city.to_i != 0
+            %option{selected: true,value: resource.city}
+              = ChinaCity.get resource.city
+  .input
+    %label 地区
+    .fl
+      %select.city-select{name: "school_item[area]", style: "width:80px"}
+        %option --地区--
+        - if resource.area.present?
+          %option{selected: true,value: resource.area}= ChinaCity.get resource.area
+= f.input :address
+= f.input :phone
+= f.input :student_count
+= f.input :school_address
+= f.input :contact
+= f.input :contact_position
+= f.input :contact_phone
+= f.input :remark, as: :text
+= f.input :company_id, :collection => Company.all.map{|n|[n.name,n.id]}
+= f.input :donate_require, :placeholder => "一行写一个"
+
+.mt20.clearfix
+  .fr.clearfix
+    .mt10.fl
+      = link_to "放弃","/newadmin/school_item?type=0",class: "grey6"
+    .ml10.fl
+      = f.submit "提  交", class: "btn2"

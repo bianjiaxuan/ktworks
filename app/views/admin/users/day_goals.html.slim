@@ -1,0 +1,21 @@
+= render "tally_navigations"
+= form_tag admin_users_day_goals_path, method: :get do
+  = label_tag '统计日期：'
+  = text_field_tag 'some_date',nil, placeholder: '统计日期',:readonly => true
+  = submit_tag '确定'
+
+table
+  tr
+    th ID
+    th 进球总数
+    th 穿裆总数
+    th KT 总数
+    th 日期
+    
+  - @rounds.each_with_index do |r,index|
+    tr
+      td = index+1
+      td = r.goals.to_i
+      td = r.pannas.to_i
+      td = r.kt_count.to_i
+      td = @some_day

@@ -1,0 +1,58 @@
+<%#--KT begin-------%>
+<%if 'kt'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/qichang') %>")
+<%elsif 'team'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/team') %>")
+<%elsif 'timeline'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/timeline') %>")
+<%elsif 'culture'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/culture') %>")
+<%elsif 'resposibility'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/resposibility') %>")
+<%elsif 'kt_weibo'.eql?(@section)%>
+  $('#kt_div').html("<%= escape_javascript(render :partial => '/home/kt/kt_weibo') %>")  
+<%#--kt----end--------%>
+<%#--2026--begin------%>  
+<%elsif 'basics'.eql?(@section)%>
+  $('#plan_div').html("<%= escape_javascript(render :partial => '/home/plan/basics') %>")
+<%elsif 'partners'.eql?(@section)%>
+  $('#plan_div').html("<%= escape_javascript(render :partial => '/home/plan/partners') %>")
+<%elsif 'advisers'.eql?(@section)%>
+  $('#plan_div').html("<%= escape_javascript(render :partial => '/home/plan/advisers') %>")
+<%elsif 'legends'.eql?(@section)%>
+  $('#plan_div').html("<%= escape_javascript(render :partial => '/home/plan/legends') %>")
+<%#--2026----end--------%>
+<%#--积分----begin-------%> 
+<%elsif 'rank1'.eql?(@section)%>
+  $('#rank_div').html("<%= escape_javascript(render :partial => '/home/rank/rank1') %>")
+<%elsif 'rank2'.eql?(@section)%>
+  $('#rank_div').html("<%= escape_javascript(render :partial => '/home/rank/rank2') %>")
+<%elsif 'judge_ranks'.eql?(@section)%>
+  $('#rank_div').html("<%= escape_javascript(render :partial => '/home/rank/judge_ranks') %>")
+<%elsif 'exchange'.eql?(@section)%>
+  $('#rank_div').html("<%= escape_javascript(render :partial => '/home/rank/exchange') %>") 
+<%elsif 'buy'.eql?(@section)%>
+  $('#rank_div').html("<%= escape_javascript(render :partial => '/home/rank/buy') %>")   
+<%#--积分--end----------%>  
+<%#--赛事信息---begin-------%>
+<%elsif 'forecast'.eql?(@section)%>
+  $('#game_div').html("<%= escape_javascript(render :partial => '/home/game/forecast') %>")
+<%elsif 'live'.eql?(@section)%>
+  $('#game_div').html("<%= escape_javascript(render :partial => '/home/game/live') %>")
+<%elsif 'review'.eql?(@section)%>
+  $('#game_div').html("<%= escape_javascript(render :partial => '/home/game/review') %>")
+<%elsif 'classic'.eql?(@section)%>
+  $('#game_div').html("<%= escape_javascript(render :partial => '/home/game/classic') %>")
+<%#--赛事信息---end-------%> 
+<%#--代理---begin-------%> 
+<%elsif 'kt_qichang'.eql?(@section)%>
+  $('#agency_div').html("<%= escape_javascript(render :partial => '/home/agency/kt_qichang') %>")
+<%elsif 'kt_games'.eql?(@section)%>
+  $('#agency_div').html("<%= escape_javascript(render :partial => '/home/agency/kt_games') %>")
+<%elsif 'kt_club'.eql?(@section)%>
+  $('#agency_div').html("<%= escape_javascript(render :partial => '/home/agency/kt_club') %>")
+<%elsif 'shifanzhe'.eql?(@section)%>
+  $('#agency_div').html("<%= escape_javascript(render :partial => '/home/agency/shifanzhe') %>")
+<%#--代理---end-------%>   
+<%end%>
+  

@@ -1,0 +1,22 @@
+= render "tab"
+%table.table1
+  %tr
+    %th 主题
+    %th 内容
+    %th 姓名
+    %th 邮箱
+    %th 提交时间
+    %th 操作
+  - _collection = collection.order("created_at desc").page(params[:page]).per(10)
+  - _collection.each_with_index do |_item|
+    %tr{ class: cycle('odd', 'even') }
+      %td= _item.title
+      %td= _item.content
+      %td= _item.xingming
+      %td= _item.email
+      %td= format_time _item.created_at
+      %td
+        = link_to '回复邮件', new_admin_contact_reply_path(contact_id: _item.id), target: "_blank"
+
+= paginate _collection
+

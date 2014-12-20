@@ -1,0 +1,32 @@
+= form_for [:admin, @company] do |f|
+  - if @company.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@company.errors.count, "error")} prohibited this game from being saved:"
+      ul
+        - @company.errors.full_messages.each do |message|
+          li = message
+  .field
+    = f.label '企业名称:'
+    br
+    = f.text_field :name
+  .field
+    = f.label '企业logo:'
+    br
+    = f.text_field :logo
+  .field
+    = f.label '企业捐赠气场数目:'
+    br
+    = f.text_field :donate_count
+  .field
+    = f.label '企业捐赠的学校列表:'
+    br
+    = f.text_field :school_items
+  .field
+    = f.label '企业介绍:'
+    br
+    = f.text_field :intro
+  .field
+    = f.label '相关企业网站:'
+    br
+    = f.text_field :site
+  .actions = f.submit '保存'

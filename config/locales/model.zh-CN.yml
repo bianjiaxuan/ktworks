@@ -1,0 +1,219 @@
+zh-CN:
+  activerecord:
+    models:
+      user: "用户"
+    attributes:
+      user:
+        nickname: "昵称"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
+        phone: "手机"
+        code: "验证码"
+        remember_me: "记住我"
+        terms: "服务条款"
+        invited_by: '邀请者'
+        sex: 性别
+        birthday: 生日
+        province: 所在地省份
+        city: 所在地城市
+      game:
+        city: 城市
+        country: 国家
+        place: 地点
+        name: 赛事名称
+        club_id: 所属俱乐部
+        time_start: 开始时间
+        time_end: 结束时间
+        time_end: 结束时间
+        location: 经纬度
+        avatar: 赛事图片
+        priority: 优先级
+        introduction: App端比赛详细介绍
+        traffic_intro: App端比赛交通说明
+        arround_intro: App端比赛周边信息介绍
+        site_introduction: 比赛详细介绍
+        site_traffic: 比赛交通说明
+        site_arround: 比赛周边信息介绍
+      w_service:
+        wx_account: 微信公众账号
+        wx_number: 微信号
+        app_id: app_id
+        app_secret: app_secret
+        wx_id: 微信原始ID
+        gz_reply_type: 关注回复类别
+        gz_reply_content: 关注回复内容
+        auto_reply_type: 自动回复类别
+        auto_reply_content: 自动回复内容
+        user_id: 用户
+      w_reply:
+        keyword: 关键字
+        reply_type: 回复类型
+        reply_type: 回复内容
+        user_id: 用户
+      material:
+        name: 名称
+        preview_img: 预览图
+        preview_in_content: 预览图是否显示在正文
+        summary: 摘要
+        content: 正文
+        link: 外部链接
+        link_type: 链接类型
+        material_category_id: 所属分类
+        sort: 排序
+      multiple_material:
+        name: 封面标题
+        preview_img: 封面图
+        preview_in_content: 封面是否显示在正文
+        summary: 摘要
+        content: 正文
+        link: 外部链接
+        link_type: 链接类型
+      multiple_material_list:
+        name: 标题
+        preview_img: 图片
+        preview_in_content: 是否显示图片
+        summary: 摘要
+        content: 正文
+        link: 外部链接
+        link_type: 链接类型
+      audio_material:
+        name: 名称
+        url: 文件名
+      w_question:
+        title: 问题
+        items: 选项
+        result: 答案
+        sort: 排序
+        published: 发布
+      w_question_answer:
+        result: 结果
+        is_passed: 是否通过
+        w_user_id: 微信用户
+      w_menu:
+        name: 名称
+        klass: 类别
+        menu_type: 菜单类型
+        url: url
+        key: key
+        sort: 排序
+        parent_id: 所属菜单
+      w_city:
+        name: 名称
+        ename: 英文名称
+        cover: 封面
+        content: 回复内容
+        sort: 排序
+      w_medium:
+        name: 标题
+        sub_name: 子标题
+        cover: 封面
+        published_date: 发布日期
+        content: 内容
+        sort: 排序
+        is_title: 是否顶置
+      w_brand:
+        name: 名称
+        ename: 英文名称
+        logo: Logo
+        content: 内容
+        sort: 排序
+      kt_error:
+        name: 错误名称
+        message: 内容
+        backtrace: 内容
+        klass: 来源
+        url: url
+        is_solved: 是否解决
+        created_at: 出错时间
+      club:
+        setup_date: 成立时间
+        intro: 介绍
+        email: 联系邮箱
+        contact_phone: 联系电话
+        contact: 联系人
+        region: 区
+      article:
+        views_count: 阅读次数
+        from: 来自
+        tags: 标签
+        title: 标题
+        art_types: 新闻类型
+        avatar: logo
+        summary: 摘要
+        banner: Banner
+      contact:
+        title: 标题
+        content: 内容
+        xingming: 姓名
+        email: 邮箱
+      contact_email:
+        title: 标题
+        content: 内容
+      online_course:
+        name: 标题
+        cover: 标题图
+        course_images: 课程图
+        gif_images: 动作分解图
+        common_error: 常见错误
+        prepare: 预习功课
+        sjx: 三角形球体
+        video: 视频
+      coach:
+        name: 教练姓名
+        country: 教练国籍
+        sex: 教练性别
+        phone: 手机
+        email: 邮箱
+        qrcode: qr码
+        height: 身高
+        weight: 体重
+        idcard: 身份证
+        birthday: 生日
+        auth_date: 认证日期
+        address: 地址
+        goodat: 擅长项目
+        intro: 基本介绍
+        user_id: KT账号
+      student:
+        name: 学员姓名
+        country: 学员国籍
+        sex: 学员性别
+        phone: 手机
+        email: 邮箱
+        qrcode: qr码
+        height: 身高
+        weight: 体重
+        idcard: 身份证
+        birthday: 生日
+        join_date: 入会日期
+        address: 地址
+        parents_contact: 父母联系方式
+        contact_type: 常用联络方式
+        expectation: 期望沟通方向
+        user_id: KT账号
+      company:
+        name: 企业名称
+        site: 企业网址
+        company_type: 企业类别
+        school_items: 捐赠学校
+        intro: 企业介绍
+        donate_count: 捐赠数量
+      school_item:
+        name: 学校名称
+        province: 省
+        city: 城市
+        company_id: 捐赠企业
+        phone: 电话
+        address: 地址
+        student_count: 学生数量
+        school_address: 学校地址
+        contact: 学校联系人
+        contact_position: 联系人职务
+        contact_phone: 联系电话
+        donate_require: 气场编码
+        remark: 备注
+      album:
+        name: 名称
+        cover: 封面

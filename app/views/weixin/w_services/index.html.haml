@@ -1,0 +1,19 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w640.ml20
+    = render "tab"
+
+    = simple_form_for @w_service, url: weixin_w_service_path(@w_service), html: {class: "form-horizontal"}, method: "put", validate: true do |f|
+
+      %span.title.pdr20 callback
+      = @w_service.wx_url
+      .mt10
+        %span.title.pdr20 token
+        = @w_service.wx_token
+
+      = f.input :app_id, input_html: { class: "form-control", placeholder: "请输入 app id" }
+
+      = f.input :app_secret, input_html: { class: "form-control", placeholder: "请输入 app secret" }
+      .mt10
+        = f.submit "提  交", class: "btn btn6"

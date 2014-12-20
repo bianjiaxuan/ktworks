@@ -1,0 +1,14 @@
+p#notice = notice
+= link_to '编辑', edit_admin_country_path(@country)
+||
+= link_to '后退', admin_countries_path
+p
+  string 名称:
+  = @country.name
+p
+  string Kind:
+  = @country.kind
+p
+  string 父节点:
+  = @country.parent
+.clear

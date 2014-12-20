@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+<title>KT足球</title>
+<style type="text/css">
+body{color:#666; font-family:"黑体"; margin:0 auto;}
+.Date{ font-family:"黑体"; font-size:0.8em;padding:2px 8px 0px 10px}
+h1{ margin:0px ;padding:2px 8px 0px 8px}
+.neirong{ font-family:"黑体"; margin-top:20px;padding:0px 8px 8px 8px}
+.tupian{ height:200px;width:100%}
+.tupian img{ height:200px;width:100%}
+.neirong img { height: auto; width: 100%; }
+</style>
+</head>
+
+<body>
+  <h1><%=resource.name%></h1>
+  <div class="Date"><%=resource.created_at.strftime("20%y年%m月%d日")%></div>
+  <!-- 如果有图片的就加上这个div，没有就不要加了-->
+  <% if resource.preview_in_content -%>
+    <div class="tupian"><img src="<%= resource.try(:preview_img).try(:url) -%>"/> </div>
+  <%end-%>
+   <div class="neirong"><%=raw resource.content -%></div>
+</body>
+</html>

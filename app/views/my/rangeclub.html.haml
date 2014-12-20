@@ -1,0 +1,48 @@
+= render "mymenu"
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  #leftside.fl
+    .headwarp1v1.relative
+      .headimg.absolute
+        = image_tag current_user.avatar,size: "250x250",style: "border-color: rgb(234,209,47); padding: 1px;"
+    .username= current_user.nickname
+    %hr
+    .username.centerText
+      - if @club.present?
+        = @club.name
+
+    %hr
+    %select#selected_sort
+      %option{value: "activity", selected: params[:sort] == "activity" ? "selected" : false } 活动
+      %option{value: "game", selected: params[:sort] == "game" ? "selected" : false} 球赛
+      %option{value: "member", selected: params[:sort] == "member" ? "selected" : false } 球员
+    .qrcode
+      = image_tag user_qrcode_img_url(current_user),size: "160"
+    %hr
+  #rightside.range-warp.fl
+    %ul.rangetabs.clearfix
+      %li.fl
+        = link_to "1v1","/my/range1v1",class: action_name == "range1v1" ? "active" : ""
+      %li.fl
+        = link_to "2v2","/my/range2v2",class: action_name == "range2v2" ? "active" : ""
+      %li.fl
+        = link_to "俱乐部","/my/rangeclub",class: action_name == "rangeclub" ? "active" : ""
+    %ul.range-list
+      - @clubs.each_with_index do |club,index|
+        %li.clearfix
+          .range.fl
+            = index + 1
+          .region.fl
+            = club.city
+          .headimg.fl
+            = image_tag "default_avatar.jpg",size: "74x74"
+          .club.fl
+            = club.name
+          .members.fl
+            = club.members.count
+          .members-word.fl
+            会员
+:coffeescript
+  $ ->
+    $("body").on "change","select#selected_sort", ->
+      window.location.href = "/my/rangeclub?sort=" + $(this).val()
+

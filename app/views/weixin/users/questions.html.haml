@@ -1,0 +1,36 @@
+= javascript_include_tag "jquery"
+
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/back#{params[:step]}.jpg",width: "100%"
+  .ktlogo-warp
+    .ktlogo
+      = image_tag "weixin/q/kticon1.png",width: "20%", height: "20%"
+    .kt-q-title
+      = @question.title
+    - items = @question.items.split("\r\n")
+    - items.each_with_index do |_item,_index|
+      .kt-items
+        = image_tag "weixin/q/s#{_index+1}.png",width: "85%",:"data-answer" => ["A","B","C","D"][_index],:class => "answer-img"
+        .kt-item-title{ :"data-answer" => ["A","B","C","D"][_index] }
+          = _item
+    - if items.size == 3
+      .kt-line{style: "margin-top: 27%;"}
+    - if items.size == 4
+      .kt-line{style: "margin-top: 12%;"}
+
+    %form#answer-form{action: request.url, method: "post"}
+      %input#answer{type: :hidden, name: "answer", value: ""}
+
+:coffeescript
+  $ ->
+    $("img.answer-img").click ->
+      answer = $(this).attr("data-answer")
+      $("input#answer").val(answer)
+      $("form#answer-form").submit()
+
+    $(".kt-item-title").click ->
+      answer = $(this).attr("data-answer")
+      $("input#answer").val(answer)
+      $("form#answer-form").submit()
+

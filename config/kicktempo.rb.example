@@ -1,0 +1,6 @@
+require 'hashie'
+
+SMSConfig = Hashie::Mash.new(
+  username: 'tempot',
+  password: 'f19bdacb65d6efa540948b2811351895',
+)

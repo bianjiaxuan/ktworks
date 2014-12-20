@@ -1,0 +1,49 @@
+script src="/assets/jquery.ui.datepicker" type="text/javascript"
+script src="/assets/jquery.ui.datepicker-zh-CN" type="text/javascript"
+script src="/assets/jquery-ui-1.8.18.custom.min" type="text/javascript"
+script src="/assets/jquery-ui-timepicker-addon" type="text/javascript"
+
+javascript:
+  jQuery(document).ready(function(){
+    $('#vip_start_date').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+    
+    $('#vip_end_date').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+  })
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"  
+
+= render "navigations"
+
+
+fieldset.devise
+  legend 为指定俱乐部批量生成 KickTempo 帐号:   若设置VIP日期，则生成VIP会员用户
+  = form_tag admin_users_batch_signup_path() do
+      p
+       =  "设置俱乐部："
+       = select_tag "agent_id", options_from_collection_for_select(@clubs, "user_id", "name"), prompt: "选择俱乐部："
+      p
+       =  "设置数量："
+       = select_tag "batch_count", options_for_select([ "20","50","100","500" ], "50"), prompt: "选择数量："
+      p
+       =  "比赛次数："
+       = text_field_tag "set_vip_count", 10
+      p
+       = "VIP设置起期：" 
+       = text_field_tag 'vip_start_date', nil,placeholder: 'VIP起期',:readonly => true
+      p
+       = "VIP设置止期："
+       = text_field_tag 'vip_end_date',nil, placeholder: 'VIP止期',:readonly => true
+      p 
+       = submit_tag '注册', confirm: "确认批量注册用户？" 

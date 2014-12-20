@@ -1,0 +1,15 @@
+#games_rank_list.game_rank.word_container
+ h5 style='float:left' 订单列表
+ table.game_ranks
+    tr.header
+      th.created-at 兑换时间 
+      th.gift_name 礼品
+      th.scores   积分
+      th
+      
+    - @orders.each do |order|
+      tr.users 
+        td.created_at = order.created_at.strftime('%Y-%m-%d %H:%M%S')
+        td.gift_name = order.gift_name
+        td.scores = order.scores
+        td.id = link_to '详情', "/orders/#{order.id}/show"

@@ -1,0 +1,30 @@
+= render "tab"
+%table.table1
+  %tr
+    %th 状态
+    %th 错误名称
+    %th 来源
+    %th url
+    %th 内容
+    %th 出错时间
+    %th 操作
+  - _collection = @collection.order("created_at desc").page(params[:page]).per(20)
+  - _collection.each_with_index do |_item|
+    %tr{ class: cycle('odd', 'even') }
+      %td
+        - if _item.is_solved
+          %span{style: "color: green;"} 已解决
+        - else
+          %span{style: "color: red;"} 未解决
+      %td= _item.name
+      %td= _item.klass_name
+      %td= _item.url
+      %td= truncate _item.message,length: 32
+      %td= format_time _item.created_at
+      %td
+        = link_to '查完全部', admin_kt_error_path(_item), target: "_blank"
+        = link_to '解决', solve_admin_kt_error_path(_item) unless _item.is_solved
+        = #link_to '删除', [:weixin, _item], method: :delete, data: { confirm: '你确定删除么？' }
+
+= paginate _collection
+

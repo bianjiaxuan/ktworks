@@ -1,0 +1,54 @@
+div.scroll-pane.article-scroll-pane
+  div style='margin-left: 20px;'
+    p.np-gold style='font-size: 30px;'
+      | 捐赠感恩
+
+  #donate-list
+    .np-donate-list.formregion
+      p.np-gold
+        | 鸣谢名单:
+      - @list.each do |list_item|
+        = link_to company_path(params: { companyname: list_item }), title: "查看#{list_item}的资料" do
+          div.donate-item
+            = list_item
+      .clear
+  
+  #donate.formregion.message_form style='margin-top:50px; width:auto; margin-right:20px;'
+    = form_for @message, :url => '/send_message', :method => 'post' do |f|
+      h2.np-gold style='margin-left: 20px'
+        | 我要捐赠：
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '联系人姓名：
+          input name="message[name]" type="text" id="name" size="35" class="texty" tabindex="1"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '单位：
+          input name="message[company]" type="text" id="email" size="35" class="texty" tabindex="2"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '电话：
+          input name="message[phone]" id="message" cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '地址：
+          input name="message[address]" id="message" cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '捐赠个数：
+          input name="message[donate_count]" id="message" cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '捐赠意向学校：
+          input name="message[donate_school]" id="message" cols="35" rows="14" class="texty" tabindex="3" value=params[:donate_school]
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '其它捐赠要求：
+          input name="message[donate_comment]" id="message" cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '方便的联系时间：
+          input name="message[contect_time]" id="message" cols="35" rows="14" class="texty" tabindex="3"
+        div class="sendit"
+          = f.submit :value => "", :class => "tk-ff-din-web-condensed", :tabindex => "4"
+      .clear

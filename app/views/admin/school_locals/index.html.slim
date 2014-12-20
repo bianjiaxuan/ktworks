@@ -1,0 +1,17 @@
+= link_to "新建", new_admin_school_local_path
+table
+  tr
+    th ID
+    th 名称
+    th 创建时间
+    th 编辑
+    th 删除
+  - @school_locals.each do |item|
+    tr
+      td = item.id 
+      td = item.name
+      td = item.created_at
+      td = link_to '删除', [:admin, item], confirm: '你确定删除么？', method: :delete
+      td = link_to '修改', edit_admin_school_local_path(item)
+= paginate @school_locals
+= render partial: 'admin/new_plant_link'

@@ -1,0 +1,30 @@
+p#notice = notice
+= link_to '编辑', edit_admin_order_path(@order)
+||
+= link_to '后退', admin_orders_path
+p
+  string 兑换人:
+  = @order.user.nickname if @order.user.present?
+p
+  strong 礼品名称：
+  = @order.gift_name
+p
+  strong #{@order.source_type==0?"积分：":"充值金额："}
+  = @order.scores
+
+p
+  strong 收货人：
+  = @order.receive_by
+p
+  strong 收货手机：
+  = @order.phone
+- if 0 == @order.source_type
+    p
+      strong 状态：
+      = @order.status
+      |     状态说明:[1:兑换成功；2:已配送；3:已签收；4:失败］
+    p
+      strong 收货地址：
+      = @order.address
+
+.clear

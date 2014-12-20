@@ -1,0 +1,44 @@
+= render 'sides'
+
+.mine_content
+  .announcement
+    h3 参赛宣言
+    p style="margin-left: 15px; letter-spacing:2px; padding-top: 10px;"
+      - unless current_user.profile.nil?
+        = current_user.profile.manifesto
+      - else
+        = "暂无"
+
+  .info
+    h4 个人介绍
+    p style="font-size: 14px; margin-left: 15px;"
+      - unless current_user.profile.introduction.nil? || current_user.profile.introduction.empty?
+        = current_user.profile.introduction
+      - else
+        = "暂无"
+  .info
+    h4 比赛统计
+    p = achievements? 
+    p = goals_panna_kt? 
+    br/ 
+
+  - if current_user.clubs.count > 0
+   .info     
+      h4  邀请统计 
+      p   总邀请人数：#{current_user.get_inviter.invitees_count}－－－总注册人数：#{current_user.get_inviter.lives_count} 
+      ul
+      .game_rank.word_container
+        h4 俱乐部榜单
+        = render 'clubs'
+  - if current_user.is_judge?
+   .info     
+      h4  裁判资格有效期 
+      p   还剩：#{current_user.remain_judge_day} 天   
+
+  #games_rank_list.game_rank.word_container
+    h5 比赛积分
+    = render 'scores'
+  #games_rank_list.game_rank.word_container
+    h5 战队比赛积分
+    = render 'league_scores'
+div.clear

@@ -1,0 +1,31 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+    %table.table1
+      %tr
+        %th 所属
+        %th 名称
+        %th 类别
+        %th 菜单类型
+        %th url
+        %th key
+        %th 排序
+        %th 操作
+      - _collection = collection.order("sort asc").page(params[:page]).per(10)
+      - _collection.each_with_index do |_item|
+        %tr{ class: cycle('odd', 'even') }
+          %td= _item.parent.try(:name)
+          %td= _item.name
+          %td= _item.klass_name
+          %td= _item.menu_type_name
+          %td= _item.url
+          %td= _item.key
+          %td= _item.sort
+          %td
+            = link_to '修改', edit_weixin_w_menu_path(_item)
+            = link_to '删除', [:weixin, _item], method: :delete, data: { confirm: '你确定删除么？' }
+
+    = paginate _collection
+

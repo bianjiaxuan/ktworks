@@ -1,0 +1,42 @@
+= javascript_include_tag 'ckeditor/init'
+= form_for [:admin, @order] do |f|
+  - if @order.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      ul
+        - @order.errors.full_messages.each do |message|
+          li = message  
+ 
+
+  .field
+    = f.label "礼品名称:"
+    = @order.gift_name
+  .field
+    = f.label @order.source_type==0?"积分:":"充值金额："
+    = f.text_field :scores
+  .field
+    = f.label "收货人:"
+    br
+    = f.text_field :receive_by
+  .field
+    = f.label "手机:"
+    br
+    = f.text_field :phone
+  - if 0 == @order.source_type
+      .field
+        = f.label "兑换人:"
+        = @order.user.nickname     
+      .field
+        = f.label "订单状态:"
+        = f.select(:status, options_for_select((1..4).to_a, @order.status) ) 
+        |  1:兑换成功；2:已配送；3:已签收；4:失败
+      .field
+        = f.label '送货地址:'
+        br
+        = f.text_field :address
+      .field
+        = f.label '发货日期:'
+        br
+        = f.text_field :send_day
+  
+  .actions = f.submit '保存'

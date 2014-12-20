@@ -1,0 +1,83 @@
+//= require slides
+@import "compass/css3"
+
+$width: 750px
+$height: 350px
+
+#slides_container
+  width: $width
+  height: $height
+  margin: 10px auto
+  z-index: 0
+  position: relative
+  .slides_container
+    width: $width - 30px
+    +box-shadow(black 5px 5px 10px)
+    .slide
+      width: $width - 30px
+      height: 300px
+      img
+        width: $width - 30px
+      .caption
+        width: $width - 60px
+  .pagination
+    margin: 26px auto
+    width: 120px
+
+#shows_container
+  width: 750px
+  margin: 10px auto
+  display: block
+  .show
+    float: left
+    margin: 0 9px
+    display: inline
+    img
+      width: 220px
+      margin: 10px 5px
+      +box-shadow(black 5px 5px 10px)
+    .show_title
+      color: yellow
+      border-bottom: white dashed 1px
+      font-size: 14px
+      margin: 0 5px
+    .show_desc
+      font-size: 12px
+.goal
+  margin: 0 auto
+  width: 720px
+  h3
+    color: yellow
+    width: 500px
+    font-size: 18px
+    padding: 15px 0
+    border-bottom: white dashed 1px
+  p
+    color: #f44
+    width: 500px
+    font-size: 14px
+    span
+      color: #f66
+      font-size: 16px
+  #join_now
+    float: right
+    position: relative
+    right: 50px
+    top: -50px
+
+#terms
+  font-size: 16px
+  width: 800px
+  height: 800px
+  overflow-y: scroll
+
+.pagination
+  a
+    color: yellow
+  .current
+    color: darkOrange
+    
+.user-vedio p
+  padding: 5px
+  width: 340px
+  color: yellow

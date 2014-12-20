@@ -1,0 +1,16 @@
+#shows_container
+  - @shows && @shows.each do |show|
+    
+      - if show.article_link.blank?
+        = image_tag("#{show.url}", :size => "700x250", :alt => "#{show.title}")
+      
+          
+      - else
+        = link_to image_tag("#{show.url}", :size => "750x250", :alt => "#{show.title}"), show.article_link,:target=>"_blank"
+        
+  .clear
+
+
+
+
+

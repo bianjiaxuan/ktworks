@@ -1,0 +1,26 @@
+
+
+table cellpadding="5" cellspacing="15"
+  tr
+    td 
+
+      table
+        tr
+          th ID
+          th 邮箱
+          th
+        - @selected_sms_users.each do |selected|
+          tr height="45"
+            td
+              = selected.user_id
+              
+            td 
+              = selected.user.email
+              p
+                = selected.user.nickname
+
+            td = link_to '取消',  '#',  :onclick => "cancel_selected_sms(#{selected.user.id}, '#{selected.user.nickname}')"
+
+          
+
+

@@ -1,0 +1,7 @@
+%ul.ul-hori
+  %li.mr10{class: action_name == "new" ? "active" : ""}
+    = link_to "新建", new_weixin_w_menu_path
+  %li
+    = link_to "同步到微信", sync_weixin_w_menus_path,data: { confirm: '你确定要同步么？' }
+
+%hr/

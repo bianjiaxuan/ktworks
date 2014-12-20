@@ -1,0 +1,23 @@
+span
+  = link_to '新建', new_admin_country_path
+table
+  tr
+    th ID
+    th 名称
+    th 父节点
+    th Kind
+    th 创建时间
+    th 
+    th
+    th 
+  - @items.each do |item|
+    tr
+      td = item.id 
+      td = item.name
+      td = item.parent
+      td = item.kind
+      td = item.created_at
+      td = link_to '编辑', edit_admin_country_path(item)
+      td = link_to '删除', [:admin, item], confirm: '你确定删除么？', method: :delete
+      td = link_to '显示', [:admin, item]
+= paginate @items

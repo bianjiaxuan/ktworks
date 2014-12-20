@@ -1,0 +1,37 @@
+table.game_ranks
+      tr.header
+        th.ranks 排名
+        th.avatar 头像
+        th.nickname 战队名称
+        th.playera  球员A
+        th.playerb  球员B
+        th.scores 积分
+
+        th.showtimes 参战
+        th.wins 胜
+        th.draws 平
+        th.loses 负
+      - if @scores && @scores.length>0
+       - @scores.each_with_index do |league,index|
+         tr.users 
+            td.ranks = index +1
+
+            td.avatar
+              - unless league.avatar_file_name.nil?
+                  = image_tag "#{league.avatar.url(:thumb)}"
+              - else
+                  = image_tag('default_small_avatar.jpg')
+            td.name = league.name  
+            td.playera = link_to league.usera.nickname, "/user/#{league.usera.id}", :style => "color: darkOrange; font-size: 12px;"
+            td.playerb = link_to league.userb.nickname, "/user/#{league.userb.id}", :style => "color: darkOrange; font-size: 12px;"
+            
+            td.scores = league.scores
+
+            td.showtimes = league.showtimes
+            td.wins = league.wins
+            td.draws = league.draws
+            td.loses = league.loses
+      - else
+         tr.users
+            td colspan='10'
+              p  没有数据 

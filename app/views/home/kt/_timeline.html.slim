@@ -1,0 +1,14 @@
+div id='qichang_img' style='display:none'
+  = image_tag("/images/kt_timeline.png", :size => "800x264", :alt => "关于KT发展历程")
+ 
+.clear
+
+= render :partial => '/home/kt/dynamic_intro'
+
+javascript:
+  $(document).ready(
+    function(){
+       $("#qichang_img").slideToggle(1000);
+      //$("#qichang_img").fadeIn(1000);
+      
+    });

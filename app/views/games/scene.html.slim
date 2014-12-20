@@ -1,0 +1,70 @@
+p#notice = notice 
+div#article-page  
+  div.scroll-pane.article-scroll-pane
+    h5 活动介绍
+    p
+      strong 活动：
+      = "#{@game.country}-#{@game.city}-#{@game.place}"
+    p
+      strong 日期：
+      = @game.date
+    p
+      strong 开始时间：
+      = hm (@game.time_start)
+    p
+      strong 结束时间：
+      = hm (@game.time_end)
+    p
+      strong 比赛详细介绍：
+      br
+      = raw @game.site_introduction
+    .clear
+    p
+      strong 比赛交通说明：
+      br
+      = raw @game.site_traffic
+    .clear
+    p
+      strong 比赛周边信息介绍：
+      br
+      = raw @game.site_arround
+    .clear
+
+    -unless @game_vedio.nil?
+        p align='center'
+          | <a href="javascript:void(0);" data-remote="true" id="vedio-up" >上一个</a> | <a href="javascript:void(0);" data-remote="true" id="vedio-down" >下一个</a>
+        div#game-vedio
+          =render :partial => 'game_vedio', :locals =>{:game_vedio=>@game_vedio}
+
+    -unless @users.nil? or @users.size == 0
+        fieldset.game_user_lists
+              legend 谁参加了这个活动
+              table
+                - @users.each do |u|
+                  tr 
+                    td 
+                     = u.nickname
+
+.clear
+
+javascript:
+  $(document).ready(function() {
+    $('#vedio-up').click(function() {
+      vedio_slide('up');
+    });
+    $('#vedio-down').click(function() {
+      vedio_slide('down');
+    });
+  });
+
+  function vedio_slide(next){
+    $.get(
+      "/games/next_vedio", 
+       {game_vedio_id:$('#game_vedio_id').val(),which:next}
+    );
+  }
+
+
+
+
+

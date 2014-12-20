@@ -1,0 +1,46 @@
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"
+
+fieldset.devise
+  legend 注册 KickTempo
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    table
+      tr
+        td
+          = f.label :email
+          | *
+        td = f.email_field :email,:placeholder=>'zuqiu@ktfootball.com'
+      tr
+        td
+          = f.label :nickname
+          | *
+        td 
+          = f.text_field :nickname,:placeholder=>'建议2到5个汉字或5~12个字母'
+      tr
+        td
+          = f.label :password
+          | *
+        td = f.password_field :password
+      tr
+        td
+          = f.label :password_confirmation
+          | *
+        td = f.password_field :password_confirmation
+      tr
+        td = f.label :phone
+        td = f.text_field :phone,:placeholder=>'你的手机号码'
+
+      tr
+        td = f.label :invited_by
+        td = f.text_field :invited_by, value: cookies[:invited_by],:placeholder=>'你的邀请人昵称'
+      tr
+        td = f.check_box :terms
+        td
+          = f.label :terms do
+            = "我已阅读并同意"
+            = link_to '网站服务条款', terms_path, target: '_blank'
+        td = error_tag :terms
+    /div= f.submit "注册"
+  -unless cookies[:invited_by]
+    = render "links"
+.clear

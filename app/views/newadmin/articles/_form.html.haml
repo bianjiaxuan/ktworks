@@ -1,0 +1,42 @@
+= render "shared/flash"
+
+= javascript_include_tag 'ckeditor/init'
+
+:ruby
+  _selects = [
+    ['APP文章', 'app_article'],
+    ['APP比赛介绍', 'app_game_intro'],
+    ['APP条款内容', 'app_game_routes'],
+    ['足球梦故事', 'kicktempo_story'],
+    ['2026相关新闻', 'kicktempo_news']
+  ]
+
+= f.input :title
+= f.input :from
+= f.input :tags, :placeholder => "多个标签用逗号分隔",:hint => "多个标签用逗号分隔"
+= f.input :art_types, :collection => _selects
+= f.input :avatar,:hint => "APP比赛介绍使用，例子：/assets/admin_logo.png"
+= f.input :summary, as: :text, :placeholder => "APP比赛介绍使用，用100字左右描述文章内容"
+
+= f.input :banner, as: :file
+- if resource.banner.present?
+  .input
+    %label 已上传标题图
+    .fl
+      = image_tag resource.banner.url,:size => "64"
+
+.input
+  %label
+    内容
+  .fl
+    = f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+
+.mt20
+  = f.submit "提  交", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      $("#sidebar").css("height",$("#main-container").height())
+    ,2000
+

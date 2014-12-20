@@ -1,0 +1,52 @@
+= javascript_include_tag "jquery.uploadify-3.1.min.js"
+= stylesheet_link_tag "uploadify.css"
+:css
+  .avatar-image { width: 120px; height: 120px; border: 1px solid #bbb; padding: 2px; }
+
+
+#main-container-title
+  %span
+    上传图片
+
+#main-container-body
+  = render "shared/flash"
+  .clearfix#image-list
+    - _collection = resource.pictures.order("created_at desc").page(params[:page]).per(18)
+    - _collection.each do |_item|
+      .fl.ml10.mb10
+        = link_to image_tag(_item.avatar(:middle),class: "avatar-image"),_item.avatar.url,target: "_blank"
+  = paginate _collection
+
+
+#main-container-info.absolute.clearfix{style: "background: none; top: 103px;"}
+  .fl
+    = link_to "+ 上传照片",":javascript:;", :id => "file_upload"
+
+:coffeescript
+  $ ->
+    $('#file_upload').uploadify({
+      uploader: "/newadmin/albums/"+"#{params[:id]}"+"/upload",
+      dataType: 'json',
+      swf : '/uploadify.swf',
+      #cancelImage : '/uploadify/uploadify-cancel.png',
+      #progressData : 'percentage',
+      buttonText : "<a class='uploadify_btn'>上传图片</a>",
+      fileTypeDesc : '图片文件',
+      fileTypeExts : '*.jpg; *.png; *.gif; *.bmp',
+      successTimeout : 6000,
+      fileSizeLimit : '3MB',
+      width : 84,
+      height : 84,
+      multi : true,
+      auto : true,
+      checkExisting : false,
+      transparent : true,
+      onUploadSuccess : (file,data,response)->
+        alert data
+        $img = $("<div class='fl ml10 mb10'><img class='avatar-image' src='" + data + "' /></div>")
+        $($img).prependTo $("#image-list")
+    })
+
+
+    $("#file_upload-button").css height: "32px",lineHeight: "32px"
+

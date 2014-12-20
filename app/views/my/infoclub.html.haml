@@ -1,0 +1,70 @@
+= render "mymenu"
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  - if @league.blank?
+    #rangebattle-page.clearfix
+      #leftside.fl
+        = render "infomy"
+      #rightside.fl.mt40.ml40
+        .rigngteaminfo
+          .mt200.ml80
+            = image_tag "newhome/noteam.jpg"
+
+  - else
+    #leftside.fl
+      = render "myleague"
+    #rightside.fl
+      .rigngteaminfo
+        .level.relative
+          .levelname.absolute 等级
+          .levelnum.absolute= @league.grade
+          .levelbarback.absolute
+          .levelbar.absolute{style: "width: #{ [@league.scores/6000.to_i * 390, 10].max }px;"}
+          .levelscore.absolute
+            = "#{@league.scores}/6000分"
+        .games.relative
+          .gamename.absolute 球赛
+          .levelnum.absolute= @league.showtimes
+          .levelbar1.absolute{style: "width: #{ @league.showtimes > 0 ? [@league.wins/@league.showtimes.to_f * 200, 10].max : 10 }px;"}
+          .levelbar2.absolute{style: "width: #{ @league.showtimes > 0 ? [@league.loses/@league.showtimes.to_f * 200, 10].max : 10 }px;"}
+          .win.absolute
+            %p 赢了
+            %p= @league.wins
+          .lost.absolute
+            %p 输了
+            %p= @league.loses
+          .draw.absolute
+            %p 平了
+            %p= @league.draws
+          .winrate.absolute
+            - if @league.showtimes > 0
+              = sprintf("%.1f",@league.wins/@league.showtimes.to_f*100)
+            - else
+              0
+            = "%"
+          .lostrate.absolute
+            - if @league.showtimes > 0
+              = sprintf("%.1f",@league.loses/@league.showtimes.to_f*100)
+            - else
+              0
+            = "%"
+        .allkt.relative
+          .ktname.absolute
+            所有的KT
+          .ktnum.absolute= @league.kt_count
+          .ktbar1.absolute
+          .ktbar2.absolute
+          .win.absolute
+            进球平均
+          .lost.absolute
+            穿裆平均
+          .winrate.absolute
+            = @league.goal_count
+          .lostrate.absolute
+            = @league.pannas_count
+
+
+:coffeescript
+  $ ->
+    $("body").on "change","select#select_league", ->
+      window.location.href = "/my/infoclub?league_id=" + $(this).val()
+

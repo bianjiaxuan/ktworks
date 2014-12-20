@@ -1,0 +1,29 @@
+= f.input :name
+= f.input :klass, :collection => WMenu::KLASSES.map{|n|[n.last,n.first]}
+= f.input :menu_type, :collection => WMenu::MENU_TYPES.map{|n|[n.last,n.first]}
+
+
+= f.input :sort
+= f.input :url
+= f.input :key
+
+= f.association :parent, :collection => WMenu.where("parent_id is null").map{|n|[n.name,n.id]}
+
+#reply-content.mt10
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"
+
+
+:coffeescript
+  $ ->
+    $("select#w_menu_klass").change ->
+      check_parent(this)
+
+    check_parent = (obj)->
+      if $(obj).val() == "0"
+        $(".w_menu_parent").hide()
+      if $(obj).val() == "1"
+        $(".w_menu_parent").show()
+
+    check_parent $("select#w_menu_klass")

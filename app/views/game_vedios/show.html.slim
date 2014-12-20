@@ -1,0 +1,67 @@
+
+-if @game_vedio.nil? == false
+    
+    div#game-vedio
+      =render :partial => 'games/one_game_vedio', :locals =>{:game_vedio=>@game_vedio}
+ 
+ 
+.clear
+javascript:
+  $(document).ready(function() {
+    $('#f-score').click(function() {
+      event.preventDefault();
+      var score=$('input:radio[name="game_record[score]"]:checked').val();
+      if(score==null){
+         alert("请选择一个分数！");
+         return false;
+       }else{
+         update_score(score);
+       }
+    });
+    $('#vedio-up').click(function() {
+      vedio_slide('up');
+    });
+    $('#vedio-down').click(function() {
+      vedio_slide('down');
+    });
+  });
+
+  function vedio_slide(next){
+    $.get(
+      "/games/one_next_vedio", 
+       {game_vedio_id:$('#game_vedio_id').val(),which:next}
+    );
+  }
+
+  function update_score(score){
+    var result=0;
+    $.ajax({
+      type : "put",
+      url : "/games/score",
+      data : {game_vedio_id:$('#game_vedio_id').val(),score:score},
+      async : false,
+      success : function(data){
+        result=data;
+        $("#referee-score").fadeOut();
+      }
+    });
+    return result;
+  }
+
+  function check_scoret(){
+   var result=0; 
+   $.get(
+      "/games/check_score", 
+       {game_vedio_id:$('#game_vedio_id').val()},
+       function(data){
+         alert("check=="+data);
+         result = data;
+       }
+    );
+    return result;
+  }
+
+
+
+
+

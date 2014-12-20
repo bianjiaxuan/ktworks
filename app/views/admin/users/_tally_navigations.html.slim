@@ -1,0 +1,24 @@
+script src="/assets/jquery.ui.datepicker" type="text/javascript"
+script src="/assets/jquery.ui.datepicker-zh-CN" type="text/javascript"
+script src="/assets/jquery-ui-1.8.18.custom.min" type="text/javascript"
+script src="/assets/jquery-ui-timepicker-addon" type="text/javascript"
+
+javascript:
+  jQuery(document).ready(function(){
+    $('#some_date').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });    
+  })
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"  
+
+= link_to '各赛场最高得分', admin_users_day_top_scores_path
+span style="padding-left: 20px;"
+  = link_to '比赛次数、人数', admin_users_day_rounds_path
+span style="padding-left: 20px;"
+  = link_to '进球、穿裆和KT数', admin_users_day_goals_path
+span style="padding-left: 20px;"
+  = link_to '城市比赛场次', admin_users_day_games_path

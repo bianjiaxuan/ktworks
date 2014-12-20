@@ -1,0 +1,25 @@
+#register-login-page
+  #top-btns
+    = link_to "登录","/newhome/login"
+    |
+    = link_to "注册","/newhome/register"
+  #page-warp
+    %form.mt20{action: "/users/sign_in", method: "post", }
+      %input{type: "hidden", name: "authenticity_token", value: form_authenticity_token}
+      = render "shared/flash"
+      %div
+        %input.text2{type: "text", placeholder: "手机号码或邮箱", name: "user[login]"}
+      .mb10
+        %input.text2{type: "password", placeholder: "输入密码", name: "user[password]"}
+      .mb10.clearfix
+        .fl
+          %input{type: "checkbox"}
+        .fl
+          记住登录状态
+        .fr
+          = link_to "忘记密码?","#", style: "color: #333;"
+        / .fr.mr10
+        /   = link_to "使用其他方式登录","#",style: "color: rgb(207, 165, 111);"
+      %div
+        %button.button1.submit{type: "submit", style: "width: 360px;"}
+          登录

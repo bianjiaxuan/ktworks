@@ -1,0 +1,76 @@
+#showclub
+  #clubcity
+    - if resource.banner.present?
+      = image_tag resource.banner.url,size: "1200x380",style: "margin-bottom: -2px;"
+    - else
+      = image_tag "newhome/club/shanghai.jpg",size: "1200x380",style: "margin-bottom: -2px;"
+  #clublogo
+    .img.centerText
+      - if resource.avatar.present?
+        = image_tag resource.avatar.url,size: "224x224"
+      - else
+        = image_tag "newhome/logo.jpg",size: "224x224"
+    .name.centerText
+      = resource.name
+
+  #bags
+    #bagwarp
+      .bagtab
+        = link_to "俱乐部气场","javascript:;"
+      .bagtop
+      #baglist1.baglist.clearfix
+        - resource.bags.count.times do |n|
+          - if n < 7
+            .bag.fl
+              .bagimg
+                = image_tag "newhome/club/bag.png"
+              .bagnum
+                = n
+      - if resource.bags.count > 7
+        #baglist2.baglist.clearfix{style: "display: none;"}
+          - resource.bags.count.times do |n|
+            .bag.fl
+              .bagimg
+                = image_tag "newhome/club/bag.png"
+              .bagnum
+                = n
+      - if resource.bags.count > 7
+        .bagbottom
+          = link_to "多少场","javascript:;",:class => "show_all_bags"
+  #about
+    #aboutwarp
+      #aboutname.centerText
+        关于我们俱乐部
+      #aboutdesc.centerText
+        - if resource.intro
+          = raw resource.intro
+
+  #contact
+    #contactwarp
+      #contactname.centerText
+        联系我们
+      #contactimg.centerText
+        = image_tag "newhome/club/contact.png"
+      #contactclub.centerText
+        = resource.name
+      %p#clubaddress.centerText
+        - if resource.setup_date
+          - if resource.setup_date.year == Date.current.year
+            = (Date.current.month - resource.setup_date.month).to_s + "个月"
+          - else
+            = (Date.current.year - resource.setup_date.year).to_s + "年"
+        %br/
+        - if resource.city && resource.region
+          = resource.city + "市" + resource.region
+        %br/
+        = resource.email
+        %br/
+        = resource.contact_phone
+        %br/
+        = resource.contact
+
+:coffeescript
+  $ ->
+    $("body").on "click",".show_all_bags", ->
+      $("#baglist1").hide()
+      $("#baglist2").show()

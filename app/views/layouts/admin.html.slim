@@ -1,0 +1,38 @@
+doctype 5
+html
+  head
+    title KickTempo
+    = stylesheet_link_tag "background", media: "all"
+    = javascript_include_tag "background"
+    = csrf_meta_tags
+  body
+    .logo
+      = link_to image_tag('admin_logo.png'), root_path
+    header
+      nav.admin
+        = link_to '资源管理', admin_info_urls_path, class: current_page?(admin_info_urls_path)
+        = link_to '页面管理', admin_articles_path, class: current_page?(admin_articles_path)
+        = link_to '2026资源', admin_new_plant_path(@new_plant), class: current_page?(admin_new_plant_path(@new_plant))
+        = link_to '相册管理', admin_albums_path, class: current_page?(admin_albums_path)
+        = link_to '会员管理', admin_users_search_path, class: current_page?(admin_users_path)
+        = link_to '赛事管理', admin_games_path, class: current_page?(admin_games_path)
+        = link_to '得分管理', admin_scores_path, class: current_page?(admin_scores_path)
+        = link_to '兑换商品管理', admin_gifts_path, class: current_page?(admin_gifts_path)
+        = link_to '订单管理', admin_orders_path, class: current_page?(admin_orders_path)
+        = link_to '气场管理', admin_bags_path, class: current_page?(admin_bags_path)
+        = link_to '微信管理', weixin_w_services_path, class: request.url.include?("weixin")
+        = link_to '错误管理', admin_kt_errors_path, class: current_page?(admin_kt_errors_path)
+        = link_to '合作管理', admin_contacts_path, class: current_page?(admin_contacts_path)
+      .status.mt20
+        .current_user
+          = "当前登录: #{current_user.nickname}"
+          = link_to '【退出】', sign_out_path
+          / = link_to image_tag('sign_out_btn.png', size: '80x20'), sign_out_path
+        .current_game = "当前比赛ID: #{@current_game.id unless @current_game.nil?}"
+      .clear
+    .border
+    - if notice.present?
+      p.notice.mt20 = notice
+    - if alert.present?
+      p.alert.mt20 = alert
+    .content.mt20 = yield

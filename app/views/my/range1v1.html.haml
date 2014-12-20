@@ -1,0 +1,32 @@
+= render "mymenu"
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  #leftside.fl
+    = render "infomy"
+  #rightside.range-warp.fl
+    %ul.rangetabs.clearfix
+      %li.fl
+        = link_to "1v1","/my/range1v1",class: action_name == "range1v1" ? "active" : ""
+      %li.fl
+        = link_to "2v2","/my/range2v2",class: action_name == "range2v2" ? "active" : ""
+      %li.fl
+        = link_to "俱乐部","/my/rangeclub",class: action_name == "rangeclub" ? "active" : ""
+    %ul.range-list
+      - @scores.each_with_index do |user,_index|
+        %li.clearfix
+          .range.fl
+            = user.rank
+          .headimg.fl
+            = image_tag user.avatar,size: "74x74"
+          .headrange.fl
+            = user.grade
+          .username.fl
+            = user.nickname
+          .score.fl
+            = user.scores
+          / .sex.fl
+          /   = image_tag "newhome/se1.jpg",size: "32x32"
+          .country.fl
+            = image_tag "newhome/country/china.jpg", size: "50x32"
+
+
+

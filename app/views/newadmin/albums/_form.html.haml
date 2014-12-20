@@ -1,0 +1,21 @@
+= render "shared/flash"
+= javascript_include_tag 'ckeditor/init'
+= f.input :name
+
+= f.input :cover, as: :file
+- if resource.cover.present?
+  .input
+    %label 已上传封面图
+    .fl
+      = image_tag resource.cover_url(:middle),:size => "64"
+
+
+.mt20
+  = f.submit "提  交", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      $("#sidebar").css("height",$("#main-container").height())
+    ,2000
+

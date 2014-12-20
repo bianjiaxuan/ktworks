@@ -1,0 +1,81 @@
+doctype 5
+html
+  head
+    title KickTempo
+    = stylesheet_link_tag "newadmin", media: "all"
+    = javascript_include_tag "newadmin"
+    = csrf_meta_tags
+  body
+    #header-warp
+      #header.center.clearfix
+        #logo.fl
+          = image_tag "newadmin/logo.jpg"
+        #sign_out.fr
+          = link_to "退出",sign_out_path
+        #username.fr
+          = current_user.nickname
+        #avatar.fr
+          = image_tag current_user.avatar,:size => "24"
+
+    #container.center.clearfix
+      #sidebar.fl
+        .sidetitle.clearfix
+          .icon.fl
+            = image_tag "newadmin/icon1.jpg",:size => "24"
+          .title-text.fl
+            | 功能
+        ul style="border-bottom: 1px solid #ccc; padding-bottom:20px;"
+          li= link_to '官网页面', "#"
+          li= link_to '微信管理', "#"
+
+        .sidetitle.clearfix.mt20
+          .icon.fl
+            = image_tag "newadmin/icon2.jpg",:size => "24"
+          .title-text.fl
+            | 管理
+        ul style="border-bottom: 1px solid #ccc; padding-bottom:20px;"
+          li= link_to '新闻管理', newadmin_articles_path, class: request.url.include?("newadmin/articles") ? "active" : ""
+          li= link_to '错误管理', newadmin_kt_errors_path, class: request.url.include?("newadmin/kt_errors") ? "active" : ""
+          li= link_to '赛事管理', newadmin_games_path, class: request.url.include?("newadmin/games") ? "active" : ""
+          li= link_to '资源管理', newadmin_companies_path(type: 0), class: request.url.include?("newadmin/companies") ? "active" : ""
+          li= link_to '素材管理', newadmin_albums_path, class: request.url.include?("newadmin/albums") ? "active" : ""
+          li= link_to '培训管理', newadmin_online_courses_path, class: request.url.include?("newadmin/online_courses") ? "active" : ""
+          li= link_to '俱乐部', "#"
+          li= link_to '用户管理', "#"
+          li= link_to '气场管理', "#"
+          li= link_to '会员管理', "#"
+
+        .sidetitle.clearfix.mt20
+          .icon.fl
+            = image_tag "newadmin/icon3.jpg",:size => "24"
+          .title-text.fl
+            | 统计
+        ul style="border-bottom: 1px solid #ccc; padding-bottom:20px;"
+          li= link_to '会员', "#"
+          li= link_to '赛事', "#"
+          li= link_to '气场', "#"
+          li= link_to '俱乐部', "#"
+          li= link_to '培训', "#"
+          li= link_to '2026', "#"
+          li= link_to '消费', "#"
+
+        .sidetitle.clearfix.mt20
+          .icon.fl
+            = image_tag "newadmin/icon4.jpg",:size => "24"
+          .title-text.fl
+            | 订单
+        ul style="border-bottom: 1px solid #ccc; padding-bottom:20px;"
+          li= link_to '商品', "#"
+          li= link_to '活动合作', "#"
+
+        .sidetitle.clearfix.mt20
+          .icon.fl
+            = image_tag "newadmin/icon5.jpg",:size => "24"
+          .title-text.fl
+            | 设置
+        ul style="padding-bottom:20px;"
+          li= link_to '权限设置', "#"
+          li= link_to '规则设置', "#"
+
+      #main-container.fl.relative
+        = yield

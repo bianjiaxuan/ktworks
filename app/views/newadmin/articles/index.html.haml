@@ -1,0 +1,50 @@
+.font36.mt40.ml20
+  新闻管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "新闻列表", newadmin_articles_path,class: "grey9"
+#main-container-body{style: "padding-top: 32px;"}
+
+  .clearfix
+    .fl
+      %form{action: "/newadmin/articles"}
+        %input{type: "text", name: "keyword", placeholder: "搜索新闻"}
+    .fr
+      = link_to "+ 新增新闻",new_newadmin_article_path,class: "grey9 font28"
+  .grey9.font20.border1.pd10{style: "background-color: rgb(247,247,247); border-color: #eee;"}
+    新闻列表
+
+  - if params[:keyword].present?
+    - _collection = collection.where("title LIKE ?","%#{params[:keyword]}%").page(params[:page]).per(20)
+  - else
+    - _collection = collection.page(params[:page]).per(20)
+  - _collection.each_with_index do |_item,index|
+    .list1.clearfix{style: "margin-bottom: 0px; height: 20px; border-bottom: none; #{ 'border-bottom: 1px solid #ddd;' if index == _collection.size-1}"}
+      .fl.font20.w300
+        = truncate _item.title,length: 15
+      .fl
+        = format_time _item.created_at
+
+      .fr
+        = link_to "编辑",edit_newadmin_article_path(_item),target: "_blank",class: "btn1"
+      .fr.mr20
+        .grey9
+          阅读:
+          = _item.views_count
+  = paginate _collection
+
+
+:coffeescript
+  $ ->
+    $("body").on "click",".view-game-applications", ->
+      _id = $(this).attr("data-id")
+      $.getJSON "/newadmin/games/"+_id+"/view_applications", (r)->
+        $.fancybox type: "inline", title: "参赛选手名单", content: r.content, width: "640", height: "480", titlePosition: "inside"
+
+    $('.fancybox').fancybox(
+      padding : 0,
+      autoScale:true,
+      width:1000,
+      height:600,
+      openEffect: 'elastic'
+    )

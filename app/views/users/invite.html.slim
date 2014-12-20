@@ -1,0 +1,31 @@
+
+javascript:
+  function copyToClipBoard(a) 
+  {
+    alert(a.value);
+    var ch=document.location; 
+    ch +='/r/n'; 
+    <!--var ch=a.value;-->
+    window.clipboardData.setData("Text",ch); 
+    alert("已复制链接"); 
+  }
+fieldset.devise.varified_code
+  legend 邀请注册
+
+  div
+    h3 邀请注册地址：
+    p
+      input#invite-link.input-large type="text" value="#{@invite_url}"
+  br/
+  button#copy.submit_btn
+    .icon-copy
+    | 复制
+  div
+    br/
+    h3 邀请注册二维码：(下载：鼠标右键-->图片存储为...)
+      
+  div
+    .qrcode
+    = image_tag user_invite_qrcode_img(current_user,@invite_url)             
+   
+  

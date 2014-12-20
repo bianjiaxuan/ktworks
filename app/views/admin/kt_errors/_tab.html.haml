@@ -1,0 +1,12 @@
+%ul.ul-hori
+  %li.mr10{class: action_name == "new" ? "active" : ""}
+    = link_to "全部", admin_kt_errors_path
+    = link_to "已解决", admin_kt_errors_path(:is_solve => 1)
+    = link_to "未解决", admin_kt_errors_path(:is_solve => 0)
+    = link_to "微信后台", admin_kt_errors_path(:klass => 5)
+    = link_to "微信会员卡", admin_kt_errors_path(:klass => 4)
+    = link_to "微信", admin_kt_errors_path(:klass => 3)
+    = link_to "后台", admin_kt_errors_path(:klass => 2)
+    = link_to "前台", admin_kt_errors_path(:klass => 0)
+    = link_to "APP", admin_kt_errors_path(:klass => 1)
+%hr/

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  logo: MyString
+  donate_count: MyString
+  school_items: MyString
+  intro: MyString
+  site: MyString
+
+two:
+  name: 
+  logo: MyString
+  donate_count: MyString
+  school_items: MyString
+  intro: MyString
+  site: MyString

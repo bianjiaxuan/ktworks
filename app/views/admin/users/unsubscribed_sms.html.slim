@@ -1,0 +1,40 @@
+
+= render "navigations"
+
+= form_tag admin_users_path, method: :get do
+  = label_tag '类型：'
+  = select_tag(:search_type, options_for_select([['Email', 'email'], ['昵称', 'nickname'], ['手机', 'phone'], ['会员', 'vip']], params[:search_type]))
+
+  = label_tag '关键字：'
+  = text_field_tag :keyword, params[:keyword]
+  = submit_tag '搜索'
+  i 可部分匹配
+
+table cellpadding="5" cellspacing="15"
+  tr
+    td 
+
+      table
+        tr
+          th ID
+          th 邮箱
+          th 昵称
+          th 等级
+          th 得分
+          th 删除用户
+        - @users.each do |user|
+          tr height="45"
+            td
+              = user.id
+              
+            td 
+              = user.email
+
+            td = user.nickname
+            td = user.grade
+            td = user.scores
+            td = user.phone
+  
+            td = button_to '订阅短信', admin_users_confirm_subscribed_sms_path( user_id: user.id ), method: :post, confirm: "你确定要让 #{user.nickname} 短信订阅？"
+
+        = paginate @users

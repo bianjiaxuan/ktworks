@@ -1,0 +1,39 @@
+h1 Listing rounds
+
+table
+  tr
+    th Game
+    th User
+    th Pair
+    th Game number
+    th Varified code
+    th Goals
+    th Pannas
+    th Panna ko
+    th Fouls
+    th Flagrant fouls
+    th Winner
+    th
+    th
+    th
+
+  - @rounds.each do |round|
+    tr
+      td = round.game_id
+      td = round.user_id
+      td = round.pair_id
+      td = round.game_number
+      td = round.varified_code
+      td = round.goals
+      td = round.pannas
+      td = round.panna_ko
+      td = round.fouls
+      td = round.flagrant_fouls
+      td = round.winner
+      td = link_to 'Show', round
+      td = link_to 'Edit', edit_round_path(round)
+      td = link_to 'Destroy', round, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Round', new_round_path

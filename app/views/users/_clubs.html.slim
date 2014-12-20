@@ -1,0 +1,22 @@
+table.game_ranks
+    tr.header
+      th 排名
+      th.nickname 俱乐部经理昵称
+      th.invitees_count 邀请人数
+      th.lives_count 注册人数
+      
+    - @clubs && @clubs.each_with_index do |club,index|
+      tr.users
+
+        td = index.next
+        td.nickname
+          - if club.agency.nickname.length > 10
+            = link_to club.manager.nickname, "/user/#{club.user_id}", :style => "color: darkOrange; font-size: 12px;"
+          - else
+            = link_to club.manager.nickname, "/user/#{club.user_id}", :style => "color: darkOrange;"
+
+        td.invitees_count 
+            = link_to invitees_count?(club.inviter), "/myclubbers/invitees/#{club.manager.id}", :style => "color: darkOrange;"
+        td.lives_count 
+            = link_to lives_count?(club.inviter), "/myclubbers/lives/#{club.manager.id}", :style => "color: darkOrange;"
+        

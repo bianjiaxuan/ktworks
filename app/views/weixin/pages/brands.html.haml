@@ -1,0 +1,2 @@
+- @brands.each do |brand|
+  = link_to image_tag(brand.logo.url,class: "full-width"),"/weixin/pages/show_brand?id=#{brand.id}"

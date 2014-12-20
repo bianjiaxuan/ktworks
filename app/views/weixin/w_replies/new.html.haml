@@ -1,0 +1,8 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w640.ml20
+    = render "tab"
+
+    = simple_form_for resource, url: weixin_w_replies_path, html: {class: "form-horizontal"}, validate: true do |f|
+      = render :partial => "form", locals: { f: f }

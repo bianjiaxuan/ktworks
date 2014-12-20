@@ -1,0 +1,2 @@
+module Weixin::MaterialsHelper
+end

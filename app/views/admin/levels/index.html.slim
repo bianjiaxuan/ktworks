@@ -1,0 +1,11 @@
+table
+  tr
+    th 等级
+    th 最小值
+    th 最大值
+    
+  - @levels.each do |level|
+    tr
+      td = level.grade
+      td = level.min_score
+      td = level.max_score

@@ -1,0 +1,53 @@
+script src="/assets/jquery-1.7.1" type="text/javascript"
+script src="/assets/jquery.ui.datepicker" type="text/javascript"
+script src="/assets/jquery.ui.datepicker-zh-CN" type="text/javascript"
+script src="/assets/jquery-ui-1.8.18.custom.min" type="text/javascript"
+script src="/assets/jquery-ui-timepicker-addon" type="text/javascript"
+
+javascript:
+  jQuery(document).ready(function(){
+    $('#user_start_vip_time').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+
+    $('#user_end_vip_time').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+  })
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"
+
+fieldset.devise
+fieldset.devise
+  legend 设置/取消会员
+  |
+   <font color="red">VIP类别: 次数VIP 或 时间段VIP ,注意：只设置一项，另一项留空;全空，取消VIP</font>
+  = form_for [:admin, @user], :url => admin_users_updatevip_path(:id => @user.id), :method => :put do |f|
+    - if @user.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@user.errors.count, "error")} prohibited this game from being saved:"
+        ul
+          - @user.errors.full_messages.each do |message|
+            li = message
+
+    .field
+      = @user.nickname
+    .field
+      = f.label '比赛次数:'
+      = f.text_field :vip_count
+    .field
+      = f.label '开始日期:'
+      = f.text_field :start_vip_time ,:readonly => true
+    .field
+      = f.label '结束日期:'
+      = f.text_field :end_vip_time,:readonly => true
+
+    .actions = f.submit '保存'

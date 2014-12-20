@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+.icon_info,.sub_mine,.other_info{background:url(my_bg.png) no-repeat;}
+.nav_mine{ width:225px;   display:inline; float:left; margin:0 0 0 25px;}
+.mine_content{ float:left; width:500px;}
+.icon_info{ width:212px; height:225px; background-position:0 -50px; padding:10px 0 0 0;}
+.icon_mine{ width:190px; height:190px; margin:0px auto 0 auto;}
+.nick_mine{ width:190px; margin:0px auto; line-height:32px; color:#ffff00; font-size:18px;}
+.sub_mine{ padding:20px 0 0 82px; background-position:0 -288px; height:410px; }
+
+.sub_mine ul li{line-height:56px; height:56px; font-size:24px;}
+.sub_mine ul li a:hover{ color:darkOrange; }
+.sub_mine ul li a{ color:darkOrange; }
+.mine_content .announcement,.mine_content .info{ padding:0 0 20px 0;}
+.mine_content .announcement h3{ font-size:24px; color:#ffff00; padding:5px 0 10px 0;}
+.mine_content .announcement p{ font-size:20px;}
+
+.mine_content .info h4{ font-size:24px;color:#ffff00; padding:0 0 10px 0; margin-top: 5px;}
+.other_info{ background-position:0 -721px; height:350px; margin:8px 0 0 0;}
+.other_info .position{ text-align:center; height:20px; line-height:20px;color:#ffff00; font-size:16px; padding:10px 0 15px 0;}
+.other_info dl{ overflow:hidden; _zoom:1; padding:0 0 12px 0;}
+.other_info dl dt{ width:70px; float:left; font-size:20px; text-align:right;}
+.other_info dl dd{ width:140px; float:left; text-align:center; font-size:20px;}
+.other_info dl.birth dd{ font-size:20px;}
+.other_info .info{ height:148px;}
+.other_result{padding:10px 0 0 0;}
+.other_result dl{ overflow:hidden; _zoom:1;  padding:0 0 3px 0;}
+.other_result dl dt{ width:88px; float:left; height:55px; line-height:55px; text-align:center; font-size:32px;}
+.other_result dl dd.num{ width:64px; height:55px; line-height:55px; text-align:center; font-size:32px; color:#000;}
+.other_result dl dd.word{height:55px; line-height:55px; width:60px;font-size:32px;}

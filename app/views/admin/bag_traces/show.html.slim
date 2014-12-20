@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Code:
+  = @bag_trace.code
+p
+  strong City:
+  = @bag_trace.city
+p
+  strong Longitude:
+  = @bag_trace.longitude
+p
+  strong Latitude:
+  = @bag_trace.latitude
+p
+  strong Location:
+  = @bag_trace.location
+
+/!= link_to 'Edit', edit_admin_bag_trace_path(@bag_trace)
+
+= link_to 'Back', admin_bag_traces_path

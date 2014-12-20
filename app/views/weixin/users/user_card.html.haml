@@ -1,0 +1,20 @@
+- user = @w_user.user
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/usercard-back.jpg",width: "100%"
+  .ktlogo-warp
+    .ktsex
+      = #image_tag("weixin/q/icon1.png",width: "21%")
+    .ktavatar
+      = #image_tag("app_logo.jpg",width: "31.5%",style: "border-radius: 50%;")
+      = image_tag(@w_user.headimgurl,width: "31.5%%", style: "border-radius: 50%;")
+
+    .ktusername
+      = @w_user.nickname
+      %br/
+      %a{style: "font-size: 16px; text-decoration: none; color: grey;",href: "#"}
+        剩余场次：#{user.vip_count}
+
+    .ktqrcode
+      = #image_tag("app_logo.jpg",width: "54.4%")
+      = image_tag(user.qrcode_img, width: "54.4%")

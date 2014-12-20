@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    编辑教练
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource, url: newadmin_coach_path(resource) do |f|
+    = render partial: "form", locals: { f: f, ftype: :new  }
+

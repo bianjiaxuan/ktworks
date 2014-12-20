@@ -1,0 +1,2 @@
+module Weixin::PagesHelper
+end

@@ -1,0 +1,26 @@
+= javascript_include_tag "jquery"
+
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/signup-bg.jpg",width: "100%"
+  .ktlogo-warp
+    .ktinput
+      %input#input-mobile{type: "text",placeholder: "电话"}
+
+    .ktbtn1
+      = link_to image_tag("weixin/q/btn2.png",width: "47.8%"),"javascript:;", :id => "getcode"
+
+    %form#signup-form{action: request.url, method: "post"}
+      %input#mobile{type: :hidden, name: "mobile", value: ""}
+
+
+:coffeescript
+  $ ->
+    $("a#getcode").click ->
+      mobile = $("input#input-mobile").val()
+      if mobile.length < 11
+        alert "请正确输入11位手机号"
+      else
+        $(this).hide()
+        $("input#mobile").val(mobile)
+        $("form#signup-form").submit()

@@ -1,0 +1,23 @@
+
+
+#games_rank_list.game_rank.word_container
+  h5 style='float:left' 二Vs.二战队比赛积分
+  = form_tag('/games/league_scores_list', :method => 'get',:remote => true ) do |f|
+    table style='float:right'
+     tr
+      td = label_tag "城市"
+      td = select_tag('search[city]', options_for_select([''] + Country.cities.map(&:name)) )
+      td 
+        span
+         = submit_tag "筛选",:remote => true,:id=> 'f-score-rank',:class=>'btn rank-search'
+  div#ranking-list 
+     =render :partial => 'games/league_ranking_list'
+
+.clear
+javascript:
+  $(document).ready(function() {
+     $('#f-score-rank').click(function() {
+         $(this).parents('form:first').submit();
+     });
+   });
+

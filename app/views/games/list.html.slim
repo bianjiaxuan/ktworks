@@ -1,0 +1,22 @@
+fieldset.devise#game_lists
+  legend 比赛列表
+  table
+    tr
+      th 城市
+      th 地点
+      th 日期
+      th 开始时间
+      th 结束时间
+      th
+  
+    - @games.each do |game|
+      tr
+        td = game.city
+        td = game.place
+        td = game.date
+        td = hm(game.time_start)
+        td = hm(game.time_end)
+        td = button_to '报名此场', games_registration_path(game_id: game.id)
+  #game_terms
+    |报名参加比赛即表示您同意并遵从
+    = link_to '用户参赛承诺书', game_terms_path

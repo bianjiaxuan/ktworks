@@ -1,0 +1,41 @@
+fieldset.devise
+  legend 修改密码
+  = form_for(resource, :as => resource_name, :url => user_update_registration_path(resource, resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    table
+      - if resource.authuser_updating || resource.email.blank?
+        tr
+          td = f.label :email
+          td = f.email_field :email
+          td = error_tag :email
+      - unless resource.email.blank? || resource.encrypted_password.blank?
+        tr
+          td = f.label :current_password
+          td
+            = f.password_field :current_password
+            / br/
+            / i (我们需要确认身份)
+          td = error_tag :current_password
+      / tr
+      /   td = f.label :nickname
+      /   td = f.text_field :nickname
+      /   td = error_tag :nickname
+      tr
+        td = f.label :password, '新密码'
+        td
+          = f.password_field :password, :autocomplete => "off"
+          / br/
+          / i (不想修改留空即可)
+        td = error_tag :password
+      tr
+        td = f.label :password_confirmation
+        td = f.password_field :password_confirmation
+        td = error_tag :password_confirmation
+      / tr
+      /   td = f.label :phone
+      /   td = f.text_field :phone
+      /   td = error_tag :phone
+    div= f.submit "更新"
+  / .delete_account
+  /   | 你有权利#{link_to "删除我的账户", registration_path(resource_name), confirm: "有什么要求可以商量嘛! 你真的真的要离开么? 这个操作无法撤销！", method: :delete}，所有的积分和数据都将被。
+  = link_to "后退", :back

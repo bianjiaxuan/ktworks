@@ -1,0 +1,65 @@
+= javascript_include_tag "jquery"
+= javascript_include_tag "lib/jquery.slides.min.js"
+
+:css
+  ul.slidesjs-pagination {
+    width: 220px;
+    margin: 0 auto;
+    overflow: hidden; zoom: 1;
+  }
+  ul.slidesjs-pagination li {
+    float: left;
+    margin-left: 12px;
+  }
+  ul.slidesjs-pagination li a{
+    display:block;
+    width:32px;
+    height:0;
+    padding-top:35px;
+    background-image:url(/assets/newhome/slidedot.png);
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+  }
+  ul.slidesjs-pagination li a.active{
+    background-position:0 -32px;
+  }
+  a.slidesjs-navigation { color: rgb(248,247,242); margin-left: -1000px;}
+
+#aboutkt
+  .sectiontop
+    = image_tag "newhome/about_kt/new/top.jpg",width: "1200"
+  .section1
+    .sectionbody
+      .slides
+        = image_tag("newhome/about_kt/new/slide01a.jpg", :size => "1006x393")
+        = image_tag("newhome/about_kt/new/slide01b.jpg", :size => "1006x393")
+        = image_tag("newhome/about_kt/new/slide01c.jpg", :size => "1006x393")
+
+  .sectiontop
+    .mt40
+      = image_tag "newhome/about_kt/new/a01.jpg"
+    .mt80
+      = image_tag "newhome/about_kt/new/a02.jpg"
+
+
+  .section1{style: "padding-bottom: 60px;"}
+
+    .sectionbody
+      .slides
+        = image_tag("newhome/about_kt/new/slide02a.jpg", :size => "1006x393")
+        = image_tag("newhome/about_kt/new/slide02b.jpg", :size => "1006x393")
+        = image_tag("newhome/about_kt/new/slide02c.jpg", :size => "1006x393")
+
+
+:coffeescript
+  $ ->
+    $('.slides').slidesjs(
+      height: 393,
+      play:
+        active: true,
+        auto: true,
+        interval: 4000,
+        swap: true
+    )
+

@@ -1,0 +1,22 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+
+    table.table1
+      tr
+        th 名称
+        th 媒体ID
+        th 操作
+      - _collection = collection.order("updated_at desc").page(params[:page]).per(10)
+      - _collection.each_with_index do |_item|
+        tr
+          td= _item.name
+          td= _item.media_id
+          td
+            = link_to "播放", "javascript:;"
+            | &nbsp;
+            = link_to "删除", s_audio_material_path(_item), method: "delete",data: {confirm: '确定要删除吗？'}
+
+    = paginate _collection

@@ -1,0 +1,42 @@
+= javascript_include_tag 'ckeditor/init'
+= form_for [:admin, @gift] do |f|
+  - if @gift.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@gift.errors.count, "error")} prohibited this gift from being saved:"
+      ul
+        - @gift.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label "图片URL:"
+    br
+    = f.text_field :images
+    |
+      例子：http://www.kicktempo.cn/assets/admin_logo.png
+  .field
+    = f.label "礼品名称:"
+    br
+    = f.text_field :name
+  .field
+    = f.label "礼品描述:"
+    br
+    = cktext_area_tag("gift[desc]", "#{@gift.desc}", :height => 50)
+  .field
+    = f.label "兑换积分:"
+    br
+    = f.text_field :scores
+  .field
+    = f.label '类别:'
+    br
+    = f.select(:category, options_for_select({"兑换"=>0,"KT装备"=>1},@gift.category) )
+  .field
+    = f.label '上架/下架:'
+    br
+    = f.select(:on, options_for_select({"上架"=>true,"下架"=>false},@gift.on) )
+  .field
+    = f.label "购买链接:"
+    br
+    = f.text_field :url
+    |
+      例子：http://www.kicktempo.cn/assets/admin_logo.png
+  .actions = f.submit '保存'

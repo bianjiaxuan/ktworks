@@ -1,0 +1,20 @@
+%p= link_to @req.url, @req.url
+%p
+  %strong= @exception.class
+%p= @exception.message
+%p= Time.now
+%p 详情
+%blockquote
+  - @exception.backtrace.each do |msg|
+    - if msg.include?('neonan')
+      %strong= msg
+    - else
+      = msg
+    %br/
+%p 请求
+%blockquote
+  - @req.env.each do |k, v|
+    = k
+    | :
+    = v
+    %br/

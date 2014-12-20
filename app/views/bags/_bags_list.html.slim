@@ -1,0 +1,6 @@
+table.game_ranks
+   - @bags && @bags.each_with_index do |bag,index|
+        tr.users 
+            td.code  
+              = link_to bag.code, "#{bag.url}", :style => "color: darkOrange; font-size: 12px;", :target=>'_blank' 
+     

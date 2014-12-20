@@ -1,0 +1,114 @@
+div.scroll-pane.article-scroll-pane
+  div style='margin-left: 20px'
+    h1.np-gold 
+      | 联系我们
+
+    div.np-about-des
+      p.np-des
+        |联系人 ： Amy
+      p.np-des
+        |联系电话： 13916165008
+      p.np-des
+        |上海恒豪文化传播有限公司
+      p.np-des
+        |地址：上海市平型关路闸北区138号1216室
+
+  #donate.formregion.message_form style='margin-top:50px; width:auto; margin-right:20px;'
+    = form_for @message, :url => '/send_message', :method => 'post' do |f|
+      h2.np-gold style='margin-left: 20px'
+        | 我要捐赠：
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '联系人姓名：
+          input name="message[name]" type="text" id="name" size="35" class="texty" tabindex="1"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '单位：
+          input name="message[company]" type="text" id="email" size="35" class="texty" tabindex="2"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '电话：
+          input name="message[phone]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '地址：
+          input name="message[address]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '捐赠个数：
+          input name="message[donate_count]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '捐赠意向学校：
+          input name="message[donate_school]"  cols="35" rows="14" class="texty" tabindex="3" value=params[:donate_school]
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '其它捐赠要求：
+          input name="message[donate_comment]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '方便的联系时间：
+          input name="message[contect_time]"  cols="35" rows="14" class="texty" tabindex="3"
+        div class="sendit"
+          = f.submit :value => "", :class => "tk-ff-din-web-condensed", :tabindex => "4"
+      .clear
+  
+  #donate-school.formregion.message_form style='margin-top:50px; width:auto; margin-right:20px;'
+    = form_for @donate_message, :url => '/send_donate_message', :method => 'post' do |f|
+      h2.np-gold style='margin-left: 20px'
+        | 我要提供可受赠学校的联系方式：
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '联系人姓名：
+          input name="message[name]" type="text" id="name" size="35" class="texty" tabindex="1"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '单位：
+          input name="message[company]" type="text" id="email" size="35" class="texty" tabindex="2"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '电话：
+          input name="message[phone]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '地址：
+          input name="message[address]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          h3.np-gold
+            |提供学校名单：
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '学校名称：
+          input name="message[school_name]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '学生数量：
+          input name="message[student_count]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '学校地址：
+          input name="message[school_address]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '学校联系人：
+          input name="message[contector]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '联系人在校职务：
+          input name="message[contector_position]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '联系电话：
+          input name="message[content_phone]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '所需气场个数：
+          input name="message[donate_require]"  cols="35" rows="14" class="texty" tabindex="3"
+      div.formregion
+        label.tk-ff-din-web-condensed
+          '备注：
+          input name="message[remark]"  cols="35" rows="14" class="texty" tabindex="3"
+        div class="sendit"
+          = f.submit :value => "", :class => "tk-ff-din-web-condensed", :tabindex => "4"
+      .clear

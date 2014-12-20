@@ -1,0 +1,34 @@
+.headwarp2v2
+  .teamimg
+    - if @league.avatar.file?
+      = image_tag @league.avatar.url,size: "250x160"
+    - else
+      = image_tag "default_avatar.jpg",size: "250x160"
+  .member-avatar.clearfix.mt20
+    .member1.fl.ml30
+      = image_tag @league.usera.avatar,size: "80x80"
+      %br/
+      = @league.usera.nickname
+    .member2.fl.ml30
+      = image_tag @league.userb.avatar,size: "80x80"
+      %br/
+      = @league.userb.nickname
+  .select-team.mt20
+    %select#select_league
+      %option 选择我的战队
+      - current_user.leagues.where("league_type='#{League::LEAGUE_TYPES_STEADY}'").order('scores DESC').each do |_league|
+        %option{value: _league.id, selected: params[:league_id] == _league.id.to_s ? "selected" : ""}= _league.name
+
+.username.centerText{style: "font-size: 20px;"}= @league.name
+%hr
+.score= @league.scores
+
+.country-club
+  = image_tag "newhome/country/china.jpg"
+.experience
+  - if @league.created_at.year == Date.current.year
+    = (Date.current.month - @league.created_at.month).to_s + "个月"
+  - else
+    = (Date.current.year - @league.created_at.year).to_s + "年"
+  KT经验
+%hr

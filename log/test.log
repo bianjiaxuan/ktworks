@@ -1,0 +1,1 @@
+Mysql2::Error: Table 'kick_dev.countries' doesn't exist: SHOW FULL FIELDS FROM `countries`

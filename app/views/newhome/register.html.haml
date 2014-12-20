@@ -1,0 +1,70 @@
+#register-login-page
+  #top-btns
+    = link_to "登录","/newhome/login"
+    |
+    = link_to "注册","/newhome/register"
+  #page-warp
+    %ul#tabs.clearfix
+      %li.fl{style: "margin-left: 45px;"}
+        = link_to "手机号注册","/newhome/register?t=mobile", class: params[:t] == "mobile" ? "active" : ""
+      %li.fl{style: "margin-left: 60px;"}
+        = link_to "邮箱注册","/newhome/register", class: params[:t].blank? ? "active" : ""
+
+    %form.mt20{action: "/users", method: "post"}
+      %input{type: "hidden", name: "authenticity_token", value: form_authenticity_token}
+      - if params[:t] == "mobile"
+        %input{type: "hidden", name: "way", value: "mobile"}
+        .mb10
+          %input.text2#mobile{type: "text", placeholder: "手机号码", name: "user[phone]"}
+        .clearfix.mb10
+          .fl
+            %input.text2#input-authcode{type: "text", placeholder: "输入验证码", style: "width: 156px;",name: "authcode"}
+          .fl.ml10.relative
+            = link_to "获取验证码","javascript:;",:class => "button1 absolute", style: "color: white; width: 128px; height: 32px; height: 24px; line-height: 24px; text-align: center; top: 2px;", id: "get_captcha"
+            .mask.absolute.maskarea.none{style: "width: 128px; background-color: black; opacity: 0.5; height: 48px; top: 2px; width: 152px;"}
+            .textmask.absolute.maskarea.none#cutdown{style: "width: 128px; height: 48px; top: 2px; width: 152px; color: #ddd; text-align: center; line-height: 48px; font-size: 16px;"}
+              29秒
+        .mb10
+          %input.text2{type: "password", placeholder: "输入密码", name: "user[password]"}
+        .mb10.rightText
+          = link_to "KT足球用户协议","#",style: "color: rgb(207, 165, 111);"
+      - else
+        %input{type: "hidden", name: "way", value: "email"}
+        .mb10
+          %input.text2{type: "email", placeholder: "邮箱", name: "user[email]"}
+        .mb10
+          %input.text2{type: "password", placeholder: "输入密码", name: "user[password]"}
+        .clearfix.mb10
+          .fl
+            %input.text2{type: "text", placeholder: "输入验证码", style: "width: 160px;", name: "captcha"}
+          .fr.ml10
+            = captcha_tag
+        .mb10.rightText
+          = link_to "KT足球用户协议","/newhome/agreement",style: "color: rgb(207, 165, 111);", :target => "_blank"
+      %div
+        %button.button1.submit{type: "submit", style: "width: 360px;"}
+          注册并同意用户协议
+
+:coffeescript
+  $ ->
+    sec = 0
+    $("body").on "click","#get_captcha", ->
+      mobile = $("#mobile").val()
+      if mobile is ""
+        alert "请输入手机号"
+        return
+      $.post "/get_authcode",{phone: mobile},->
+        alert("验证码已发送")
+        $(".maskarea").show()
+        sec = 29
+        intervalId = setInterval ->
+          sec -= 1
+          if sec == 0
+            clearInterval(intervalId)
+            $(".maskarea").hide()
+            $("#cutdown").text("29秒")
+          else
+            $("#cutdown").text(sec+"秒")
+        ,1000
+
+

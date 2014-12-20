@@ -1,0 +1,94 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        material:
+          attributes:
+            name:
+              blank: 不能为空
+            preview_img:
+              blank: 不能为空
+            content:
+              blank: 不能为空
+        multiple_material:
+          attributes:
+            name:
+              blank: 不能为空
+            preview_img:
+              blank: 不能为空
+            content:
+              blank: 不能为空
+        multiple_material_list:
+          attributes:
+            name:
+              blank: 不能为空
+            preview_img:
+              blank: 不能为空
+            content:
+              blank: 不能为空
+        audio_material:
+          attributes:
+            name:
+              blank: 不能为空
+            url:
+              blank: 不能为空
+        w_reply:
+          attributes:
+            keyword:
+              blank: 不能为空
+            reply_type:
+              blank: 不能为空
+            reply_content:
+              blank: 不能为空
+        w_menu:
+          attributes:
+            name:
+              blank: 不能为空
+        w_city:
+          attributes:
+            name:
+              blank: 不能为空
+        w_medium:
+          attributes:
+            name:
+              blank: 不能为空
+        w_brands:
+          attributes:
+            name:
+              blank: 不能为空
+        contact:
+          attributes:
+            title:
+              blank: 不能为空
+            content:
+              blank: 不能为空
+            xingming:
+              blank: 不能为空
+            email:
+              blank: 不能为空
+        contact_reply:
+          attributes:
+            title:
+              blank: 不能为空
+            content:
+              blank: 不能为空
+        online_course:
+          attributes:
+            name:
+              blank: 不能为空
+        student:
+          attributes:
+            name:
+              blank: 不能为空
+        coach:
+          attributes:
+            name:
+              blank: 不能为空
+        picture:
+          attributes:
+            avatar:
+              blank: 不能为空
+        album:
+          attributes:
+            cover_id:
+              blank: 不能为空

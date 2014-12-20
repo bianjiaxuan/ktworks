@@ -1,0 +1,39 @@
+span = link_to '比赛得分管理', admin_scores_list_path
+
+span(style="margin-left: 10px;") = link_to '等级列表', admin_levels_path
+  
+span(style="margin-left: 10px;") = link_to '等级规则列表', admin_levels_rules_path
+
+/= form_tag admin_scores_submit_path, method: :post do
+  /fieldset
+    /legend 提交新的分数
+    /table
+      /tr
+        /td = label_tag "参赛号码"
+        /td = text_field_tag 'number1'
+        /td = text_field_tag 'number2'
+      /tr
+        /td = label_tag "进球数"
+        /td = number_field_tag 'goals1'
+        /td = number_field_tag 'goals2'
+      /tr
+        /td = label_tag "穿裆数"
+        /td = number_field_tag 'pannas1'
+        /td = number_field_tag 'pannas2'
+      /tr
+        /td = label_tag "Panna KO"
+        /td = check_box_tag 'panna_ko1'
+        /td = check_box_tag 'panna_ko2'
+      / tr
+      /   td = label_tag "犯规数"
+      /   td = number_field_tag 'fouls1'
+      /   td = number_field_tag 'fouls2'
+      /tr
+        /td = label_tag "严重犯规数"
+        /td = number_field_tag 'flagrant_fouls1'
+        /td = number_field_tag 'flagrant_fouls2'
+      /tr
+        /td = label_tag "弃权"
+        /td = check_box_tag 'abstained1'
+        /td = check_box_tag 'abstained2'
+  /= submit_tag "提交修改"

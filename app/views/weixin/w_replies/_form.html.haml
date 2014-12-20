@@ -1,0 +1,17 @@
+= f.input :keyword
+= f.input :reply_type, collection: resource_class::REPLY_TYPES.map{|n| [n.last,n.first] },input_html: { :"data-reply-id" => resource.id }
+#reply-content.mt10
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"
+
+:coffeescript
+  $ ->
+    $.get "/weixin/w_replies/get_reply_content",{type: $("#w_reply_reply_type").val(), id: $("#w_reply_reply_type").attr("data-reply-id")},(r)->
+      $("#reply-content").html(r)
+    $("body").on "change","#w_reply_reply_type",{type: $(this).val(), id: $(this).attr("data-reply-id")},->
+      obj = $(this)
+      $.get "/weixin/w_replies/get_reply_content",{type: obj.val()},(r)->
+        $("#reply-content").html(r)
+
+

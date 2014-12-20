@@ -1,0 +1,53 @@
+script src="/assets/jquery.ui.datepicker" type="text/javascript"
+script src="/assets/jquery.ui.datepicker-zh-CN" type="text/javascript"
+script src="/assets/jquery-ui-1.8.18.custom.min" type="text/javascript"
+script src="/assets/jquery-ui-timepicker-addon" type="text/javascript"
+
+javascript:
+  jQuery(document).ready(function(){
+    $('#user_agent_day').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+
+    $('#user_agent_end_day').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+  })
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"
+
+fieldset.devise
+  legend 设置/取消代理
+
+  p style="background-color:red" 代理设置：设置起止日期，日期格式yyyy-MM-dd；取消代理：设置日期为空
+  = form_for [:admin, @user], :url => { :action => "agent", :id => @user.id }, :method => "put" do |f|
+    - if @user.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@user.errors.count, "error")} prohibited this game from being saved:"
+        ul
+          - @user.errors.full_messages.each do |message|
+            li = message
+    .field
+      |  id=>#{@user.id} ,Nickname=>#{@user.nickname}
+    .field
+      = f.label '开始日期:'
+      - if @user.agent_day
+         = f.text_field :agent_day,:value => @user.agent_day.strftime("%Y-%m-%d")
+      - else
+         = f.text_field :agent_day
+    .field
+      = f.label '结束日期:'
+      - if @user.agent_end_day
+         = f.text_field :agent_end_day ,:value => @user.agent_end_day.strftime("%Y-%m-%d")
+      - else
+         = f.text_field :agent_end_day
+
+    .actions = f.submit '保存'

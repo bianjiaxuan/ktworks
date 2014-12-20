@@ -1,0 +1,53 @@
+= javascript_include_tag "jquery"
+
+:css
+  img { margin: 0; padding: 0; display: block;}
+  li { margin: 0; padding: 0; }
+  body{
+    background-position: center center; background-size: cover;
+    background-image: url(/assets/weixin/mediabg.jpg);
+  }
+
+#media-content
+  #media-title{ style: "margin: 0 auto; width: 91.4%; margin-top: 16px;" }
+    - if @top_medium.present?
+      = link_to image_tag(@top_medium.cover.url, style: "width: 100%;"),"/weixin/pages/show_medium?id=#{@media.first.id}"
+  %ul.media
+    - @media.each_with_index do |_medium,_index|
+      %li
+        .media-item-warp
+          .media-item.media-item1
+          .media-item.media-item2
+          .media-item.media-item3
+            = _medium.published_date.strftime("%m/%d")
+          .media-item.media-item3a
+            = _medium.published_date.strftime("%y")
+          .media-item.media-item4
+            = link_to image_tag(_medium.cover.url),"/weixin/pages/show_medium?id=#{_medium.id}"
+          .media-item.media-item5
+            .media-title
+              = link_to _medium.name,"/weixin/pages/show_medium?id=#{_medium.id}"
+            .media-subtitle
+              - _medium.sub_name.split(" ").each do |_str|
+                .mt6= link_to _str,"/weixin/pages/show_medium?id=#{_medium.id}"
+          .media-item.media-item6
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      height = $(".media-item4").height()
+      $(".media-item-warp").css("height",height+"px")
+      $("li").css("height",height+"px")
+
+      height2 = $(".media-item2").width()
+      top = height/2 - height2/2
+      $(".media-item2").css("height",height2+"px").css("top",top+"px")
+
+      $(".media-item1").css("height",height+"px")
+
+      $(".media-item3").css("top",(height/2-6)+"px")
+      $(".media-item3a").css("top",(height/2-9-9)+"px")
+
+      $(".media-item6").css("width",$(".media-item4").css("width"))
+      $(".media-item6").css("height",$(".media-item5").css("height"))
+    , 300

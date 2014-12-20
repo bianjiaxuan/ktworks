@@ -1,0 +1,42 @@
+#slides_container
+  /* #ribbon = image_tag "slides/new-ribbon.png"
+  /* #frame  = image_tag "slides/frame.png"
+  #slides
+    .slides_container
+      - @slides.each do |slide|
+        .slide
+          - if slide.article_link.blank?
+            = image_tag("#{slide.url}", :size => "720x300", :alt => "#{slide.title}")
+          - else
+            = link_to image_tag("#{slide.url}", :size => "720x300", :alt => "#{slide.title}"), slide.article_link,:target=>"_blank"
+          .caption
+            p
+              = link_to slide.description, slide.article_link
+
+#shows_container
+  - @shows.each do |show|
+    .show
+      - if show.article_link.blank?
+        = image_tag("#{show.url}", :size => "220x138", :alt => "#{show.title}")
+
+        .show_title
+          h5 = show.title
+        .show_desc
+          pre = show.description
+
+      - else
+        = link_to image_tag("#{show.url}", :size => "220x138", :alt => "#{show.title}"), show.article_link,:target=>"_blank"
+        .show_title
+          h5 = link_to show.title, show.article_link, :style => 'color: #CCCC00;font-weight:bold;',:target=>"_blank"
+        .show_desc
+          pre = raw show.description
+  .clear
+
+.goal
+  h3 目标：2015年1月1日 —— 100万足球爱好者
+  p
+    |已经累计有
+    span = User.count
+    |个用户加入！爱足球的心！加入进来享受你的专属魅力足球！
+- unless current_user
+  = link_to (image_tag 'join_now.png', id: 'join_now'), sign_up_path

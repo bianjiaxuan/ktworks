@@ -1,0 +1,72 @@
+javascript:
+  $(document).ready(function() {
+    $('#content').keyup(function() {
+      var len = this.value.length;
+      if (len >= 65) {
+        this.value = this.value.substring(0, 65);
+      }
+      $('#char-left').text(65 - len);
+    });
+
+    $('#send-btn').bind('click', function() {
+      var content = $("#content").val();
+      if (content === '') {
+        alert('短信内容不能为空');
+        return false;
+      }
+    });
+
+  });
+
+
+
+
+= render "admin/users/navigations"
+
+
+table cellpadding="5" cellspacing="15"
+  tr
+    td valign='top'
+
+      table
+        tr
+          th
+            = "ID"
+          th 邮箱
+          th 昵称
+          th 等级
+          th 得分
+          th 手机
+          th 取消
+        - @selected_sms_users.each do |selected|
+          tr height="45"
+            td
+              = selected.user.id
+              
+            td 
+              = selected.user.email
+
+            td = selected.user.nickname
+            td = selected.user.grade
+            td = selected.user.scores
+            td = selected.user.phone
+            td 
+              = link_to '取消', admin_users_cancel_selected_sms_path( user_id: selected.user.id, current_page: 'send_sms' ), method: :post, confirm: "你确定要取消 #{selected.user.nickname} 短信发送？"
+
+        = paginate @selected_sms_users
+
+    td valign='top'
+      p
+        = link_to '清空所选用户', admin_sms_clear_selected_path, method: :post, confirm: "你确定要清空所有选中发短信的用户列表?"
+
+      = form_tag admin_sms_path, :action => 'create', method: :post do
+        = label_tag '短信内容 (不能超过 65 字符)'
+        span#char-left
+        = label_tag '字符'
+        p
+          textarea#content cols="48" name="content" rows="10"
+        p align='right'
+          = select_tag(:send_type, options_for_select([['选择部分发送', 1], ['全部发送', 2]], 1) )
+          = submit_tag '发送', :id => 'send-btn'
+
+

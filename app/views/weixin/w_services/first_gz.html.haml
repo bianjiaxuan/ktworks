@@ -1,0 +1,24 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w640.ml20
+    = render "tab"
+
+    = simple_form_for resource, url: weixin_w_service_path(resource), html: {class: "form-horizontal"} do |f|
+      %input{type: "hidden", name: "request_url", value: "/weixin/w_services/1/first_gz"}
+      %input{type: "hidden", name: "from", value: "first_gz"}
+
+      = f.input :gz_reply_type, collection: resource_class::GZ_REPLY_TYPES.map{|n| [n.last,n.first] }
+      #gz-reply-content.mt10
+
+      .mt10
+        = f.submit "提  交", class: "btn btn6"
+
+    :coffeescript
+      $ ->
+        $.get "/weixin/w_services/get_gz_reply_content",{type: $("#w_service_gz_reply_type").val()},(r)->
+          $("#gz-reply-content").html(r)
+        $("body").on "change","#w_service_gz_reply_type",{type: $(this).val()},->
+          obj = $(this)
+          $.get "/weixin/w_services/get_gz_reply_content",{type: obj.val()},(r)->
+            $("#gz-reply-content").html(r)

@@ -1,0 +1,31 @@
+.border_frame
+  = link_to "查看用户留言>>", admin_messages_url
+.border_frame
+  = link_to "查看受赠学校名单>>", admin_donate_messages_url
+.border_frame
+  = link_to "管理企业数据>>", admin_companies_url
+/*.border_frame*/
+/*  = link_to "管理学校地区>>", admin_school_locals_url*/
+.border_frame
+  = link_to "管理学校>>", admin_school_items_url
+.border_frame
+  = form_for [:admin, @new_plant] do |f|
+    = f.label "足球梦推荐文章："
+    .red 注：填写页面资源的ID编号，以（#）号隔开,例: 12#31#35#63
+    = f.text_area :recommend_art_ids, size: '60x6'
+    .actions = f.submit '保存'
+
+.border_frame
+  = form_for [:admin, @new_plant] do |f|
+    = f.label "支持我们明星列表相册ID :  "
+    = f.text_field :other_a, size: '6'
+    = f.submit '保存'
+
+.border_frame
+  = form_for [:admin, @new_plant] do |f|
+    = f.label "捐赠感恩鸣谢名单："
+    .red 注：
+    .red 1.填写需要鸣谢者的名称，以（#）号隔开,例: 张三#李四#王五。
+    .red 2.建立标题为鸣谢者名称的页面资源,前台展示将链接到该资料页面。
+    = f.text_area :thanks_people, size: '60x6'
+    .actions = f.submit '保存'

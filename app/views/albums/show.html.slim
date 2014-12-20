@@ -1,0 +1,14 @@
+#img-content
+  a.alblum-title href=album_path(@album)
+    .np-gold
+      |相册-
+      span = "#{@album.name} (#{@album.pictures.count}张)"
+  a.albums-link href=albums_path
+    .np-gold
+      span 相册列表
+  .clear
+  
+#album-pic-content
+  = render partial: 'picture', collection: @pictures
+  .clear
+  .yellow = paginate @pictures

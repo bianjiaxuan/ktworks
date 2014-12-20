@@ -1,0 +1,76 @@
+- if params[:tag].present?
+  - _collection = collection.where("tags like ?","%#{params[:tag]}%")
+- else
+  - _collection = collection
+
+- if params[:page].blank?
+  - _collection = _collection.order("created_at desc").page(params[:page]).per(19)
+- else
+  - _collection = _collection.order("created_at desc").page(params[:page]).per(18)
+
+- _hash = _collection.group_by{|n|n.created_at.to_date.year.to_s+"-"+n.created_at.to_date.month.to_s}
+- top_news = Article.last
+
+#news
+  #news-banner-warp.clarfix
+    #news-banner.fl.relative
+      .absolute
+        = link_to (image_tag top_news.banner(:slide),:size => "820x460"),detail_article_path(top_news),target: "_blank"
+      #maskback.absolute
+      #masktitle.absolute
+        = truncate top_news.title
+      #titlearrow.absolute
+        = image_tag "newhome/news/slidearrow.png"
+    #news-body.fl
+      #mews-block
+      #news-content
+        #news-title-line.clearfix
+          #news-title.fl
+            = link_to truncate(top_news.title,length: 18),detail_article_path(top_news)
+          #new-createdat.fr
+            = top_news.created_at.to_date.to_s
+
+        #news-intro
+          = truncate strip_tags(top_news.content),length: 200
+
+  - _hash.each_pair do |date,arr|
+    - next if arr.size == 0 or arr.first.id == top_news.id
+    .news-line.clearfix
+      .news-date.fl
+        .news-date-bar
+        .news-date-month
+          = date.split("-").last
+          月
+        .news-date-year
+          = date.split("-").first
+          年
+        .news-arrow
+          = image_tag "newhome/news/rightgreyarrow.png"
+      .news-content-warp.fl.clearfix
+        - arr.each_with_index do |_news,index|
+          - next if params[:page].blank? && _news.id == top_news.id
+          .news-content.fl
+            .news_tags
+              - if _news.tags.present?
+                - _news.tags.split(/,|，/).each do |_tag|
+                  = link_to _tag,"/articles?tag=#{_tag}",:style => "color: #ebd22f;"
+                  &nbsp;
+
+            .news-img
+              = link_to image_tag(_news.banner(:thumb),:size => "297x260"),detail_article_path(_news),:target => "_blank"
+
+            .news-content-info
+              .news-created_at
+                = _news.created_at.to_date.to_s
+              .news-intro
+                = _news.title
+              .news-see-all
+                %table
+                  %tr
+                    %td
+                      = link_to "查看全部",detail_article_path(_news)
+                    %td{ style: "padding-top: 3px; padding-left: 6px;"}
+                      = image_tag "newhome/news/rightarrow.png"
+  .clearfix.pd40.fl20
+    = paginate _collection
+

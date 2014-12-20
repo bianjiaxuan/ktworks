@@ -1,0 +1,13 @@
+<% @game_vedios.each do |game_vedio| %>
+<%# next unless check_game_video?(game_vedio.uri) %>
+  <div class='user-vedio'>
+    <!--iframe height=498 width=510 src="http://player.youku.com/embed/XNDY0MjYyMjgw" frameborder=0 allowfullscreen></iframe-->
+    <embed src=<%= game_vedio.uri %> allowFullScreen="true" quality="high" width="350" height="290" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+    <p>
+      <%= game_vedio.intro_info(params[:user_id]) %>
+    </p>
+  </div>
+<% end %>
+<div class='clear'></div>
+
+<%= paginate @game_vedios %>

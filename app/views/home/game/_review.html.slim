@@ -1,0 +1,12 @@
+div
+ fieldset.devise#game_lists
+   legend 过往比赛列表
+   div#games-list
+      table
+        - if @rgames.length==0
+          | 敬请期待
+        else
+        - @rgames.each do |game|
+          tr 
+            td 
+             = gameUrl(game).html_safe

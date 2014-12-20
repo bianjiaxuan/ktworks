@@ -1,0 +1,122 @@
+
+javascript:
+  function check_email(user_id,mail){
+    var result=0; 
+     $.ajax({
+      type  : "get",
+      url   : "/checkemail/"+user_id,
+      data  : {email:mail},
+      async : false,
+      success : function(data){
+        result=data;
+      }
+    });
+    return result;
+  }  
+
+  jQuery(document).ready(function(){
+
+    $("#edit_user_profile_1").bind("submit", function() { 
+      var len = $('#nickname').val().length;
+      if (len > 12 || len < 3) {
+        alert("昵称长度建议2到5个汉字或5~12个字母");
+        return false; 
+      }
+      
+    })
+
+
+    $('#user_profile_manifesto').keyup(function() {
+      var len = this.value.length;
+      if (len >= 20) {
+        this.value = this.value.substring(0, 20);
+      }
+      $('#char-left-manifest').text(20 - len);
+    });
+
+    $('#user_profile_introduction').keyup(function() {
+      var len = this.value.length;
+      if (len >= 120) {
+        this.value = this.value.substring(0, 120);
+      }
+      $('#char-left-introduction').text(120 - len);
+    });
+    
+    $('input[name="commit"]').unbind("click");
+    $('input[name="commit"]').click(function(){
+       var mail=$('input[name="email"]').val();
+       var user_id=$('input[name="user_id"]').val();
+       if(1!=check_email(user_id,mail)){
+           alert("Email 格式错误或已经被注册了，换一个吧 :(");
+           return false;
+       }
+      $('input[name="commit"]').submit();
+    });
+
+  })
+
+
+
+
+
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"  
+
+
+css:
+  .profile_field {
+    margin-bottom: 9px;
+  }
+
+- if flash[:error]
+  p.alert #{flash[:error]}
+
+
+fieldset.devise style="width: 420px;"
+  legend 修改个人资料
+  = form_for(@user_profile, :url => {:controller => 'profile', :action => "update"}, :html => { :method => 'put' } ) do |f|
+    =hidden_field_tag 'user_id',"#{current_user.id}"
+    div.profile_field
+      = f.label 'E-mail'
+      br/
+      input#email name="email" value="#{current_user.email}" size="30" type="text" 
+    div.profile_field
+      = f.label '昵称 （建议2到5个汉字或5~12个字母）'
+      br/
+      input#nickname name="nickname" value="#{current_user.nickname}" size="30" type="text"
+
+    div.profile_field
+      = f.label '性别'
+      br/
+      = f.select(:gender, options_for_select([['MM', 'MM'], ['GG', 'GG']], @user_profile.gender) )
+
+    div.profile_field
+      = f.label '生日'
+      br/
+      = f.date_select(:birthday, :start_year => 1940)
+
+
+    div.profile_field
+      = f.label "城市"
+      br/
+      = f.select(:city, options_for_select(Country.cities.map(&:name), @user_profile.city) )
+    
+    div.profile_field
+      = f.label '球龄'
+      br/
+      = f.select(:football_age, options_for_select(UserProfile::FOOTBALL_AGES, @user_profile.football_age) )
+
+    div.profile_field
+      = f.label '自我介绍 (最多120个字) 还剩 '
+      span#char-left-introduction 120
+      br/
+      = f.text_area :introduction, :style => "width: 400px; height: 200px;"
+
+    div.profile_field
+      = f.label '参赛宣言 (最多20个字) 还剩 '
+      span#char-left-manifest 20
+
+      br/
+      = f.text_area :manifesto, :style => "width: 400px; height: 80px;"
+
+    div= f.submit "提交修改"

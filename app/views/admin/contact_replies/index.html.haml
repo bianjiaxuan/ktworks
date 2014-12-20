@@ -1,0 +1,14 @@
+= render "admin/contacts/tab"
+%table.table1
+  %tr
+    %th 所属
+    %th 内容
+    %th 发送邮件时间
+  - _collection = collection.order("created_at desc").page(params[:page]).per(10)
+  - _collection.each_with_index do |_item|
+    %tr{ class: cycle('odd', 'even') }
+      %td= _item.contact.title
+      %td= _item.content
+      %td= format_time _item.created_at
+
+= paginate _collection

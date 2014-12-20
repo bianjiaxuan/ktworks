@@ -1,0 +1,29 @@
+h2 用户留言
+hr
+table
+  tr
+    th id
+    th 联系人姓名
+    th 单位
+    th 电话
+    th 地址
+    th 捐赠个数
+    th 捐赠意向学校
+    th 其它捐赠要求
+    th 方便的联系时间
+    th
+
+  - @messages.each do |message|
+    tr
+      td = message.id
+      td = message.name
+      td = message.company
+      td = message.phone
+      td = message.address
+      td = message.donate_count
+      td = message.donate_school
+      td = message.donate_comment
+      td = message.contect_time
+      td = link_to '删除', admin_message_url(message), confirm: '你确定要删除吗?', method: :delete
+= paginate @messages
+= render partial: 'admin/new_plant_link'

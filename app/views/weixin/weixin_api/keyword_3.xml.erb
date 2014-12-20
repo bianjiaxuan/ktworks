@@ -1,0 +1,10 @@
+<xml>
+    <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
+    <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
+    <CreateTime><%= Time.now.to_i %></CreateTime>
+    <MsgType><![CDATA[voice]]></MsgType>
+    <% audio_material = AudioMaterial.find(@reply.reply_content) %>
+    <Voice>
+        <MediaId><![CDATA[<%=audio_material.media_id%>]]></MediaId>
+    </Voice>
+</xml>

@@ -1,0 +1,272 @@
+@import "compass/css3"
+
+$yellow: #ff0
+
+h1,h2,h3,h4,h5
+  font-weight: bold
+
+html
+  width: 800px
+  margin: 0px auto
+
+body
+  background: #111 url('background.jpg') no-repeat center top
+  color: #eee
+  font-family: 微软雅黑, arial, helvetica, sans-serif
+  font-size: 14px
+  line-height: 20px
+  width: 800px
+
+p.notice, p.alert
+  padding: 5px
+  margin: 5px
+  color: black
+p.notice
+  background: #6ddd22
+p.alert
+  background: #d32c37
+
+header.layout
+  width: 750px
+  margin: 16px auto
+.logo, nav.layout
+  float: left
+
+nav.layout
+  padding-top: 80px
+  margin-left: -20px
+.personal2
+  color: white
+  text-align: right
+  margin-bottom: 5px
+  height: 22px
+  width: 300px
+  #current_user
+    padding: 2px
+  .small_nav
+    a
+      background: #fff
+      padding: 2px 0px
+    .small_navbar_item
+      display: inline
+      font-size: 11px
+      border-right: #000 solid 1px
+      padding: 0px 3px
+      &:hover
+        color: white
+        background: url(nav_small_shadow.png)
+    #show_tips
+      background: yellow
+      +border-left-radius(2px)
+       
+.personal
+  color: white
+  text-align: right
+  margin-bottom: 5px
+  height: 22px
+  #current_user
+    padding: 2px
+  .small_nav
+    a
+      background: #fff
+      padding: 2px 0px
+    .small_navbar_item
+      display: inline
+      font-size: 11px
+      border-right: #000 solid 1px
+      padding: 0px 3px
+      &:hover
+        color: white
+        background: url(nav_small_shadow.png)
+    #show_user_btn
+      background: yellow
+      +border-left-radius(2px)
+      &:hover
+        color: white
+        background: url(nav_small_shadow.png)
+    #sign_out_btn
+      +border-right-radius(2px)
+      .small_navbar_item
+        border-right: none
+    #small_nav_tri
+
+  #signin_btn, #signup_btn, #signout_btn, #admin_btn
+    position: relative
+    bottom: 2px
+    padding: 3px 0
+    color: white
+  #signin_btn, #signup_btn
+    margin: 0 auto
+    width: 120px
+    text-align: center
+    &:hover
+      color: yellow
+  #admin_btn
+    background: #e33
+    +border-radius(2px)
+  .sign_box
+    float: right
+    width: 130px
+    height: 20px
+    background: url(sign_btn.png) no-repeat
+  #signin_btn
+    float: left
+  #signup_btn
+    float: right
+
+.current_nickname
+  padding: 0 3px
+
+.navbar, footer.layout
+  font-size: 14px
+  background-color: $yellow
+  padding: 5px
+  +box-shadow(black 5px 5px 10px)
+  #navbar_item_last
+    border-right: none
+  .navbar_item
+    width: 90px
+    overflow: hidden
+  .navbar_item, .footer_item
+    text-align: center
+    float: left
+    border-right: black solid 1px
+  .footer_item
+    padding: 0 10px
+  .navbar_item
+    &:hover
+      color: #fff
+      background: url(nav_shadow.png)
+
+.navbar_lev2
+  font-size: 12px
+  background-color: $yellow
+  padding: 5px
+  +box-shadow(black 5px 5px 10px)
+  #navbar_item_last
+    border-right: none
+  .navbar_item
+    width: 90px
+    overflow: hidden
+  .navbar_item, .footer_item
+    text-align: center
+    float: left
+    border-right: black solid 1px
+  .footer_item
+    padding: 0 10px
+  .navbar_item
+    &:hover
+      color: #fff
+      background: url(nav_shadow.png)
+
+#registration_btn
+  float: right
+  position: absolute
+  z-index: 10000
+  top: 170px
+  right: 20px
+  border-right: none
+#weixin
+  float: right
+  position: absolute
+  z-index: 10000
+  top: 270px
+  right: 20px
+  border-right: none
+
+footer.layout
+  font-size: 14px
+  position:absolute
+  bottom: 100px
+  width: 895px
+  margin-left: -115px
+  padding: 0 50px
+  text-align: center
+  .footer_item, #logo_footer
+    margin-top: 10px
+  #logo_footer
+    margin: 10px 10px
+  span.copyright
+    line-height: 16px
+    font-size: 10px
+    float: right
+    color: black
+    margin: 5px
+  ul.parter_links
+    clear: both
+    right: 0
+    li
+      float: left
+      padding: 20px 20px 0
+    img
+      height: 50px
+
+
+.clear
+  clear: both
+
+p, ol, ul, td
+  font-family: 微软雅黑, arial, helvetica, sans-serif
+  font-size: 14px
+  line-height: 20px
+
+pre
+  padding: 10px
+  font-size: 12px
+
+a
+  color: #000
+  font-weight: bold
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+    color: #fff
+  &:link
+    color: #fff
+    font-weight: normal
+  &:visited
+    color: #fff
+    font-weight: normal
+
+.navbar, #current_user，.small_nav, .layout, #new_user td, .devise
+  a
+    &:link
+      color: #000
+    &:visited
+      color: #000
+
+footer.layout, .footer_item，span.small_nav, .navbar, #current_user, #new_user td, .devise
+  a
+    font-weight: bold
+    &:link
+      font-weight: bold
+    &:visited
+      font-weight: bold
+
+
+#notice
+  color: red
+
+.field_with_errors
+  padding: 2px
+  display: inline
+
+#error_explanation
+  width: 250px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 0
+  margin-bottom: 20px
+  background-color: #b9464f
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    margin-bottom: 0px
+    background-color: #c00
+    color: #fff
+  ul li
+    font-size: 12px
+    list-style: square

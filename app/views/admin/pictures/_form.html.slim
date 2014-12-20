@@ -1,0 +1,41 @@
+= form_for [:admin, @picture] do |f|
+  - if @picture.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@picture.errors.count, "error")} prohibited this game from being saved:"
+      ul
+        - @picture.errors.full_messages.each do |message|
+          li = message
+  .field
+    = f.label '名称'
+    br
+    = f.text_field :name
+
+  .field
+    = f.label '微博链接'
+    span
+      | (格式: http://weibo.com/username)
+    br
+    = f.text_field :weibo_link
+
+  .field
+    = f.label '鼠标悬停提示'
+    .red 注：(需填写微博链接)
+    = f.text_field :weibo_tip
+
+  br
+  .field
+    = f.label '图片'
+    = f.file_field :avatar
+
+  br
+  .field
+    = f.label '相册'
+    = f.collection_select(:album_id, Album.all, :id, :name, selected: params[:album] || @picture.album_id)
+
+  br
+  .actions = f.submit '保存'
+
+
+- if not @picture.avatar.blank?
+  p 原图:
+  = image_tag @picture.avatar.url

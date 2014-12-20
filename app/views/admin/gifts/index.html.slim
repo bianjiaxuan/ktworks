@@ -1,0 +1,29 @@
+span
+  = link_to '新建礼品', new_admin_gift_path
+
+table
+  tr
+    th ID
+    th 礼品名称
+    th 描述
+    th 图片URL
+    th 积分
+    th 类别
+    th 状态
+    th 购买链
+    th
+
+  - @gifts.each do |g|
+    tr
+      td = text_field_tag(:id,g.id, :disabled => true,:size => 3)
+      td = text_field_tag(:name,g.name, :disabled => true,:size => 15)
+      td = text_field_tag(:desc,g.desc, :disabled => true,:size => 25)
+      td = text_field_tag(:images,g.images, :disabled => true,:size => 17)
+      td = text_field_tag(:scores,g.scores, :disabled => true)
+      td = text_field_tag(:category,g.category_desc?,:disabled => true,:size => 12)
+      td = text_field_tag(:on,g.on, :disabled => true,:size => 12)
+      td = text_field_tag(:url,g.url, :disabled => true,:size => 17)
+      td 
+         = link_to '显示', [:admin, g]
+         = link_to '编辑', edit_admin_gift_path(g)
+         = link_to '删除', [:admin, g], confirm: '你确定么？', method: :delete

@@ -1,0 +1,22 @@
+table.game_ranks
+    tr.header
+      th 序号
+      th.avatar   头像
+      th.nickname 昵称
+      
+      
+    - @users && @users.each_with_index do |user,index|
+      tr.users
+
+        td = index.next
+        td.avatar
+          - unless user.profile.nil?
+            - unless user.profile.avatar_file_name.nil?
+              = image_tag "#{user.profile.avatar.url(:thumb)}"
+            - else
+              = image_tag('default_small_avatar.jpg')
+          - else
+              = image_tag('default_small_avatar.jpg')
+        td.nickname
+           = link_to user.nickname, "/user/#{user.id}", :style => "color: darkOrange;"
+= paginate @users

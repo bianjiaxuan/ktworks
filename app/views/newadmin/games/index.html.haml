@@ -1,0 +1,58 @@
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+
+#main-container-title
+  %span
+    赛事管理
+#main-container-body
+  - if params[:keyword].present?
+    - _collection = collection.where("name LIKE ?","%#{params[:keyword]}%").page(params[:page]).per(6)
+  - else
+    - _collection = collection.page(params[:page]).per(6)
+  - _collection.each do |_item|
+    .list1.clearfix
+      .titleimg.fl
+        = image_tag _item.avatar.url
+      .title.fl
+        .title-line1
+          = _item.name || "未命名"
+        .title-line2
+          = _item.city
+      .btns.fr
+        = link_to "编辑",edit_newadmin_game_path(_item)
+        %br/
+        = link_to "删除","#"
+      .blk.fr{style: "margin-right: 96px;"}
+        .blk1
+          = _item.time_start.strftime("%y-%m-%d %H:%M")
+          &nbsp;~&nbsp;
+          = _item.time_end.strftime("%y-%m-%d %H:%M")
+        .blk2
+          参赛人数：
+          = link_to _item.users.count,"javascript:;",:"data-id" => _item.id,:class => _item.users.count > 0 ? "view-game-applications" : ""
+          人
+
+  .clearfix.mt10
+    .fl
+      %form{action: "/newadmin/games"}
+        %input{type: "text", name: "keyword", placeholder: "搜索赛事"}
+    .fr
+      = paginate _collection
+
+#main-container-info.absolute.clearfix
+  #info-left.fl
+    #line1.centerText
+      总赛事：
+      = Game.count
+    #line2.centerText
+      今日赛事：
+      = Game.where("time_start <= ? and time_end > ?", Time.now,Time.now).count
+  #info-right.fl
+    = link_to image_tag("newadmin/new-btn.jpg"),new_newadmin_game_path
+
+:coffeescript
+  $ ->
+    $("body").on "click",".view-game-applications", ->
+      _id = $(this).attr("data-id")
+      $.getJSON "/newadmin/games/"+_id+"/view_applications", (r)->
+        $.fancybox type: "inline", title: "参赛选手名单", content: r.content, width: "640", height: "480", titlePosition: "inside"

@@ -1,0 +1,33 @@
+<xml>
+    <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
+    <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
+    <CreateTime><%= Time.now.to_i %></CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <% multiple_material = MultipleMaterial.find(@service.auto_reply_content) %>
+    <% lists = multiple_material.lists %>
+    <ArticleCount><%= lists.count + 1 %></ArticleCount>
+    <Articles>
+        <item>
+            <Title><![CDATA[<%= multiple_material.name %>]]></Title>
+            <Description><![CDATA[<%= raw multiple_material.summary %>]]></Description>
+            <PicUrl><![CDATA[http://<%= HOME_URL + multiple_material.preview_img.url %>]]></PicUrl>
+            <% if multiple_material.link_type == "link" -%>
+            <Url><![CDATA[<%= multiple_material.link %>?wx_id=<%=@from_username%>]]></Url>
+            <% else -%>
+            <Url><![CDATA[http://<%= HOME_URL +preview_s_multiple_material_path(multiple_material)%>?wx_id=<%=@from_username%>]]></Url>
+            <%end -%>
+        </item>
+        <% lists.each do |_item| %>
+        <item>
+            <Title><![CDATA[<%= _item.name %>]]></Title>
+            <Description><![CDATA[<%= raw _item.summary %>]]></Description>
+            <PicUrl><![CDATA[http://<%= HOME_URL + _item.preview_img.url %>]]></PicUrl>
+            <% if _item.link_type == "link" -%>
+            <Url><![CDATA[<%= _item.link %>?wx_id=<%=@from_username%>]]></Url>
+            <% else -%>
+            <Url><![CDATA[http://<%= HOME_URL +preview_s_multiple_material_list_path(_item)%>?wx_id=<%=@from_username%>]]></Url>
+            <%end -%>
+        </item>
+        <% end %>
+    </Articles>
+</xml>

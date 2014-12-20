@@ -1,0 +1,4 @@
+.art_list_item
+  = link_to artical.title, article_path(artical), :target=> '_blank'
+  - if current_user && current_user.admin
+    = link_to '删除', [:admin, artical], confirm: '你确定删除么？', method: :delete, class: 'admin_link'

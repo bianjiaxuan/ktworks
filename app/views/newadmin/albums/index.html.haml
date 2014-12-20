@@ -1,0 +1,45 @@
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+
+.font36.mt40.ml20
+  相册管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "相册管理", newadmin_albums_path,class: "grey9"
+
+#main-container-body.clearfix
+  - _collection = collection.page(params[:page]).per(9)
+  - _collection.each do |_item|
+    .w230.fl.mr40.mb40.border1
+      %div
+        = image_tag _item.cover_url(:middle),:size => "230"
+      .pd4
+        .clearfix
+          .fl
+            = link_to _item.pictures.count.to_s + "张照片", upload_newadmin_album_path(_item), class: "greyb"
+          .fr.font14
+            = link_to truncate(_item.name,length: 10),edit_newadmin_album_path(_item),class: "grey3"
+        .greyb
+          .fr
+            = _item.created_at.to_date
+  = paginate _collection
+
+#main-container-info.absolute.clearfix{style: "background: none; top: 142px;"}
+  / .fl
+  /   = link_to "+ 上传照片","#",class: "btn3"
+  .fl.ml10
+    = link_to "+ 新建相册",new_newadmin_album_path ,class: "btn3"
+:coffeescript
+  $ ->
+    $("body").on "click",".view-game-applications", ->
+      _id = $(this).attr("data-id")
+      $.getJSON "/newadmin/games/"+_id+"/view_applications", (r)->
+        $.fancybox type: "inline", title: "参赛选手名单", content: r.content, width: "640", height: "480", titlePosition: "inside"
+
+    $('.fancybox').fancybox(
+      padding : 0,
+      autoScale:true,
+      width:1000,
+      height:600,
+      openEffect: 'elastic'
+    )

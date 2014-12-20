@@ -1,0 +1,36 @@
+= javascript_include_tag 'ckeditor/init'
+= f.input :name
+= f.input :country,:collection => Country.where(:kind => "country").map(&:name),include_blank: false
+= f.input :sex,:collection => [["男","GG"],["女","MM"]],include_blank: false
+= f.input :phone
+= f.input :email
+
+= f.input :avatar, as: :file, label: "教练头像"
+- if resource.avatar.file?
+  .input
+    %label 已上传教练头像
+    .fl
+      = image_tag resource.avatar.url,:size => "64"
+
+/ = f.input :user_id
+= f.input :height,:collection => (120..200).map{|n|n.to_s+"cm"},include_blank: false
+= f.input :weight,:collection => (20..100).map{|n|n.to_s+"kg"},include_blank: false
+= f.input :idcard
+= f.input :birthday, as: :date, 
+          start_year: Date.today.year - 30,
+          end_year: Date.today.year, :input_html => { style: "width: 64px;"}
+= f.input :auth_date, as: :date,
+          start_year: Date.today.year - 10,
+          end_year: Date.today.year, :input_html => { style: "width: 64px;"}
+= f.input :address, as: :text
+= f.input :goodat
+= f.input :intro, as: :text
+
+
+
+.mt20.clearfix
+  .fr.clearfix
+    .mt10.fl
+      = link_to "放弃","/newadmin/coaches",class: "grey6"
+    .ml10.fl
+      = f.submit "提  交", class: "btn2"

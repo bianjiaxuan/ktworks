@@ -1,0 +1,5 @@
+p
+  | 你好#{@resource.email}！
+p 你的账户有序过多不成功的登录而被锁定。
+p 点击下面的链接来解锁账户：
+p= link_to '解锁账户', unlock_url(@resource, :unlock_token => @resource.unlock_token)

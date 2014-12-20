@@ -1,0 +1,37 @@
+
+#games_rank_list.game_rank.word_container
+  div#err_msg
+  = form_tag('/bags/search', :method => 'get',:remote => true ) do |f|
+    table 
+     tr
+      td = text_field_tag 'code', nil, placeholder: '输入气场识别码....',style: 'background-color: rgb(250, 255, 189)'
+      td 
+        span
+         = submit_tag "查询",:remote => true,:id=> 'f-search',:class=>'btn'
+  div#ranking-list
+     =render :partial => 'bags/bags_list' 
+
+div id='qichang_img' style='display:none'
+  = image_tag("/images/kt_qichang.png", :size => "800x264", :alt => "关于KT足球气场")
+ 
+.clear
+
+= render :partial => '/home/kt/dynamic_intro'
+
+
+
+javascript:
+  $(document).ready(function() {
+      $("#qichang_img").slideToggle(1000);
+     $('#f-search').click(function() {
+         var code=$('#code').val();
+         if($.trim(code)===""){
+            event.preventDefault();
+            $('#err_msg').html("我是Robot,请告诉我你想找哪一个呢？");
+            return;
+         } 
+         $(this).parents('form:first').submit();
+      });
+   });
+
+  

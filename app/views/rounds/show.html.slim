@@ -1,0 +1,39 @@
+p#notice = notice
+
+p
+  strong Game:
+  = @round.game_id
+p
+  strong User:
+  = @round.user_id
+p
+  strong Pair:
+  = @round.pair_id
+p
+  strong Game number:
+  = @round.game_number
+p
+  strong Varified code:
+  = @round.varified_code
+p
+  strong Goals:
+  = @round.goals
+p
+  strong Pannas:
+  = @round.pannas
+p
+  strong Panna ko:
+  = @round.panna_ko
+p
+  strong Fouls:
+  = @round.fouls
+p
+  strong Flagrant fouls:
+  = @round.flagrant_fouls
+p
+  strong Winner:
+  = @round.winner
+
+= link_to 'Edit', edit_round_path(@round)
+'|
+= link_to 'Back', rounds_path

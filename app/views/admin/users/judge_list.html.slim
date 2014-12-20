@@ -1,0 +1,23 @@
+= render "navigations"
+
+table
+  tr
+    th 排名
+    th 邮箱
+    th 昵称
+    th 手机
+    th 城市
+    th 俱乐部
+    th 裁判时间
+    th 裁判积分
+  - @judges && @judges.each_with_index do |judge,index|
+    tr
+      td= index+1
+      td= text_field_tag(:email,judge.user.email, :disabled => true,:size => 17)
+      td= link_to judge.user.nickname,admin_users_profile_path(id: judge.user.id)
+      td = judge.user.phone
+      td = judge.user.city
+      td = judge.user.judgeclub.name  if judge.user.judgeclub
+      td = text_field_tag(:judge_day,judge.user.judge_day.strftime("%Y-%m-%d"),:disabled => true,:size => 12) if judge.user.judge_day
+      th = judge.scores
+= paginate @judges

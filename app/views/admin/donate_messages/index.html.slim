@@ -1,0 +1,38 @@
+h2 用户留言
+hr
+table
+  tr
+    th id
+    th 联系人姓名
+    th 单位
+    th 电话
+    th 地址
+    th 学校名称
+    th 学生数量
+    th 学校地址
+    th 学校联系人
+    th 联系人在校职务
+    th 联系电话
+    th 所需气场个数
+    th 备注
+    th
+
+  - @donate_messages.each do |donate_message|
+    tr
+      td = donate_message.id
+      td = donate_message.name
+      td = donate_message.company
+      td = donate_message.phone
+      td = donate_message.address
+      td = donate_message.school_name
+      td = donate_message.student_count
+      td = donate_message.school_address
+      td = donate_message.contector
+      td = donate_message.contector_position
+      td = donate_message.content_phone
+      td = donate_message.donate_require
+      td = donate_message.remark
+      td = link_to '删除', admin_donate_message_url(donate_message), confirm: '你确定要删除吗?', method: :delete
+= paginate @donate_messages
+= render partial: 'admin/new_plant_link'
+

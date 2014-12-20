@@ -1,0 +1,22 @@
+span(style="margin-left: 10px;") = link_to '资源列表', admin_info_urls_path
+
+p#notice = notice
+
+p
+  strong 用处:
+  = @translation[@info_url.usage]
+p
+  strong 路径:
+  = @info_url.url
+p
+  strong 题目:
+  = @info_url.title
+p
+  strong 描述:
+  = raw @info_url.description
+  
+p
+  strong 页面链接:
+  = link_to @info_url.article_link, @info_url.article_link, :target=> '_blank'
+
+= link_to '修改', edit_admin_info_url_path(@info_url)

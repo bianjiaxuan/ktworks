@@ -1,0 +1,23 @@
+#games_rank_list.game_rank.word_container
+ h5 对战史
+ table.game_ranks
+    tr.header
+      th 时间
+      th 球员A
+      th 球员B
+      th 赛事
+      
+    - @game_vedios && @game_vedios.each_with_index do |gv,index|
+      tr.users
+        
+        - if gv.check_vedio?
+           td = link_to gv.vedio_time.strftime('%Y年%m月%d日%H时'), "/shows/#{gv.id}", target: '_blank'  
+           td = link_to gv.records.first.user.nickname, "/user/#{gv.records.first.user.id}" 
+           td = link_to gv.records.last.user.nickname, "/user/#{gv.records.last.user.id}" 
+           td = link_to "#{gv.game.country}/#{gv.game.city}/#{gv.game.place}", "/shows/#{gv.id}", target: '_blank'  
+
+.clear
+    = paginate @game_vedios
+
+.clear
+

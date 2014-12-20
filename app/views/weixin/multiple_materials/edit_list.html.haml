@@ -1,0 +1,45 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+    .clearfix
+      .fl.w240
+        - if @resource.lists.present?
+          %table.table.table-striped.table-bordered.table-hover
+            %tr
+              %th 名称
+              %th 图文
+              %th 摘要
+              %th 内容
+            - @resource.lists.each do |_item|
+              %tr
+                %td
+                  = _item.name
+                %td
+                  - if _item.preview_img.present?
+                    = image_tag _item.preview_img, width: "60"
+                %td
+                  = truncate _item.summary,:length => 10
+                %td
+                  = truncate _item.content,:length => 10
+        - else
+          没有图文资源
+      .fl.ml20.w600
+        = simple_form_for @multiple_material_list, url: update_list_weixin_multiple_material_path(@resource),method: "post", html: {class: "form-horizontal"}, validate: true do |f|
+          %input{type: "hidden", name: "multiple_material_list[multiple_material_id]", value: @resource.id}
+          = f.input :name, :required => false
+          = f.input :preview_in_content
+          = f.input :preview_img, as: :file, :required => false
+
+          = f.input :link_type, collection: [["显示内容","content"],["外部链接","link"]]
+          = f.input :link
+
+          = f.input :summary
+          .input
+            %label 正文
+            = f.input :content, :as => :kindeditor, :label => false,:required => false, :input_html => { width: "480px", :minWidth => "480px;", :height => "320px",:class => "post-text",:fontSizeTable => ['12px', '14px', '16px', '18px', '24px', '32px', '40px','48px','52px','56px','60px'],:allowImageRemote => false }
+
+          .mt10
+            = f.submit "提  交", class: "btn btn6"
+

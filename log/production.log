@@ -1,0 +1,301 @@
+  [1m[36mClub Load (4.8ms)[0m  [1mSELECT `clubs`.* FROM `clubs`  WHERE (end_date>'2014-11-22 00:00:00')  ORDER BY created_at[0m
+  [1m[35mUser Load (135.4ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=2)
+  [1m[36m (13.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1188)[0m
+  [1m[35m (18.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1188 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1253)[0m
+  [1m[35m (14.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1253 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1254)[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1254 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1255)[0m
+  [1m[35m (15.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1255 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29283)[0m
+  [1m[35m (15.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29283 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (60.7ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=3)[0m
+  [1m[35m (14.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1274)
+  [1m[36m (15.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1274 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (15.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1279)
+  [1m[36m (14.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1279 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1281)
+  [1m[36m (14.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1281 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.7ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34514)
+  [1m[36m (15.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34514 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (66.9ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=4)
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1507)[0m
+  [1m[35m (208.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1507 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1513)[0m
+  [1m[35m (21.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1513 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1514)[0m
+  [1m[35m (555.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1514 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1517)[0m
+  [1m[35m (19.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1517 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29328)[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29328 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (65.3ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=5)[0m
+  [1m[35m (13.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3798)
+  [1m[36m (10831.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3798 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3816)
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3816 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3870)
+  [1m[36m (14.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3870 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3871)
+  [1m[36m (14.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3871 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=10158)
+  [1m[36m (17.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=10158 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=18758)
+  [1m[36m (16.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=18758 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27268)
+  [1m[36m (17.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27268 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29292)
+  [1m[36m (14.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29292 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (66.0ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=6)
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3)[0m
+  [1m[35m (25694.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=223)[0m
+  [1m[35m (2225.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=223 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=474)[0m
+  [1m[35m (14.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=474 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1061)[0m
+  [1m[35m (14.7ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1061 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1079)[0m
+  [1m[35m (15.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1079 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1080)[0m
+  [1m[35m (14.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1080 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1081)[0m
+  [1m[35m (15.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1081 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1084)[0m
+  [1m[35m (14.7ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1084 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1089)[0m
+  [1m[35m (15.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1089 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1167)[0m
+  [1m[35m (15.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1167 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1271)[0m
+  [1m[35m (15.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1271 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1515)[0m
+  [1m[35m (14.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1515 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1787)[0m
+  [1m[35m (15.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1787 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=6664)[0m
+  [1m[35m (14.8ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=6664 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14069)[0m
+  [1m[35m (15.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14069 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14466)[0m
+  [1m[35m (17.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14466 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14530)[0m
+  [1m[35m (17.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14530 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27631)[0m
+  [1m[35m (15.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27631 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34509)[0m
+  [1m[35m (15.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34509 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34510)[0m
+  [1m[35m (16.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34510 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34511)[0m
+  [1m[35m (14.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34511 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34512)[0m
+  [1m[35m (15.1ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34512 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=34513)[0m
+  [1m[35m (15.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=34513 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (61.3ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=7)[0m
+  [1m[35m (16.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=3375)
+  [1m[36m (533.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=3375 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (65.7ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=8)
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1756)[0m
+  [1m[35m (713.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1756 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (69.5ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=9)[0m
+  [1m[35m (13.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=2120)
+  [1m[36m (239.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=2120 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (60.2ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=10)
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=2117)[0m
+  [1m[35m (485.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=2117 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (66.7ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=11)[0m
+  [1m[35m (17.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1786)
+  [1m[36m (18.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1786 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (65.9ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=12)
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=2676)[0m
+  [1m[35m (17.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=2676 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (60.9ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=13)[0m
+  [1m[35m (14.1ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=6502)
+  [1m[36m (20.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=6502 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (65.2ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=14)
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=1783)[0m
+  [1m[35m (3876.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=1783 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (61.5ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=15)[0m
+  [1m[35m (14.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=6641)
+  [1m[36m (16.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=6641 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (60.8ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=17)
+  [1m[36m (13.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=2981)[0m
+  [1m[35m (480.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=2981 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (64.3ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=18)[0m
+  [1m[35mUser Load (65.1ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=19)
+  [1m[36m (13.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=9050)[0m
+  [1m[35m (1524.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=9050 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14713)[0m
+  [1m[35m (15.7ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14713 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (80.7ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=21)[0m
+  [1m[35m (20.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=8436)
+  [1m[36m (14.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=8436 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14563)
+  [1m[36m (3172.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14563 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=15026)
+  [1m[36m (14.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=15026 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (62.1ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=22)
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=9879)[0m
+  [1m[35m (15.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=9879 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=9882)[0m
+  [1m[35m (16.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=9882 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14552)[0m
+  [1m[35m (6115.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14552 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (66.3ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=25)[0m
+  [1m[35m (13.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=10148)
+  [1m[36m (1419.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=10148 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=25778)
+  [1m[36m (16.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=25778 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (16.6ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=25779)
+  [1m[36m (14.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=25779 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (60.3ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=26)
+  [1m[36m (13.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27215)[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27215 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27216)[0m
+  [1m[35m (238.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27216 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (62.2ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=27)[0m
+  [1m[35m (14.2ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14549)
+  [1m[36m (1239.5ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14549 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27271)
+  [1m[36m (15.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27271 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (60.6ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=28)
+  [1m[36m (13.4ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=10127)[0m
+  [1m[35m (199.3ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=10127 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (16.3ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14068)[0m
+  [1m[35m (16.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14068 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14560)[0m
+  [1m[35m (17.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14560 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.7ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=25876)[0m
+  [1m[35m (15.1ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=25876 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (60.2ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=29)[0m
+  [1m[35m (13.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27212)
+  [1m[36m (796.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27212 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (14.4ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27213)
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27213 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.8ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27214)
+  [1m[36m (1743.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27214 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.8ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=27217)
+  [1m[36m (15.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=27217 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35m (13.8ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29274)
+  [1m[36m (14.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29274 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (60.1ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=30)
+  [1m[36m (14.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=30464)[0m
+  [1m[35m (14.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=30464 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (14.0ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=30471)[0m
+  [1m[35m (15.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=30471 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (60.7ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=31)[0m
+  [1m[35m (17.0ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=10121)
+  [1m[36m (762.9ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=10121 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (66.0ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=32)
+  [1m[36m (13.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29275)[0m
+  [1m[35m (261.7ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29275 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (60.2ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=34)[0m
+  [1m[35m (15.5ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=14465)
+  [1m[36m (2762.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=14465 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mUser Load (61.0ms)[0m  SELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=35)
+  [1m[36m (13.2ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=10154)[0m
+  [1m[35m (260.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=10154 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36m (13.1ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=15022)[0m
+  [1m[35m (14.9ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=15022 and exists(select r.user_id from rounds r where r.user_id=users.id ))
+  [1m[36mUser Load (63.2ms)[0m  [1mSELECT `users`.* FROM `users`  WHERE (is_judge=1 and judgeclub_id=36)[0m
+  [1m[35m (16.8ms)[0m  SELECT COUNT(*) FROM `users`  WHERE (invitor_id=29280)
+  [1m[36m (1479.8ms)[0m  [1mSELECT COUNT(*) FROM `users`  WHERE (invitor_id=29280 and exists(select r.user_id from rounds r where r.user_id=users.id ))[0m
+  [1m[35mInviter Load (3.7ms)[0m  SELECT `inviters`.* FROM `inviters`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5748
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5749[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5750
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5751[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5752
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5753[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5754
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5755[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5756
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5757[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5758
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5759[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5760
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5761[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5762
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5763[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5764
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5765[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5766
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5767[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5768
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5769[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5770
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5771[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5772
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5773[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5774
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5775[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5776
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `inviters` WHERE `inviters`.`id` = 5777[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `inviters` WHERE `inviters`.`id` = 5778
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO inviters
+          (user_id,invitees_count,lives_count,updated_at,created_at) VALUES(1255,0,0,now(),now()),(1274,0,0,now(),now()),(1507,379,132,now(),now()),(3798,4334,52,now(),now()),(223,12005,1791,now(),now()),(3375,200,3,now(),now()),(1756,300,33,now(),now()),(2120,100,12,now(),now()),(2117,220,48,now(),now()),(1786,0,0,now(),now()),(2676,1,1,now(),now()),(6502,7,7,now(),now()),(1783,1599,330,now(),now()),(6641,0,0,now(),now()),(2981,200,13,now(),now()),(9052,0,0,now(),now()),(9050,600,33,now(),now()),(14563,1220,7,now(),now()),(14552,2400,163,now(),now()),(10148,600,64,now(),now()),(27216,100,28,now(),now()),(14549,500,13,now(),now()),(10127,100,58,now(),now()),(27214,1020,87,now(),now()),(27212,0,0,now(),now()),(10121,300,10,now(),now()),(29275,100,7,now(),now()),(14465,1100,12,now(),now()),(10154,100,1,now(),now()),(29280,600,51,now(),now())

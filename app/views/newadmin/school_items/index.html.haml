@@ -1,0 +1,48 @@
+.font36.mt40.ml20
+  资源管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "2026计划", newadmin_companies_path(type: 0),class: "grey9"
+#main-container-body
+  .clearfix
+    .fl.pd20.w360.centerText.font20{class: request.url.include?("newadmin/companie") ? "byellow2" : "byellow1"}
+      = link_to "捐赠企业名单管理", newadmin_companies_path(type: 0),class: "grey7"
+    .fr.pd20.w360.centerText.font20{class: request.url.include?("newadmin/school_item") ? "byellow2" : "byellow1"}
+      = link_to "受赠学校管理", newadmin_school_items_path(type: 0),class: "grey7"
+  %ul.clearfix.mt20
+    %li.fl
+      = link_to "待赠学校名单",newadmin_school_items_path(type: 0),class: "block font20 grey6 pd10 bgreyf #{'border2' if params[:type] == '0'}",style: "border-bottom: none;"
+    %li.fl
+      = link_to "已受赠学校名单",newadmin_school_items_path(type: 1),class: "block font20 grey6 pd10 bgreyf #{'border2' if params[:type] == '1'}",style: "border-bottom: none;"
+  .border2.pd20{style: "margin-top: -2px;"}
+    - if params[:type] == "1"
+      - _collection = collection.where("company_id is not null").page(params[:page]).per(6)
+      .clearfix.mt20
+        - _collection.each do |_item|
+          .list1.clearfix
+            .title
+              = link_to _item.name+" (#{_item.company.name}企业捐赠)",edit_newadmin_school_item_path(_item),class: "grey9 font24"
+            .mt10{style: "padding-left: 30px;"}
+              - _item.donate_require.split("\r\n").each do |_bag|
+                .clearfix.w200.font16.fl.mr40.mb10
+                  = _bag
+
+
+
+    - if params[:type] == "0"
+      - _collection = collection.where("company_id is null").page(params[:page]).per(14)
+      .clearfix.mt20{style: "padding-left: 80px;"}
+        - _collection.each do |_item|
+          .fl.w300.border1.pd10.mr40.mb30.font20.centerText
+            = link_to _item.name,edit_newadmin_school_item_path(_item),class: "grey6"
+
+  = paginate _collection
+
+#main-container-info.absolute.clearfix
+  #info-left.fl.mt10
+    #line1.centerText
+      学校数量：
+      = SchoolItem.count
+  #info-right.fl
+    = link_to image_tag("newadmin/new-btn.jpg"),new_newadmin_school_item_path
+

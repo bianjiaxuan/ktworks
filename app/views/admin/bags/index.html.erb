@@ -1,0 +1,44 @@
+<%= render "navigations" %>
+<h3>气场列表</h3>
+<br>
+<table>
+      <tr>
+        <th>所属俱乐部</th>
+        <th>气场数量</th>
+        <th>总参赛人数</th>
+        <th>气场ID</th>
+        <th>识别码</th>
+        <th>名称</th>
+        <th>URL</th>
+        <th>参赛人数</th>
+        <th colspan="3"></th>
+      </tr>
+  <% temp_bags=0 %>
+  <% temp_id=0 %>
+  <% @clubs.each do |club| %>
+  <% temp_bags=0 %>
+  <% club.bags.each do |ba| %>
+  <% temp_bags=temp_bags+User.where("binding_code=?",ba.code).count %>
+  <% end %>
+  <% club.bags.each do |bag| %>
+  <tr>
+    <% if temp_id!=club.id
+      temp_id=club.id %>
+    <td align='center' rowspan="<%= club.bags.count %>"><%= club.name %></td>
+    <td align='center' rowspan="<%= club.bags.count %>"><%= club.bags.count %></td>
+    <td align='center' rowspan="<%= club.bags.count %>"><%= temp_bags %></td>
+    <% end %>
+    <td align='center'><%= bag.id %></td>
+    <td width=180 align='center'><%= bag.code %></td>
+    <td width=180 align='center'><%= bag.name %></td>
+    <td width=100 align='center'><%= bag.url %></td>
+    <td align='center'> <%= User.where("binding_code=?",bag.code).count %></td>
+    <td> <%= link_to '编辑', edit_admin_bag_path(bag) %></td>
+    <td> <%= link_to '删除', [:admin, bag], confirm: '你确定删除么？', method: :delete %></td>
+    <td> <%= link_to '显示', [:admin, bag] %></td>
+  </tr>   
+  <% end %>
+  <% end %>
+</table>
+<br>
+<%= link_to '新增气场', new_admin_bag_path %>

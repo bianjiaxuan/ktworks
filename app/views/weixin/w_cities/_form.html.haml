@@ -1,0 +1,16 @@
+= f.input :name
+= f.input :ename
+
+= f.input :cover, as: :file, required: false
+- if resource.cover.present?
+  .control-group
+    %label &nbsp;
+    .input
+      = image_tag resource.cover.url,size: "128x80"
+
+= f.input :content, :as => :kindeditor, :input_html => { width: "600px", :minWidth => "600px;", :height => "320px",:class => "post-text", :label => false, :required => true, :fontSizeTable => ['12px', '14px', '16px', '18px', '24px', '32px', '40px','48px','52px','56px','60px'],:allowImageRemote => false }
+
+= f.input :sort
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"

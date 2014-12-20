@@ -1,0 +1,43 @@
+
+= form_tag admin_scores_list_path, method: :get do
+  = label_tag '昵称：'
+  = text_field_tag 'nickname',nil, placeholder: '昵称'
+  = label_tag '日期：'
+  = text_field_tag 'round_date',nil, placeholder: '比赛日期',:readonly => true
+  = submit_tag '确定'
+
+table
+  tr rowspan="2"
+    th  ID
+    th  参赛号码
+    th  用户昵称
+    th  等级
+    th  进球数
+    th  穿裆数
+    th  严重犯规数
+    th  是否 PannaKo
+    th  是否弃权
+    th  比赛得分
+    th  获得积分
+    th  结果
+    th  对手参赛号码
+    th  日期
+    th
+  - @rounds.each do |round|
+    tr
+      td = round.id
+      td = round.game_number
+      td = round.user.nickname
+      td = round.user.grade
+      td = round.goals
+      td = round.pannas
+      td = round.flagrant_fouls
+      td = round.panna_ko
+      td = round.abstained
+      td = round.goals * 2 + round.pannas
+      td = round.score
+      td = result(round.result)
+      td = round.pair.nil? ? '未提交' : round.pair.game_number
+      td = round.created_at.to_s(:db)
+      td = link_to '删除', [:admin, round], confirm: '你确定删除么？', method: :delete
+= paginate @rounds

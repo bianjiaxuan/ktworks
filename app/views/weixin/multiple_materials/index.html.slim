@@ -1,0 +1,34 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+
+    table.table1
+      tr
+        th.pr10 名称
+        th 预览图
+        th 预览图是否显示在正文
+        th 摘要
+        th 链接类型
+        th 图文数量
+        th.pr10 操作
+      - _collection = collection.order("updated_at desc").page(params[:page]).per(10)
+      - _collection.each do |item|
+        tr
+          td = item.name
+          td = image_tag item.preview_img.url,:size => "120x80"
+          td = item.preview_in_content ? "是" : "否"
+          td = truncate item.summary, :length => 20
+          td = item.link_type == "content" ? "显示内容" : "外部链接"
+          td = item.lists.count
+          td
+            = link_to "编辑封面", edit_weixin_multiple_material_path(item)
+            br/
+            = link_to "编辑图文", edit_list_weixin_multiple_material_path(item)
+            br/
+            = link_to "删除", weixin_multiple_material_path(item),method: "delete",data: {confirm: '确定要删除吗？'}
+            br/
+            = link_to "预览", preview_weixin_multiple_material_path(item), :class => "preview_page",target: "_blank"
+
+    = paginate _collection

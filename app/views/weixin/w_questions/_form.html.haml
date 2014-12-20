@@ -1,0 +1,10 @@
+= f.input :title
+= f.input :items, :input_html => { placeholder: "选项一行写一个" }
+= f.input :result, :collection => ["A","B","C","D"]
+= f.input :sort
+= f.input :published
+
+#reply-content.mt10
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"

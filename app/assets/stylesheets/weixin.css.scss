@@ -1,0 +1,227 @@
+body { margin: 0; }
+
+.full-width { width: 100%; }
+.block {display: block;}
+.mt2 { margin-top: 2px; }
+.mt6 { margin-top: 6px; }
+.mt8 { margin-top: 8px; }
+.mt10 { margin-top: 10px; }
+.mt16 { margin-top: 16px; }
+.mt20 { margin-top: 20px; }
+.mt26 { margin-top: 26px; }
+.mtf4 { margin-top: -4px; }
+.mtf8 { margin-top: -8px; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.clearfix { overflow: hidden; zoom: 1; }
+.text-center{ text-align: center; }
+.fl { float: left; }
+.fr { float: right; }
+
+.user-profile-warp{
+  .user-profile{
+    .scorebg1 {
+      z-index: 0; width: 100%;
+      img {width: 100%;}
+    }
+    .user-avatar{
+      width: 29.43%; left: 36.42%; top: 10px;
+      img {border: 3px solid yellow; border-radius: 50%;   width: 100%; }
+    }
+    .username{
+      color: white;
+      table{
+        td.last { color: #ff6633; font-size: 18px; font-weight: bold; }
+      }
+    }
+    .user-scores{
+      width: 26%; height: 30px;
+      .user-scores-content {
+        top: 0; width: 100%; position: relative;
+        .user-score1{
+          width: 26px; height: 26px; border-radius: 50%; background-color: white; z-index: 0; top: 0; left: 0;
+          .text { padding-top: 5px; width: 26px; text-align: center; }
+        }
+        .user-score2{
+          width: 16px; height: 16px; border-radius: 50%; background-color: green; z-index: 1; top: -8px; left: 26px;
+          .text{padding-left: 18px;}
+        }
+        .user-score3{
+          width: 16px; height: 16px; border-radius: 50%; background-color: red; z-index: 1; top: 17px; left: 26px;
+          .text{padding-left: 18px;}
+        }
+      }
+    }
+    .other-user {
+      background-image: url(/assets/weixin/scorebg2.jpg); width: 100%; word-wrap: break-word; overflow-y: scroll; overflow-x: auto;
+      background-size: cover;
+      .other-users{
+        width: 100%;
+        .other-user1 { z-index: 0; width: 3px; border-right: 3px solid white; left: 49px; width: 3px; height: 84px;}
+        .other-user2 {
+          z-index: 1; left: 20px; width: 64px; height: 64px; top: 10px;
+          img{width: 100%; border-radius: 50%; }
+        }
+        .other-user3{
+          top: 24px; left: 96px;
+          .u1{ color: white; width: 64px; overflow: hidden; }
+          .u2{ color: #f63; margin-left: 64px; width: 40px; font-weight: bold; font-size: 16px}
+          .u3{ margin-right: 20px; }
+        }
+        .other-user4{
+          z-index: 3; right: 0; top: 20px;
+        }
+      }
+    }
+
+  }
+}
+
+
+ul.media {
+  margin: 0; padding: 0;
+  li {
+    display: bolck;
+    .media-item-warp {
+      display: block; position: relative;
+      .media-item { position: absolute; }
+      .media-item1 { z-index: 0; width: 3px; border-right: 3px solid white; left: 8.5%; }
+      .media-item2 { z-index: 1; left: 2%; width: 15%; background-color: white; border-radius: 50%; box-shadow: -4px 5px 0px #888888; }
+      .media-item3 { z-index: 2; left: 2%; width: 15%; text-align: center; height: 18px; line-height: 18px; font-size: 18px;}
+      .media-item3a { z-index: 3; left: 2%; width: 15%; text-align: center; height: 14px; line-height: 14px; font-size: 14px; color: #999;}
+      .media-item4 {
+        z-index: 0; left: 18.75%; width: 76.8%;
+        img { width: 100%; padding-bottom: 10px;}
+      }
+      .media-item5 {
+        z-index: 2; color: white;
+        left: 18.75%; padding: 10px;
+        .media-title {
+          font-weight: bold; font-size: 20px;
+
+          a {
+            color: white; text-decoration: none;
+          }
+        }
+        .media-subtitle {
+          a {
+            color: white; text-decoration: none;
+          }
+        }
+      }
+      .media-item6 {
+        z-index: 1; color: white;
+        left: 18.75%; padding: 4px 0;
+        opacity: 0.5; background-color: #000;
+      }
+    }
+  }
+}
+
+.wq-background {
+  position: relative; width: 100%; height: auto;
+  .wq-background-img {
+    z-index: 0; position: absolute; width: 100%; height: auto;
+  }
+  .ktlogo-warp {
+    z-index: 1; position: absolute;
+    width: 100%; height: auto;
+    .ktlogo {
+      margin-top: 12%; text-align: center;
+    }
+    .ktbtn {
+      margin-top: 122%; text-align: center;
+    }
+    .ktbtn1 {
+      margin-top: 11%; text-align: center;
+    }
+    .ktbtn2 {
+      margin-top: 4%; text-align: center;
+      a { color: white; font-size: 16px; text-decoration: none; }
+    }
+    .ktbtn3 {
+      margin-top: 63%; text-align: center;
+    }
+    .ktbtn4 {
+      margin-top: 11%; text-align: center;
+    }
+    .ktsex {
+      margin-top: 24%; text-align: center; margin-left: 10%;
+    }
+    .ktavatar {
+      margin-top: 0%; text-align: center;
+    }
+    .ktusername {
+      margin-top: 4%; text-align: center; font-size: 26px;
+    }
+    .ktqrcode {
+      margin-top: 10%; text-align: center;
+    }
+
+    .ktinput {
+      margin-top: 55%; text-align: center;
+      input {
+        margin-left: 10% ; width: 65%; height: 48px;
+        line-height: 48px; font-size: 48px;
+        text-align: center; background: none; border: none;
+      }
+    }
+    .ktinput2 {
+      @extend .ktinput;
+      margin-top: 55px;
+    }
+
+    @media (min-width:400px) and (max-width:480px) {
+      .ktinput {
+        margin-top: 54%;
+        input#input-authcode { font-size: 40px; }
+        input { font-size: 40px; }
+      }
+      .ktinput2 { margin-top: 44px; }
+    }
+    @media (min-width:320px) and (max-width:400px) {
+      .ktinput {
+        margin-top: 53.4%;
+        input#input-authcode { font-size: 32px; }
+        input { font-size: 32px; }
+      }
+      .ktinput2 { margin-top: 25px; }
+    }
+    @media (min-width:200px) and (max-width:320px) {
+      .ktinput {
+        margin-top: 50%;
+        input#input-authcode { font-size: 28px; }
+        input { font-size: 28px; }
+      }
+      .ktinput2 { margin-top: 10px; }
+    }
+
+
+
+    .kt-q-title {
+      margin-top: 12%; text-align: center; font-size: 28px; color: white;
+    }
+    .kt-items {
+      margin-top: 12%; text-align: center; position: relative;
+      .kt-item-num { position: absolute; top: 26%; left: 11.5%; font-size: 36px; color: white; }
+      .kt-item-title { position: absolute; text-align: center; top: 26%; width: 100%; color: white; font-size: 30px; }
+
+
+      @media (min-width:400px) and (max-width:480px) {
+        .kt-item-title { font-size: 30px; }
+      }
+      @media (min-width:320px) and (max-width:400px) {
+        .kt-item-title { font-size: 22px; }
+      }
+      @media (min-width:200px) and (max-width:320px) {
+        .kt-item-title { font-size: 18px; }
+      }
+
+
+    }
+    .kt-line {
+      border-top: 3px solid #888; width: 80%; bottom: 15%; margin-left: 10%; height: 3px;
+    }
+  }
+}
+.absolute { position: absolute; }

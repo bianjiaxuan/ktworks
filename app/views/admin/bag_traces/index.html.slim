@@ -1,0 +1,29 @@
+= render "navigations"
+h3 气场踪迹列表
+
+table
+  tr
+    th 气场代码
+    th 城市
+    th 经度
+    th 纬度
+    th 位置
+    th 时间
+    th
+  
+
+  - @bag_traces.each do |bag_trace|
+    tr
+      td = text_field_tag(:code,bag_trace.code, :disabled => true,:size => 15) 
+      td = bag_trace.city
+      td = bag_trace.longitude
+      td = bag_trace.latitude
+      td = text_field_tag(:location,bag_trace.location, :disabled => true,:size => 15) 
+      td = text_field_tag(:created_at,bag_trace.created_at, :disabled => true,:size => 15)  
+      td = link_to '显示', [:admin, bag_trace]
+      /!td = link_to 'Edit', edit_admin_bag_trace_path(bag_trace)
+      /!td = link_to 'Destroy', bag_trace, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+/!= link_to 'New Admin bag trace', new_admin_bag_trace_path

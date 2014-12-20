@@ -1,0 +1,27 @@
+<xml>
+    <ToUserName><![CDATA[<%= params[:xml][:FromUserName] %>]]></ToUserName>
+    <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
+    <CreateTime><%= Time.now.to_i %></CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <ArticleCount>3</ArticleCount>
+    <Articles>
+        <item>
+            <Title><![CDATA[KT足球 参赛二维码]]></Title>
+            <Description><![CDATA[]]></Description>
+            <PicUrl><![CDATA[http://www.ktfootball.com/assets/weixin/news/01.jpg]]></PicUrl>
+            <Url><![CDATA[http://www.ktfootball.com/weixin/users/guanzhu?wx_id=<%=@from_username%>]]></Url>
+        </item>
+        <item>
+            <Title><![CDATA[全國KT积分显示]]></Title>
+            <Description><![CDATA[]]></Description>
+            <PicUrl><![CDATA[http://www.ktfootball.com/assets/weixin/news/02.jpg]]></PicUrl>
+            <Url><![CDATA[http://www.ktfootball.com/weixin/users/my_scores?wx_id=<%=@from_username%>]]></Url>
+        </item>
+        <item>
+            <Title><![CDATA[下載專屬KT App]]></Title>
+            <Description><![CDATA[]]></Description>
+            <PicUrl><![CDATA[http://www.ktfootball.com/assets/weixin/news/03.jpg]]></PicUrl>
+            <Url><![CDATA[https://itunes.apple.com/us/app/kt-zu-qiu/id640427682?mt=8]]></Url>
+        </item>
+    </Articles>
+</xml>

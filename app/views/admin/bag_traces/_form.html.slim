@@ -1,0 +1,24 @@
+= form_for [:admin, @bag_trace]  do |f|
+  - if @bag_trace.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@bag_trace.errors.count, "error")} prohibited this bag_trace from being saved:"
+      ul
+        - @bag_trace.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :code
+    = f.text_field :code
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :location
+    = f.text_field :location
+  .actions = f.submit 'Save'

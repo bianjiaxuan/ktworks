@@ -1,0 +1,15 @@
+- if @users.count == 0 && @clubs.count == 0
+  没有找到任何资料
+- else
+  - @users.each do |_user|
+    .search-line.clearfix
+      .fl
+        = image_tag _user.avatar,:size => "32x32"
+      .fl.ml20{style: "height: 32px; line-height: 32px;"}
+        = link_to _user.nickname,"/my/info1v1?user_id=#{_user.id}",:target => "_blank"
+  - @clubs.each do |_club|
+    .search-line.clearfix
+      .fl
+        = image_tag "default_avatar.jpg",:size => "32x32"
+      .fl.ml20{style:"height: 32px; line-height: 32px;"}
+        = link_to _club.name,club_path(_club),:target => "_blank"

@@ -1,0 +1,26 @@
+p#notice = notice
+= link_to '编辑', edit_admin_gift_path(@gift)
+||
+= link_to '后退', admin_gifts_path
+p
+  string 图片URL:
+  = @gift.images
+p
+  strong 礼品名称：
+  = @gift.name
+p
+  strong 描述：
+  = raw @gift.desc
+p
+  strong 积分：
+  = @gift.scores
+p
+  strong 类别：
+  = @gift.category_desc?
+p
+  strong 状态：
+  = @gift.on
+p
+  strong 购买链：
+  = @gift.url
+.clear

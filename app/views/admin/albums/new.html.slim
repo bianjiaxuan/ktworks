@@ -1,0 +1,16 @@
+fieldset.devise
+  legend 创建新的相册
+  = form_for [:admin, @album] do |f|
+    - if @album.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@album.errors.count, "error")} prohibited this game from being saved:"
+        ul
+          - @album.errors.full_messages.each do |message|
+            li = message
+    .field
+      = f.label '名称'
+      = f.text_field :name
+    .actions = f.submit '保存'
+
+br
+= link_to "返回", :back

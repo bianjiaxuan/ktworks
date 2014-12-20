@@ -1,0 +1,13 @@
+h2.np-gold style='margin: 0 0 10px 30px;' 学校名单
+
+#map
+  = image_tag 'map.png'
+  = render partial: 'province', collection: @provinces
+
+#school_lists.formregion
+  .loading.np-gold Loading
+  = render partial: 'shared/close_btn'
+  p.np-gold 城市
+  #citys.formregion
+  p.np-gold 学校
+  #school_items.formregion

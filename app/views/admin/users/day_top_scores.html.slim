@@ -1,0 +1,21 @@
+= render "tally_navigations"
+= form_tag admin_users_day_top_scores_path, method: :get do
+  = label_tag '统计日期：'
+  = text_field_tag 'some_date',nil, placeholder: '统计日期',:readonly => true
+  = submit_tag '确定'
+  
+table
+  tr
+    th ID
+    th 最高得分
+    th 城市
+    th 场次
+    th 日期
+    
+  - @rounds.each_with_index do |r,index|
+    tr
+      td = index+1
+      td = r.user.nickname+"："+r.top_score.to_i.to_s 
+      td = r.game.city
+      td = r.game.place
+      td = r.game.date

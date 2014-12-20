@@ -1,0 +1,37 @@
+span
+  = link_to '新建淘宝订单', new_admin_order_path
+
+table
+  tr
+    th ID
+    th 订单
+    th 兑换人
+    th 兑换礼品
+    th 积分
+    th 状态
+    th 收货人
+    th 手机
+    th 送货地址
+    th 送货日期
+    th 购买时间
+    th
+    th
+    th
+
+  - @orders.each do |o|
+    tr
+      td = text_field_tag(:id,o.id, :disabled => true,:size => 3)
+      td = o.source_type==0?"兑换":"淘宝"
+      td = text_field_tag(:user_id,o.user.nickname, :disabled => true,:size => 3) if o.user.present?
+      td = text_field_tag(:gift_name,o.gift_name, :disabled => true,:size => 15)
+      td = text_field_tag(:scores,o.scores, :disabled => true,:size => 7)
+      td = text_field_tag(:status,o.status, :disabled => true,:size => 5)
+      td = text_field_tag(:receive_by,o.receive_by, :disabled => true,:size => 12)
+      td = text_field_tag(:phone,o.phone, :disabled => true,:size => 12)
+      td = text_field_tag(:address,o.address, :disabled => true,:size => 12)
+      td = text_field_tag(:send_day,o.send_day, :disabled => true,:size => 12)
+      td = text_field_tag(:created_at,o.created_at, :disabled => true,:size => 20)
+      td = link_to '显示', [:admin, o]
+      td = link_to '编辑', edit_admin_order_path(o)
+      td = link_to '删除', [:admin, o], confirm: '你确定么？', method: :delete
+= paginate @orders

@@ -1,0 +1,65 @@
+= render "mymenu"
+#setting-page
+  %form{enctype: "multipart/form-data", action: "/my/setting", method: "post", :"accept-charset" =>"UTF-8"}
+    %input{type: :hidden, name: "authenticity_token", value: form_authenticity_token}
+    #setting-warp.clearfix
+      #leftside.fl
+        = image_tag current_user.avatar,:size => "260x260",:class => "setting-avatar",:id => "avatar-img"
+        %input#file.none{type: :file, name: "avatar"}
+        = link_to "换图片","javascript:;",:class => "upload-btn"
+      #rightside.fr
+        = flash[:alert]
+        .clearfix
+          .setting-label.fl 昵称
+          .setting-input.fl.ml30
+            %input{type: "text", value: current_user.nickname, name: "nickname"}
+        .clearfix.mt20
+          .setting-label.fl 手机
+          .setting-input.fl.ml30
+            %input{type: "text", value: current_user.phone, name: "phone"}
+        .clearfix.mt20
+          .setting-label.fl 邮件
+          .setting-input.fl.ml30
+            %input{type: "text", value: current_user.email, name: "email"}
+        .clearfix.mt20
+          .setting-label.fl 生日
+          .setting-input.fl.ml30
+            = date_field_tag :birthday, current_user.birthday
+
+        .clearfix.mt20
+          .setting-label.fl 国家
+          .setting-input.fl.ml30.mt12
+            %select{name: "country"}
+              %option{selected: current_user.profile.present? && current_user.profile.country == "中国"} 中国
+              %option{selected: current_user.profile.present? && current_user.profile.country == "台湾" || current_user.profile.country == "中国台湾"} 台湾
+              %option{selected: current_user.profile.present? && current_user.profile.country == "香港" || current_user.profile.country == "中国香港"} 香港
+    #submit-warp.mt12
+      %button{type: "submit"} 保存我的改变  
+
+
+:coffeescript
+  $ ->
+    $("body").on "click",".upload-btn", ->
+      $("input#file").click()
+    $("body").on "change","input#file", ->
+      
+      if !!this.files
+        files = this.files
+      else
+        files = []
+  
+      if !files.length || !window.FileReader
+        return
+  
+      if /^image/.test(files[0].type)
+
+        reader = new FileReader();
+
+        reader.readAsDataURL(files[0]);
+
+        reader.onloadend = ->
+          $("img.setting-avatar").attr("src",this.result)
+
+           
+    
+  

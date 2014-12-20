@@ -1,0 +1,44 @@
+.headwarp1v1.relative
+  .headimg.absolute
+    = image_tag @user.avatar,size: "250x250"
+  .headrange.absolute= @user.grade
+.username= @user.nickname
+%hr
+.score= @user.scores
+%hr
+.countrysex.clearfix
+  .country.fl
+    - if @user.profile.country.blank? || !["中国","台湾","香港"].include?(@user.profile.country)
+      = image_tag "country/中国.png",size: "65x44"
+    - else
+      = image_tag "country/#{@user.profile.country}.png",size: "65x44"
+  .sex.fl
+    - if @user.profile.present?
+      - if @user.profile.gender == "MM"
+        = image_tag "mm.png",:size => "48"
+      - else
+        = image_tag "gg.png",:size => "48"
+    - else
+      = image_tag "gg.png",:size => "48"
+.contract
+  剩余场次：
+  = @user.vip_count
+  %br/
+  = @user.phone
+  %br/
+  = @user.birthday.to_s
+  %br/
+  - if @user.created_at.year == Date.current.year
+    = (Date.current.month - @user.created_at.month).to_s + "个月"
+  - else
+    = (Date.current.year - @user.created_at.year).to_s + "年"
+  KT经验
+%hr/
+.inviteimg
+  = image_tag "newhome/invite.jpg"
+.invitebtn
+  = link_to image_tag("newhome/btn-invite.jpg")
+.qrcode
+  = image_tag user_qrcode_img_url(@user),size: "160"
+
+%hr

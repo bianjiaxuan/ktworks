@@ -1,0 +1,25 @@
+= link_to "新建", new_admin_company_path
+table
+  tr
+    th ID
+    th 企业名称
+    th 企业logo
+    th 企业捐赠气场数目，
+    th 企业捐赠的学校列表
+    th 企业介绍
+    th 相关企业网站
+    th 编辑
+    th 删除
+  - @companys.each do |item|
+    tr
+      td = item.id 
+      td = item.name
+      td = item.logo
+      td = item.donate_count
+      td = item.school_items
+      td = item.intro
+      td = item.site
+      td = link_to '删除', [:admin, item], confirm: '你确定删除么？', method: :delete
+      td = link_to '修改', edit_admin_company_path(item)
+= paginate @companys
+= render partial: 'admin/new_plant_link'

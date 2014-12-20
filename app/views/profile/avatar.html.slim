@@ -1,0 +1,41 @@
+css:
+  .profile_field {
+    margin-bottom: 20px;
+  }
+
+- unless flash[:error].nil?
+  p.alert= flash[:error]
+
+
+
+fieldset.devise.avatar
+  legend 上传个人头像
+
+  = form_for @user_profile, :url => { :controller => 'profile', :action => "upload_avatar" }, :html => {:class => "assign_form", :method => 'put', :multipart => true} do |f|
+    div.profile_field
+      = f.file_field :avatar
+      input name="MAX_FILE_SIZE" type="hidden" value="1000"
+      = submit_tag '上传', class: 'submit_btn'
+
+    div style="margin-bottom: 15px; font-size: 12px;"
+      = "上传头像大小最多为 1MB, 格式为jpg, png, gif, jpeg"
+
+
+    div style="margin-bottom: 15px; font-size: 16px; font-weight:bold;"
+      = "当前头像:"
+
+    div.profile_field
+      - unless @user_profile.nil?
+        - unless @user_profile.avatar_file_name.nil?
+          span style="margin-right: 15px;"
+            = image_tag @user_profile.avatar.url(:medium)
+
+          span style="margin-right: 15px;"
+            = image_tag @user_profile.avatar.url(:middle)
+
+          span
+            = image_tag @user_profile.avatar.url(:thumb)
+
+    div.my_link
+      = link_to "返回我的气场", "/user/#{current_user.id}", :style => "color: darkOrange;"
+

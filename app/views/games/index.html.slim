@@ -1,0 +1,12 @@
+div
+ fieldset.devise#game_lists
+   legend 活动列表
+   div#games-list
+      table
+        - @games.each do |game|
+          tr style="#{'background:yellow' if game.date > Date.today}"
+            td 
+             = gameUrl(game).html_safe
+          
+= paginate @games      
+.clear

@@ -1,0 +1,92 @@
+
+javascript:
+  function check_name(id,name){
+    var result=0; 
+     $.ajax({
+      type  : "get",
+      url   : "/leagues/check_name",
+      data  : {id:id,name:name},
+      async : false,
+      success : function(data){
+        result=data;
+      }
+    });
+    return result;
+  }  
+
+  jQuery(document).ready(function(){
+
+    $('input[name="commit"]').unbind("click");
+    $('input[name="commit"]').click(function(){
+       var id=$('#id').val();
+       var name=$('#league_name').val();
+       var length=strLength(name);
+       if(length<5||length>30){
+           event.preventDefault();
+           $('#msg').addClass("alert");
+           $('#msg').html("战队名称--2到10个汉字或5~20个字母 ");
+           return;
+       }
+       if(1!=check_name(id,name)){
+           event.preventDefault();
+           $('#msg').addClass("alert");
+           $('#msg').html("战队名称已经被注册了，换一个吧 :(");
+           return false;
+       }
+      
+      $('input[name="commit"]').submit();
+    });
+
+  })
+
+
+
+
+
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"  
+
+
+css:
+  .profile_field {
+    margin-bottom: 9px;
+  }
+
+- if flash[:error]
+  p.alert #{flash[:error]}
+  
+p#msg
+fieldset.devise style="width: 420px;"
+  legend 修改战队资料
+  = form_for @league, :url => {:controller => 'leagues', :action => "update_league"} , :html => {:class => "assign_form", :method => 'post', :multipart => true}  do |f|
+    =hidden_field_tag 'id',"#{@league.id}"
+    div.league_field
+      = f.label '战队名称 （建议2到10个汉字或5~20个字母）'
+      br/
+      = f.text_field :name 
+      /!input#name name="name" value="#{@league.name}" size="30" type="text"
+    div.league_field
+      = f.label '选择战队头像：'
+      = f.file_field :avatar
+      br/
+      input name="MAX_FILE_SIZE" type="hidden" value="1000"
+      = submit_tag '更新', class: 'submit_btn'
+    div style="margin-bottom: 15px; font-size: 12px;"
+      = "上传头像大小最多为 1MB, 格式为jpg, png, gif, jpeg"
+
+
+    div style="margin-bottom: 15px; font-size: 16px; font-weight:bold;"
+      = "当前头像:"
+    div.league_field
+      - unless @league.avatar_file_name.nil?
+          span style="margin-right: 15px;"
+            = image_tag @league.avatar.url(:medium)
+
+          span style="margin-right: 15px;"
+            = image_tag @league.avatar.url(:normal)
+
+          span
+            = image_tag @league.avatar.url(:thumb)
+
+    div.my_link
+      = link_to "返回我的战队", my_leagues_path, :style => "color: darkOrange;"

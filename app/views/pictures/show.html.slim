@@ -1,0 +1,30 @@
+#img-content
+  a.alblum-title href=album_path(@picture.album)
+    .np-gold
+      |相册-
+      span = "#{@picture.album.name} (#{@picture.order}/#{@picture.album.pictures.count}张)"
+  a.albums-link href=albums_path
+    .np-gold
+      span 相册列表
+  .clear
+
+  .img-show.formregion
+    - if @picture.weibo_link
+      = link_to @picture.weibo_link, title: @picture.weibo_tip do
+        = image_tag @picture.avatar.url
+    - else
+      = image_tag @picture.avatar.url
+
+    p.formregion style='color:yellow;' =@picture.name
+
+    - if @picture.pre_pic
+      .pre
+        = link_to picture_path(@picture.pre_pic) do
+          = image_tag 'kicktempo_photo_arrowl.png'
+    - if @picture.next_pic
+      .next
+        = link_to picture_path(@picture.next_pic) do
+          = image_tag 'kicktempo_photo_arrow.png'
+    - if @picture.weibo_tip
+      #weibo-tip
+        .formregion.yellow = @picture.weibo_tip

@@ -1,0 +1,30 @@
+:css
+  ul.weixin_sidebar > li { text-align: center; }
+  ul.weixin_sidebar > li > a { color: black; }
+  ul.weixin_sidebar > li.active { color: black; background-color: yellow; }
+
+%ul.weixin_sidebar
+  %li.fh24{ class: controller_name == "w_services" ? "active" : "" }
+    = link_to "微信设置",weixin_w_services_path
+  %li.fh24{ class: controller_name == "materials" ? "active" : "" }
+    = link_to "单图文资源",weixin_materials_path
+  %li.fh24{ class: controller_name == "multiple_materials" ? "active" : "" }
+    = link_to "多图文资源",weixin_multiple_materials_path
+  %li.fh24{ class: controller_name == "audio_materials" ? "active" : "" }
+    = link_to "音频资源",weixin_audio_materials_path
+  %li.fh24{ class: controller_name == "w_replies" ? "active" : "" }
+    = link_to "回复设置",weixin_w_replies_path
+  %li.fh24{ class: controller_name == "w_menus" ? "active" : "" }
+    = link_to "微信菜单",weixin_w_menus_path
+  %li.fh24{ class: controller_name == "w_users" ? "active" : "" }
+    = link_to "绑定的微信用户",weixin_w_users_path
+  %li.fh24{ class: controller_name == "w_questions" ? "active" : "" }
+    = link_to "微信问答",weixin_w_questions_path
+  %li.fh24{ class: controller_name == "w_question_answers" ? "active" : "" }
+    = link_to "问答提交",weixin_w_question_answers_path
+  %li.fh24{ class: controller_name == "w_cities" ? "active" : "" }
+    = link_to "城市资料",weixin_w_cities_path
+  %li.fh24{ class: controller_name == "w_media" ? "active" : "" }
+    = link_to "媒体新闻",weixin_w_media_path
+  %li.fh24{ class: controller_name == "w_brands" ? "active" : "" }
+    = link_to "品牌资料",weixin_w_brands_path

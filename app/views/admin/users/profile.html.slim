@@ -1,0 +1,41 @@
+= render "navigations"
+
+
+p
+  = link_to @user.nickname, "/user/#{@user.id}", :target => '_blank'
+
+- unless @user.profile.nil?
+  p style="font-weight: bold;"
+    = "球龄"
+	p
+	  = @user.profile.football_age
+
+  p style="font-weight: bold;"
+    = "生日"
+
+	p
+	  = @user.profile.birthday
+
+  p style="font-weight: bold;"
+    = "赛事宣言"
+
+	p
+	  = @user.profile.manifesto
+
+  p style="font-weight: bold;"
+    = "个人介绍"
+
+	p
+	  = @user.profile.introduction
+
+
+  
+	= @user.profile.province
+	= @user.profile.city
+	= @user.profile.area
+
+
+
+-else
+  p
+    = "个人资料暂时为空"

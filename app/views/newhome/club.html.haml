@@ -1,0 +1,44 @@
+#club
+  .clubimg
+    = image_tag "newhome/club/h01.jpg"
+  .clubimg
+    = image_tag "newhome/club/b01.png"
+  .clubimg
+    = image_tag "newhome/club/b02.png"
+  .clubimg
+    = image_tag "newhome/club/b03.png"
+  #city
+    .title 俱乐部
+    .cityline.clearfix
+      - 6.times do |_t|
+        .cityname.fl
+          - n = 0
+          - Club.all.group_by(&:city).each do |city,arr|
+            - if n % 6 == _t
+              .city{style: "margin-bottom: 32px;"}
+                = link_to city||"城市","javascript:;",class: "clubcity",style: "font-weight: bold; "
+                %ul.citys.none.mt10{style: "padding: 8px 0px; line-height: 2em;"}
+                  - arr.each do |club|
+                    %li
+                      = link_to club.name,club_path(club),style: "font-size: 16px;"
+            - n += 1
+
+      / - Club.all.group_by(&:city).each do |city,arr|
+      /   .cityname.fl.relative
+      /     = link_to city||"城市","javascript:;",class: "clubcity",style: "font-weight: bold;"
+      /     %ul.citys.none.mt10{style: "background-color: #eee; border-radius: 6px; padding: 8px; line-height: 1.5em; width: 100%; height: 180px; overflow-y: auto;"}
+      /       - arr.each do |club|
+      /         %li
+      /           = link_to club.name,club_path(club),style: "font-size: 12px;"
+      / - Country.where("kind = ?","city").sort{|a,b|a.name.encode("gbk","utf-8") <=> b.name.encode("gbk","utf-8")}.each do |_city|
+      /   .cityname.fl= link_to _city.name,club_path(_city.id)
+  .clubimg
+    = image_tag "newhome/club/b04.png"
+
+:coffeescript
+  $ ->
+    $("body").on "mouseover","a.clubcity", ->
+      $("ul.citys").hide()
+      $(this).next().show()
+    $("body").on "mouseleave","ul.citys", ->
+      $(this).hide()

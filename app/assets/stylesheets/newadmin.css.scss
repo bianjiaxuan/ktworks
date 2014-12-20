@@ -1,0 +1,163 @@
+//= require global
+//= require lib/bootstrap.min.css
+
+body{
+  background-color: rgb(231,232,236);
+}
+ul,ol { margin: 0; }
+a:hover { text-decoration: none; }
+
+nav.pagination {
+  float: right; margin-right: 56px;
+  span { float: left; padding: 6px; background-color: rgb(247,247,247); margin: 2px;}
+}
+nav.pagination span a {
+  color: grey;
+}
+
+nav.pagination span.current {
+  background-color: #ccc; border-color: #ccc;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span,
+.pagination>li:first-child>a, .pagination>li:first-child>span { border-radius: 0px; }
+
+
+form.simple_form {
+  .input{
+    overflow: hidden; zoom: 1;
+    label { 
+      float: left; display: block;
+      margin-right: 12px; text-align: right; width: 128px;  padding: 4px; color: #999;
+      font-size: 16px;
+
+    }
+    input { width: 400px; float: left; display: block; }
+    input.string { height: 24px; line-height: 24px; font-size: 16px; }
+    span.hint { display: block; float: left; margin-left: 12px; width: 200px; }
+    textarea.text { width: 400px; height: 120px; }
+
+  }
+  .ckeditor { width: 730px;}
+}
+
+
+.list1{
+  padding: 16px; color: #999; border: 1px solid #ddd; margin-bottom: 48px;
+  .title {
+    color: #555;
+    .title-line1{
+      font-size: 18px; margin-top: 4px;
+    }
+    .title-line2{
+      font-size: 15px; margin-top: 8px;
+    }
+  }
+  .blk{
+    .blk1{
+      font-size: 14px; margin-top: 4px;
+    }
+    .blk2{
+      font-size: 22px; margin-top: 10px;
+    }
+  }
+
+  .titleimg{
+    img{
+      width: 44px; height: 44px;
+    }
+    margin-right: 12px;
+  }
+  .btns{
+    a { font-size: 14px; height: 14px; line-height: 1.5em; color: #999; margin-botton: 6px; }
+  }
+}  
+
+.btn1 {
+  font-size: 16px; color: #999; border: 2px solid #999;
+  border-radius: 4px; background: none; background-color: white; padding: 2px 12px;
+}
+
+.btn2 {
+  padding: 6px 22px; color: #999; background: none; background-color: #ddd; 
+  border: 2px solid #666; font-size: 16px; border-radius: 4px;
+}
+
+.btn3 {
+  padding: 6px 22px; color: #666; background: none; background-color: white; 
+  border: 2px solid #bbb; font-size: 16px; border-radius: 4px;
+}
+
+#header-warp{
+  background-color: white; height: 62px;
+  #header{
+    margin: 0 auto; width: 1200px;
+    #logo{
+      margin-top: 13px;
+    }
+    #sign_out{
+      margin-top: 13px; 
+      a{font-size: 14px; line-height: 24px; height: 24px;}
+    }
+    #avatar{
+      margin-top: 13px;
+    }
+    #username{
+      font-size: 14px; line-height: 24px; height: 24px; margin-top: 13px; margin-right: 50px; margin-left: 10px;
+    }
+  }
+}
+
+#container{
+  margin: 0 auto; width: 1200px; margin-top: 38px; background-color: white; margin-bottom: 40px;
+  #sidebar{
+    width: 199px; padding: 32px 0; font-size: 18px; border-right: 1px solid #ddd;
+    .sidetitle{
+      margin-left: 18px;
+      .icon{
+        img{}
+      }
+      .title-text{
+        margin-left: 20px; color: #aaa;
+      }
+    }
+
+    ul{
+      li{
+        a{ display: block; color: #444; padding: 12px; text-align: center; }
+      }
+      a:hover,a.active{
+        background-color: rgb(204,204,204); color: black;
+      }
+    }
+  }
+  #main-container{
+    width: 998px;
+    #main-container-title{
+      border-bottom: 1px solid #ddd; height: 74px;
+      span{
+        border-bottom: 4px solid #444; font-weight: bold; font-size: 28px; color: #333;
+        display: block; width: 128px; height: 34px; text-align: center; width: 20%;
+        height: 74px; margin-top: 40px;
+      }
+    }
+    #main-container-body{ 
+      padding: 74px 56px;
+    }
+    #main-container-info{
+      top: 80px; right: 80px; width: 274px; height: 79px;
+      background-image: url("/assets/newadmin/bg01.jpg");
+      #info-left{
+        width: 200px; color: #999;
+        #line1{ 
+          font-size: 28px; margin-top: 16px;
+        }
+        #line2{
+          font-size: 18px; margin-top: 15px;
+        }
+      }
+      #info-right{
+        margin-left: 4px; margin-top: 3px;
+      }
+    }
+  }
+}

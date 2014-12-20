@@ -1,0 +1,78 @@
+= render "mymenu"
+- rounds = @user.rounds_2v2
+- wins = rounds.where(:result => 1).count
+- loses = rounds.where(:result => -1).count
+- draws = rounds.where(:result => 0).count
+- kts = rounds.where(:panna_ko => true).count
+- goals = rounds.map(&:goals).sum
+- pannas = rounds.map(&:pannas).sum
+
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  #leftside.fl
+    = render "infomy"
+  #rightside.fl
+    %ul.headmenu.clearfix
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "俱乐部","/my/infomyclub?user_id=#{params[:user_id]}",class: action_name == "infomyclub" ? "active" : ""
+        - else
+          = link_to "俱乐部","/my/infomyclub",class: action_name == "infomyclub" ? "active" : ""
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "2v2","/my/info2v2?user_id=#{params[:user_id]}",class: action_name == "info2v2" ? "active" : ""
+        - else
+          = link_to "2v2","/my/info2v2",class: action_name == "info2v2" ? "active" : ""
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "1v1","/my/info1v1?user_id=#{params[:user_id]}",class: action_name == "info1v1" ? "active" : ""
+        - else
+          = link_to "1v1","/my/info1v1",class: action_name == "info1v1" ? "active" : ""
+    .rigngteaminfo
+      .level.relative
+        .levelname.absolute 等级
+        .levelnum.absolute= @user.grade
+        .levelbarback.absolute
+        .levelbar.absolute{style: "width: #{ [@user.scores/6000.to_i * 390, 10].max }px;"}
+        .levelscore.absolute
+          = "#{@user.scores}/6000分"
+      .games.relative
+        .gamename.absolute 球赛
+        .levelnum.absolute= rounds.count
+        .levelbar1.absolute{style: "width: #{ rounds.count > 0 ? [wins/rounds.count.to_f * 200, 10].max : 10 }px;"}
+        .levelbar2.absolute{style: "width: #{ rounds.count > 0 ? [loses/rounds.count.to_f * 200, 10].max : 10}px;"}
+        .win.absolute
+          %p 赢了
+          %p= rounds.count > 0 ? wins : 0
+        .lost.absolute
+          %p 输了
+          %p= rounds.count > 0 ? loses : 0
+        .draw.absolute
+          %p 平了
+          %p= rounds.count > 0 ? draws : 0
+        .winrate.absolute
+          - if rounds.count > 0
+            = sprintf("%.1f",wins/rounds.count.to_f*100)
+          - else
+            0
+          = "%"
+        .lostrate.absolute
+          - if rounds.count > 0
+            = sprintf("%.1f",loses/rounds.count.to_f*100)
+          - else
+            0
+          = "%"
+      .allkt.relative
+        .ktname.absolute
+          所有的KT
+        .ktnum.absolute= kts
+        .ktbar1.absolute{style: "width: 10px;"}
+        .ktbar2.absolute{style: "width: 10px;"}
+        .win.absolute
+          进球平均
+        .lost.absolute
+          穿裆平均
+        .winrate.absolute
+          = goals
+        .lostrate.absolute
+          = pannas
+

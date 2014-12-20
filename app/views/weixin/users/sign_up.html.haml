@@ -1,0 +1,40 @@
+= javascript_include_tag "jquery"
+
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/oldsignup.jpg",width: "100%"
+  .ktlogo-warp
+    .ktinput
+
+    .ktinput
+      %input#input-email{type: "text",placeholder: "邮箱"}
+    .ktinput2
+      %input#input-password{type: "password",placeholder: "密码"}
+
+    .ktbtn1
+      = link_to image_tag("weixin/q/btn7.png",width: "33.6%"),"javascript:;", :id => "ok"
+
+    %form#signup-form{action: request.url, method: "post"}
+      %input#email{type: :hidden, name: "email", value: ""}
+      %input#password{type: :hidden, name: "password", value: ""}
+
+
+:coffeescript
+  $ ->
+    flash = "#{flash[:alert1]}"
+
+    if flash isnt ""
+      alert flash
+
+
+    $("a#ok").click ->
+      email = $("input#input-email").val()
+      password = $("input#input-password").val()
+
+      if email is "" || password is ""
+        alert "请输入邮箱和密码"
+        return
+
+      $("input#email").val(email)
+      $("input#password").val(password)
+      $("form#signup-form").submit()

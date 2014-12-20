@@ -1,0 +1,17 @@
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+
+.section1{style: "color:white;font-size: 60px; width: auto; height: auto;"}
+  %a{class: "fancybox fancybox.iframe", href: "http://www.tudou.com/programs/view/html5embed.action?type=0&code=33GqiWZ3IU8&lcode=&resourceId=120584785_06_05_99"}
+    = image_tag "newhome/homevideo2.jpg",style: "width: 1200px; height: 700px; border: none;"
+
+
+:coffeescript
+  $ ->
+    $('.fancybox').fancybox(
+      padding : 0,
+      autoScale:true,
+      width:1000,
+      height:600,
+      openEffect: 'elastic'
+    )

@@ -1,0 +1,6 @@
+= simple_form_for resource, url: admin_contact_replies_path, html: {class: "form-horizontal"}, validate: true do |f|
+  = f.input :content, as: :text, label: "内容", required: true
+  %input{type: :hidden, :name => "contact_reply[contact_id]", value: params[:contact_id]}
+
+  .mt10
+    = f.submit "提  交", class: "btn btn6"

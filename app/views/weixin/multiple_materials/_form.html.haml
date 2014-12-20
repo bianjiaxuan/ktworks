@@ -1,0 +1,18 @@
+= f.input :name
+= f.input :preview_img, as: :file, required: false
+- if resource.preview_img.present?
+  .control-group
+    %label &nbsp;
+    .input
+      = image_tag resource.preview_img.url,size: "128x128"
+= f.input :preview_in_content
+
+= f.input :link_type, collection: [["显示内容","content"],["外部链接","link"]]
+= f.input :link
+
+= f.input :summary
+
+= f.input :content, :as => :kindeditor, :input_html => { width: "600px", :minWidth => "600px;", :height => "320px",:class => "post-text", :label => false, :required => true, :fontSizeTable => ['12px', '14px', '16px', '18px', '24px', '32px', '40px','48px','52px','56px','60px'],:allowImageRemote => false }
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"

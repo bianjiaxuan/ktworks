@@ -1,0 +1,9 @@
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/background2.jpg",width: "100%"
+  .ktlogo-warp
+    .ktbtn3
+      = link_to image_tag("weixin/q/btn5.png",width: "48.5%"),"/weixin/users/sign_up_01?wx_id=#{params[:wx_id]}"
+
+    .ktbtn4
+      = link_to image_tag("weixin/q/btn6.png",width: "40%"),"/weixin/users/sign_old_user?wx_id=#{params[:wx_id]}"

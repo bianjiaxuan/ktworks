@@ -1,0 +1,130 @@
+= javascript_include_tag "jquery"
+= javascript_include_tag "lib/jquery.slides.min.js"
+
+:css
+  ul.slidesjs-pagination {
+    width: 140px;
+    margin: 0 auto;
+    overflow: hidden; zoom: 1;
+  }
+  ul.slidesjs-pagination li {
+    float: left;
+    margin-left: 12px;
+  }
+  ul.slidesjs-pagination li a{
+    display:block;
+    width:32px;
+    height:0;
+    padding-top:35px;
+    background-image:url(/assets/newhome/slidedot.png);
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+  }
+  ul.slidesjs-pagination li a.active{
+    background-position:0 -32px;
+  }
+  a.slidesjs-navigation { color: rgb(248,247,242); }
+
+#homepage
+  .section1
+    .sectionbody.clearfix
+      .fl
+      .fr
+        .img1
+          = image_tag "newhome/title01.jpg"
+        .img2
+          = link_to image_tag("newhome/appstore.jpg"),"#"
+
+  .section2
+    .sectionbody
+      .title KT为什么？
+      .clearfix.items
+        %ul.fl
+          %li
+            .img
+              = image_tag "noimage",size: "245x245"
+            .imgtitle
+              好玩
+            .imgdesc
+              天天踢KT会让你天天开开心心的要死了
+        %ul.fl
+          %li
+            .img
+              = image_tag "noimage",size: "245x245"
+            .imgtitle
+              健康
+            .imgdesc
+              踢KT是一个非常健康的运动。泡泡的很快，也很聪明。经常踢KT的人不算懒人！
+        %ul.fl.last
+          %li
+            .img
+              = image_tag "noimage",size: "245x245"
+            .imgtitle
+              好玩
+            .imgdesc
+              面积小跟一个对手一直再找你。你的足球技能会认识一个很大的进步。
+              %br/
+              保护球还是过去你的对手，都需要认识球
+  .section3
+    .sectionbody
+      .title KT怎么玩？
+      %ul.clearfix
+        %li.number.fl
+          1.
+        %li.img.fl
+          = image_tag "newhome/img01.jpg"
+        %li.info.fr
+          .infotitle 登录
+          .infodesc
+            你现需要买卡，可以在这边
+            %br/
+            还是在那边买卡。买了卡后你
+            %br/
+            要找一个KT气场。
+
+      %ul.clearfix
+        %li.number.fl
+          2.
+        %li.img.fl
+          = image_tag "newhome/img01.jpg"
+        %li.info.fr
+          .infotitle 买卡
+          .infodesc
+            你现需要买卡，可以在这边
+            %br/
+            还是在那边买卡。买了卡后你
+            %br/
+            要找一个KT气场。
+      %ul.last.clearfix
+        %li.number.fl
+          3.
+        %li.img.fl
+          = image_tag "newhome/img01.jpg"
+        %li.info.fr
+          .infotitle 找气场
+          .infodesc
+            你现需要买卡，可以在这边
+            %br/
+            还是在那边买卡。买了卡后你
+            %br/
+            要找一个KT气场。
+  .section4
+    .sectionbody
+      .title KT是什么？
+      .slides
+        = image_tag("newhome/slide01a.jpg", :size => "865x440")
+        = image_tag("newhome/appstore.jpg", :size => "865x440")
+        = image_tag("newhome/slide01a.jpg", :size => "865x440")
+
+:coffeescript
+  $ ->
+    $('.slides').slidesjs(
+      height: 500,
+      play:
+        active: true,
+        auto: true,
+        interval: 114000,
+        swap: true
+    )
+

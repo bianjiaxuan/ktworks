@@ -1,0 +1,37 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+
+    table.table1
+      tr
+        th wx_id
+        th 关注
+        th 昵称
+        th 性别
+        th 城市
+        th 国家
+        th 省
+        th 语言
+        th 头像
+        th 订阅时间
+        th 是否激活
+        th 解绑
+      - _collection = collection.order("subscribe_time desc").page(params[:page]).per(10)
+      - _collection.each do |item|
+        tr
+          td = item.wx_id
+          td = item.subscribe
+          td = item.nickname
+          td = item.sex
+          td = item.city
+          td = item.country
+          td = item.province
+          td = item.language
+          td = image_tag item.headimgurl,:size => "64"
+          td = format_time(item.subscribe_time) if item.subscribe_time
+          td = item.user.present? ? "是" : "否"
+          td
+             - if item.user.present?
+             = link_to '解绑', "/weixin/w_users/#{item.id}/unbind"
+    = paginate _collection

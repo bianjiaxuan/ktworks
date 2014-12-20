@@ -1,0 +1,187 @@
+doctype 5
+html
+  head
+    title
+      = kicktempo_titile if @page_title.blank?
+      = @page_title
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    meta property="qc:admins" content="15402122576313345507636"
+    meta content="KT足球 开踢足球 开拓足球 kicktempo ktfootball 2026" name="keywords"
+    meta content=kicktempo_content name="description"
+
+    /[ if lt IE 9 ]
+      script src="//html5shiv.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    header.layout
+      .logo
+        - logo_path = @new_plant.blank? ? 'logo_header.png' : 'logo-2026.png'
+        = link_to image_tag(logo_path, alt: 'KickTempo', id: 'logo_header'), root_for_2026
+      nav.layout
+        .personal2
+          - if !current_user.nil?
+               span#current_user
+                  span.small_nav
+                    - if current_user.scores > 40 and !current_user.is_available_vip
+                      = link_to "/buy", id: 'show_tips' do
+                        .small_navbar_item = '尊敬的会员，请充值继续晋级'
+                    - if current_user.is_available_vip && current_user.vip_count > 0
+                        .small_navbar_item = "剩余场次：#{current_user.vip_count}"
+                    - if current_user.is_available_vip && current_user.end_vip_time.to_s > Time.new.strftime("%Y-%m-%d")
+                        .small_navbar_item = "会员到期：#{current_user.end_vip_time}"
+                    .small_navbar_item = "我的米币：#{current_user.coins}币"
+        .personal
+          - if current_user.nil?
+            .sign_box
+              = link_to "登录", sign_in_path, id: 'signin_btn'
+              /= link_to "注册", sign_up_path, id: 'signup_btn'
+          - else
+            span#current_user
+              span.small_nav
+                = link_to "/user/#{current_user.id}", id: 'show_user_btn' do
+                  .small_navbar_item = '我的气场'
+                = link_to edit_user_registration_path do
+                  .small_navbar_item = '修改密码'
+                = link_to confirm_phone_path do
+                  .small_navbar_item = '验证手机'
+                = link_to myorders_path do
+                  .small_navbar_item = '我的兑换'
+                = link_to connect_auths_path do
+                  .small_navbar_item = '关联第三方帐号'
+                = link_to sign_out_path, id: 'sign_out_btn' do
+                  .small_navbar_item = '退出登录'
+                = image_tag 'small_nav_tri.png', id: 'small_nav_tri'
+              span.current_nickname
+                = link_to current_user.nickname, "/user/#{current_user.id}", :style => "color: darkOrange;"
+                = image_tag('vip.png') if current_user.is_in_vip_period
+            - if current_user.admin?
+              = link_to "管理页面", admin_index_path, id: 'admin_btn'
+            /- if current_user.score_alerting?
+            /  = link_to '有未评分的比赛', my_shows_path,{:style=>"background: #ee3333"}
+        .clear
+        .navbar
+            = link_to '/about_kicktempo' do
+              .navbar_item = "关于KT"
+            = link_to '/plan2026' do
+              .navbar_item = "2026计划"
+            = link_to '/football_games' do
+              .navbar_item = "赛事信息"
+            = link_to '/score_ranks' do
+              .navbar_item = "积分榜"
+            = link_to "/cooperation" do
+              .navbar_item = "赛事合作"
+            = link_to "/agency_service" do
+              .navbar_item#navbar_item_last = "KT代理"
+
+        .navbar_lev2
+          - if @nav && @nav == "kt"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','kt')" } ) do
+              .navbar_item = "KT足球"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','team')" } ) do
+              .navbar_item = "KT团队"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','timeline')" } ) do
+              .navbar_item = "KT历程"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','culture')" } ) do
+              .navbar_item = "KT文化"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','resposibility')" } ) do
+              .navbar_item#navbar_item_last = "社会责任"
+          - if @nav && @nav == "plan"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','basics')" } ) do
+              .navbar_item = "2026介绍"
+            = link_to "/agent_scopes"  do
+              .navbar_item = "布点城市"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','partners')" } )  do
+              .navbar_item = "合作单位"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','advisers')" } )  do
+              .navbar_item = "顾问团"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','legends')" } )  do
+              .navbar_item#navbar_item_last = "2026故事"
+          - if @nav && @nav == "game"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','forecast')" } ) do
+              .navbar_item = "赛事预告"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','live')" } ) do
+              .navbar_item = "赛事直播"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','review')" } ) do
+              .navbar_item = "赛事回顾"
+            = link_to("articles/20" ) do
+              .navbar_item#navbar_item_last = "经典赛事"
+          - if @nav && @nav == "rank"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','rank1')" } ) do
+              .navbar_item = "1VS1"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','rank2')" } ) do
+              .navbar_item = "2VS2"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','judge_ranks')" } ) do
+              .navbar_item = "裁判榜"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','exchange')" } ) do
+              .navbar_item#navbar_item_last = "米币兑换"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','buy')" } ) do
+              .navbar_item#navbar_item_last = "KT装备"
+          - if @nav && @nav == "agency"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','kt_qichang')" } )do
+              .navbar_item = "气场"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','kt_games')" } ) do
+              .navbar_item = "KT足球赛"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','kt_club')" } ) do
+              .navbar_item = "KT俱乐部"
+            = link_to("#", html_options = {:remote => true,:onclick=>"navAsyn('/navAsyn','shifanzhe')" } ) do
+              .navbar_item = "是范者星球"
+            = link_to("http://ktfootball.taobao.com/",html_options ={:target=>'_blank'}) do
+              .navbar_item#navbar_item_last = "潮牌"
+          - if @new_plant
+            = link_to "/business" do
+              .navbar_item = "2026首页"
+            = link_to "/kicktempo_story" do
+              .navbar_item = "足球梦故事"
+            = link_to "/school_list" do
+              .navbar_item = "学校名单"
+            = link_to "/donate" do
+              .navbar_item = "捐赠感恩"
+            = link_to "/support_our_plant" do
+              .navbar_item = "支持2026"
+            = link_to "/about_us" do
+              .navbar_item#navbar_item_last = "联系我们"
+          .clear
+      .clear
+
+    - unless notice.nil?
+      p.notice= notice
+    - unless alert.nil?
+      - if flash[:error].nil?
+        p.alert= alert
+
+    .content= yield
+    /!  Baidu Button BEGIN
+    | <script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=1&amp;pos=right&amp;uid=1067634" ></script>
+    | <script type="text/javascript" id="bdshell_js"></script>
+    | <script type="text/javascript">
+    | document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+    | </script>
+    /! Baidu Button END
+    footer.layout
+      .footer_item = link_to "联系我们", '/articles/4'
+      .footer_item = link_to "合作伙伴", "/articles/5"
+      .footer_item = link_to "加入我们", "/join_us", target: '_blank'
+      .footer_item = link_to "KT装备", "/buy", target: '_blank'
+      = image_tag 'logo_footer.png', alt: 'KickTempo', id: 'logo_footer'
+      span.copyright
+        |Copyright©2011-2013 KickTempo
+        = link_to '沪ICP备13027065号', 'http://www.miitbeian.gov.cn', :target => '_blank'
+        br/
+        |Website Designed By FiretreeDesign Shanghai
+      =  render partial: 'shared/parter_links'
+
+      div style='display:none'
+        javascript:
+           var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+           document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Feb149230b8952aa2211dceb56718c947'  type='text/javascript'%3E%3C/script%3E"));
+        javascript:
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-41192119-1', 'kicktempo.cn');
+           ga('send', 'pageview');

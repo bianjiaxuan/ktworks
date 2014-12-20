@@ -1,0 +1,86 @@
+script src="/assets/jquery.ui.datepicker" type="text/javascript"
+script src="/assets/jquery.ui.datepicker-zh-CN" type="text/javascript"
+script src="/assets/jquery-ui-1.8.18.custom.min" type="text/javascript"
+script src="/assets/jquery-ui-timepicker-addon" type="text/javascript"
+= javascript_include_tag 'ckeditor/init'
+
+javascript:
+  jQuery(document).ready(function(){
+    $('#club_start_date').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+       $('#club_end_date').datepicker({
+        showSecond: true,
+        changeMonth: true,
+        changeYear: true,
+        timeFormat: 'hh:mm:ss',
+        dateFormat: 'yy-mm-dd'
+    });
+  })
+
+link href="/assets/jquery-ui-1.8.18.custom" media="all" rel="stylesheet" type="text/css"  
+= form_for [:admin, @club] do |f|
+  - if @club.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@club.errors.count, "error")} prohibited this club from being saved:"
+      ul
+        - @club.errors.full_messages.each do |message|
+          li = message
+  
+  .field
+    = f.label "名称："
+    = f.text_field :name
+  .field
+    = f.label "城市："
+    = f.select :city, Country.where("kind = ?","city").map { |city| city.name }, include_blank: false
+  .field
+    = f.label "代理："
+    = f.select(:agent_id, options_for_select(Hash[Club.managers.map { |u| ["#{u.city}-"<<u.nickname,u.id]} ], @club.agent_id) )   
+  .field
+    = f.label "经理："
+    = f.select(:user_id, options_for_select(Hash[Club.managers.map { |u| ["#{u.city}-"<<u.nickname,u.id]} ], @club.user_id) )
+    | 
+        备注：俱乐部经理要么是代理本人，要么是裁判； 
+  .field
+      = f.label '开始：'
+      = f.text_field :start_date,:readonly=>true
+  .field
+      = f.label '结束：'
+      = f.text_field :end_date,:readonly=>true   
+  .field
+      = f.label '成立日期：'
+      = f.date_select :setup_date
+  .field
+      = f.label '区/县：'
+      = f.text_field :region,placeholder: "如：闸北区"
+  .field.mt20
+      = f.label '头像(224x224)：'
+      = f.file_field :avatar
+  - if @club.present?
+    .field
+        = f.label '已经上传的头像'
+        = image_tag @club.avatar.try(:url),:size => "112"
+  .field.mt20
+      = f.label 'Banner(1200x380)：'
+      = f.file_field :banner
+  - if @club.present?
+    .field
+        = f.label '已经上传的Banner'
+        = image_tag @club.banner.try(:url),:size => "600x190"
+  .field.mt20
+      = f.label '介绍：'
+      = cktext_area_tag("club[intro]", @club.try(:intro))
+  .field
+      = f.label '联系邮箱：'
+      = f.text_field :email
+  .field
+      = f.label '联系人'
+      = f.text_field :contact
+  .field
+      = f.label '联系电话'
+      = f.text_field :contact_phone
+  .actions = f.submit '保存'

@@ -1,0 +1,59 @@
+#playkt2-page.clearfix
+  - if params[:city].blank?
+    .bp.fl.relative
+      %ul#select1.absolute{:style => params[:country].present? ? "display: block;" : "display: none; "}
+        - Country.where(:kind => "country").each do |country|
+          %li
+            = link_to country.name,"/newhome/playkt?country=#{country.name}",class: params[:country] == country.name ? "active" : ""
+      = link_to image_tag("newhome/game/b01.jpg"),"javascript:;",class: "absolute none", id: "mask1", :style => params[:country].present? ? "display: none;" : "display: block; "
+
+
+    .bp.fl.ml10.relative
+      %ul#select2.absolute{:style => params[:country].present? ? "display: block;" : "display: none; "}
+        - Country.where(:parent => params[:country]).each do |city|
+          %li= link_to city.name,"/newhome/playkt?country=#{params[:country]}&city=#{city.name}",class: params[:city] == city.name ? "active" : ""
+      = link_to image_tag("newhome/game/b02.jpg"),"javascript:;",class: "absolute none", id: "mask1", :style => params[:country].present? ? "display: none;" : "display: block; "
+  - else
+
+    #games{style: "margin-left: -170px;"}
+      #games-a
+        .mt10.mb10
+          = link_to "返回","/newhome/playkt?country=#{params[:country]}",id: "return-btn"
+        - if @games.count.zero?
+          #nogame
+            无可用气场
+        - else
+          - @games.each_with_index do |game,index|
+            %a.game{href: "/games/show?id=#{game.id}"}
+              .gameback.absolute
+                - if game.avatar.file?
+                  = image_tag game.avatar.url,:size => "246x537"
+                - else
+                  = image_tag "newhome/game/game_default.jpg",:size => "246x537"
+              .gamename.absolute
+                = game.name || "默认名称"
+              .bag1.absolute
+                = image_tag "newhome/game/bag.png",width: "50%"
+              .gamedesc.absolute
+                .gameplace
+                  = game.place
+                .gamedate
+                  = game.time_start.strftime("%y.%m.%d") + " - " + game.time_end.strftime("%y.%m.%d")
+                .gametime
+                  = game.time_start.strftime("%H:%M") + " - " + game.time_end.strftime("%H:%M")
+              .bag2back.absolute.none
+              .bag2.absolute.none
+                = image_tag "newhome/game/bag.png"
+
+:coffeescript
+  $ ->
+    $("#mask1").click ->
+      $(this).hide()
+      $(this).prev().show()
+    $("body").on "mouseover","a.game", ->
+      $(this).find(".bag2").show()
+      $(this).find(".bag2back").show()
+    $("body").on "mouseout","a.game", ->
+      $(this).find(".bag2").hide()
+      $(this).find(".bag2back").hide()
+

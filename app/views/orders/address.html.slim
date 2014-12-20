@@ -1,0 +1,108 @@
+#games_rank_list.game_rank.word_container
+  h5 style='float:left' 米币兑换
+  br
+  = form_for( @order, :url => "/orders/exchange") do |f|
+    = f.hidden_field :gift_id,:value=>@gift.id 
+    - if @order.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+        ul
+          - @order.errors.full_messages.each do |message|
+            li = message
+    table  
+     tr
+      td = f.label '礼品:'
+      td = @gift.name
+      td = f.label '米币:'
+      td = @gift.scores
+     tr
+      td#err_msg colspan='4' style='color:red;'
+     tr
+      td = f.label '收货人:'
+      td colspan='3'
+         = f.text_field :receive_by, :placeholder=>'收货人姓名'
+     tr
+      td = f.label '手机号码:'
+      td colspan='3'
+         = f.text_field :phone, :placeholder=>'收货人手机号码'
+     tr
+      td = f.label "送货地址:"
+      td colspan='3'
+         = f.text_field :address, :placeholder=>'收货地址'
+     tr
+      td colspan='4'
+         = submit_tag "兑换",:class=>'submit_btn',:id=>'gift_exchange' 
+   
+ 
+javascript:
+  $(document).ready(function() {
+    $('#gift_exchange').click(function(e) {
+      window.location.href="javascript:void(0)";
+      //var flag=check_judge();
+      //if(flag!=1){
+       //  alert('只有裁判才可以积分兑换');
+       //  return false;
+      //}
+       var gift_id=$('#order_gift_id').val();
+       if(gift_id==""){ return false;}
+       var result= check_scores(gift_id);
+       if(result != 1){
+         $('#err_msg').html('当前有：'+result+'米币,不能兑换此礼品');
+         return false;
+       }
+       var phone=$('#order_phone').val();
+       //alert('phone=='+phone);
+       if(!(/^(1)\d{10}$/.test(phone))){
+          $('#err_msg').html(" 手机号码填错了?")
+          return false;
+       }       
+      
+      $("#new_order").submit();
+     // e.preventDefault();  
+      //return false;
+    });
+  });
+
+  function exchange(id){
+    //alert('-----'+id);
+    //flag = check_judge();
+    //alert('flag==='+flag);
+    //if(flag!=1){
+    //  alert('只有裁判才可以积分兑换');
+    //  return false;
+    //}
+    //result= check_scores(id);
+    //if(result != 1){
+    //  alert('当前有：'+result+'积分,不能兑换此礼品');
+     // return false;
+    //}
+    //alert('-----------');
+    window.location.href='/address/'+id;
+  } 
+  
+
+  function check_judge(){
+   var result=0; 
+    $.ajax({
+     type  : "get",
+     url   : "/check_identity",
+     async : false,
+     success : function(data){
+        result=data;
+     }
+    });
+    return result;
+  }  
+
+   function check_scores(gift_id){
+    var result=0; 
+     $.ajax({
+      type  : "get",
+      url   : "/check_scores/"+gift_id,
+      async : false,
+      success : function(data){
+        result=data;
+      }
+    });
+    return result;
+  }  

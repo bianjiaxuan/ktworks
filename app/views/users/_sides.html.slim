@@ -1,0 +1,49 @@
+- if flash[:updated]
+  p.notice 您已经成功修改个人资料
+
+
+.nav_mine
+  .icon_info
+    .icon_mine style="text-align:center"
+      - unless @user.profile.blank?
+        - if @user.profile.avatar_file_name.nil?
+          = image_tag "default_avatar.jpg"
+        - else
+          = image_tag "#{@user.profile.avatar.url(:medium)}"
+      - else
+        = image_tag "default_avatar.jpg"
+
+
+    - if current_user.nickname.length > 10
+      .nick_mine style="text-align:center; font-size: 13px;"
+        = "#{current_user.nickname}" "#{count_referee_score?}"
+    - else
+      .nick_mine style="text-align:center; "
+        = "#{current_user.nickname}" "#{count_referee_score?}"
+
+  .sub_mine
+    ul
+      li
+        = link_to '修改头像', profile_avatar_path
+      li
+        = link_to '编辑资料', profile_change_path
+      li
+        = link_to '对战记录', my_shows_path
+      li
+        = link_to '修改密码', edit_user_registration_path
+      li
+        = link_to '手机绑定', confirm_phone_path
+      /!li
+        /!= link_to '短信订阅', subscribe_sms_path
+      li
+        = link_to '我的战队',my_leagues_path
+      li
+        = link_to '邀请朋友', invite_path
+      / li
+      /   = link_to '个人积分', "/my_scores"
+  .qrcode style="margin-left: 0px; width: 210px; height: 210px;"
+    = image_tag user_qrcode_img_url(@user),size: "210",style: "top: 0; left: 0;"
+
+
+
+

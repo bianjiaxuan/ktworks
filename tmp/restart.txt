@@ -1,0 +1,4 @@
+You actually want to reload Passenger, 
+Create a tmp/restart.txt file under your Rails app root directory. 
+To reload, touch tmp/restart.txt.
+ Passenger will notice the file change and reload.

@@ -1,0 +1,32 @@
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+= javascript_include_tag "jquery"
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+
+
+#homepage2
+  .sectiontop
+    %a{class: "fancybox fancybox.iframe", href: "http://player.youku.com/player.php/sid/XNDYzMjM5NTY0/v.swf"}
+      = image_tag "newhome/2026/new/top.jpg"
+    = image_tag "newhome/2026/new/a01.png"
+    = image_tag "newhome/2026/new/a02.png"
+    = image_tag "newhome/2026/new/a03.jpg"
+    = image_tag "newhome/2026/new/a04.png"
+    = image_tag "newhome/2026/new/a05.png"
+    = image_tag "newhome/2026/new/a06.jpg"
+    = image_tag "newhome/2026/new/a07.png"
+    = image_tag "newhome/2026/new/a08.jpg"
+    = image_tag "newhome/2026/new/a09.jpg"
+    = image_tag "newhome/2026/new/a10.jpg"
+    = image_tag "newhome/2026/new/a11.jpg"
+
+
+:coffeescript
+  $ ->
+
+    $('.fancybox').fancybox(
+      padding : 0,
+      autoScale:true,
+      width:1000,
+      height:600,
+      openEffect: 'elastic'
+    )

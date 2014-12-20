@@ -1,0 +1,14 @@
+- if current_user.varified
+  p.alert 你已经验证过了，如需更换手机号码请重新提交。
+
+fieldset.devise.varified_code
+  legend 验证手机
+  = form_tag varify_phone_path, method: :post do
+    div
+      = label_tag "手机号："
+      = text_field_tag 'phone'
+    div
+      = check_box_tag 'has_subscribed_sms', 'yes', true
+      = label_tag "订阅KICK TEMPO街头足球PK赛比赛公告与咨询"
+    br/
+    = submit_tag '发送验证码', class: 'submit_btn'

@@ -1,0 +1,8 @@
+= link_to "返回相册", admin_album_path(@picture.album)
+|     |  
+= link_to '添加相册照片', new_admin_picture_path(params: { album: @picture.album.id })
+
+hr
+fieldset.devise
+  legend 更新图片
+  == render 'form'

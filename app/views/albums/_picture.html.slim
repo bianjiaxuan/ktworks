@@ -1,0 +1,4 @@
+= link_to (picture.weibo_link.blank? ? picture_path(picture) : picture.weibo_link), target: (picture.weibo_link ? '_blank' : '') do
+  .image-item.formregion
+    = image_tag picture.avatar.url(:middle)
+    .des = "#{picture.name}"

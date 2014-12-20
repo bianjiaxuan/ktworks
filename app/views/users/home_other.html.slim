@@ -1,0 +1,94 @@
+.nav_mine
+  .icon_info
+    .icon_mine style="text-align:center"
+      - unless @user.profile.blank?
+        - if @user.profile.avatar_file_name.nil?
+          = image_tag "default_avatar.jpg"
+        - else
+          = image_tag "#{@user.profile.avatar.url(:medium)}"
+      - else
+        = image_tag "default_avatar.jpg"
+
+    - if @user.nickname.length > 10
+      .nick_mine style="text-align:center; font-size: 13px;"
+        = "#{@user.nickname}"
+    - else 
+      .nick_mine style="text-align:center; "
+        = "#{@user.nickname}"
+
+
+  .other_info
+    .info
+      .position
+        - unless @user.profile.nil?
+          = "#{@user.profile.province} #{@user.profile.city}"
+
+
+
+      dl.gender
+        dt 性别：
+        dd 
+          - unless @user.profile.nil?
+            = @user.profile.gender
+          - else
+            = "暂无"
+
+      dl.birth
+        dt 生日：
+        dd 
+          - unless @user.profile.nil?
+            = @user.profile.birthday
+          - else
+            = "暂无"
+
+      dl.age
+        dt 球龄：
+        dd
+          - unless @user.profile.nil?
+            = @user.profile.football_age
+          - else
+            = "暂无"
+
+
+    .other_result
+      dl
+        dt 参赛
+        dd.num
+          = @user.showtimes
+
+        dd.word 场
+      dl
+        dt 获胜
+        dd.num
+          = @user.wins
+
+        dd.word 场
+      dl
+        dt 平局
+        dd.num
+          = @user.draws
+
+        dd.word 场
+.mine_content
+  .announcement
+    h3 参赛宣言
+    p style="margin-left: 15px;letter-spacing:2px; padding-top: 10px;"
+      - unless @user.profile.nil?
+        = @user.profile.manifesto
+      - else
+        = "暂无"
+
+    .info
+      h4 个人介绍
+      p style="font-size: 14px; margin-left: 15px;"
+        - unless @user.profile.nil?
+          = @user.profile.introduction
+        - else
+          = "暂无"
+
+
+  #games_rank_list.game_rank.word_container
+    h5 比赛积分
+    = render 'scores'
+
+div.clear

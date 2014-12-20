@@ -1,0 +1,9 @@
+-if game_vedio
+    .clear
+    | <input type="hidden" id="game_vedio_id" value="#{game_vedio.split("|")[0]}"/>
+    div align='center' valign='middle'
+
+         | <iframe height=498 width=510 src="#{game_vedio.split("|")[1]}" frameborder=0 allowfullscreen></iframe>
+         p  
+           =  GameVedio.game_record?(game_vedio.split("|")[0])  
+    .clear

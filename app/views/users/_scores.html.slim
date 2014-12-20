@@ -1,0 +1,42 @@
+table.game_ranks
+    tr.header
+      th.ranks 排名
+      th.avatar 头像
+      th.nickname 昵称
+      th.grade 等级
+      th.scores 积分
+
+      th.showtimes 参战
+      th.wins 胜
+      th.draws 平
+      th.loses 负
+    - @scores.each do |user|
+      tr.users class="#{(user == @user) ? 'current' : ''}"
+
+
+        td.ranks = user.rank
+
+        td.avatar
+          - unless user.profile.nil?
+            - unless user.profile.avatar_file_name.nil?
+              = image_tag "#{user.profile.avatar.url(:thumb)}",:size => "30x30"
+            - else
+              = image_tag 'default_small_avatar.jpg',:size => "30x30"
+          - else
+              = image_tag 'default_small_avatar.jpg',:size => "30x30"
+
+        td.nickname
+          - if user.nickname.length > 10
+            = link_to user.nickname, "/user/#{user.id}", :style => "color: darkOrange; font-size: 12px;"
+          - else
+            = link_to user.nickname, "/user/#{user.id}", :style => "color: darkOrange;"
+
+          = image_tag('vip.png') if user.is_in_vip_period
+
+        td.grade = user.grade
+        td.scores = user.scores
+
+        td.showtimes = user.showtimes
+        td.wins = user.wins
+        td.draws = user.draws
+        td.loses = user.loses

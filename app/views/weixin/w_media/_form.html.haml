@@ -1,0 +1,28 @@
+
+= stylesheet_link_tag 'lib/jquery-ui/jquery-ui-1.10.3.datepicker.min.css'
+= javascript_include_tag 'lib/jquery-ui/jquery-ui-1.10.3.datepicker.min.js'
+
+= f.input :name
+= f.input :is_title
+= f.input :sub_name
+
+= f.input :cover, as: :file, required: false
+- if resource.cover.present?
+  .control-group
+    %label &nbsp;
+    .input
+      = image_tag resource.cover.url,size: "128x80"
+
+= f.input :published_date,:as => :string, :input_html => { :class => "datepicker" }
+
+= f.input :content, :as => :kindeditor, :input_html => { width: "600px", :minWidth => "600px;", :height => "320px",:class => "post-text", :label => false, :required => true, :fontSizeTable => ['12px', '14px', '16px', '18px', '24px', '32px', '40px','48px','52px','56px','60px'],:allowImageRemote => false }
+
+= f.input :sort
+
+.mt10
+  = f.submit "提  交", class: "btn btn6"
+
+
+:coffeescript
+  $ ->
+    $(".datepicker").datepicker dateFormat: "yy-mm-dd"

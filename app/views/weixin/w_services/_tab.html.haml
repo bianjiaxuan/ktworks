@@ -1,0 +1,8 @@
+%ul.ul-hori
+  %li.mr10{class: action_name == "index" ? "active" : ""}
+    = link_to "基本设置",weixin_w_services_path
+  %li.mr10{class: action_name == "first_gz" ? "active" : ""}
+    = link_to "关注回复",first_gz_weixin_w_service_path(@w_service)
+  %li{class: action_name == "auto_reply" ? "active" : ""}
+    = link_to "自动回复",auto_reply_weixin_w_service_path(@w_service)
+%hr/

@@ -1,0 +1,78 @@
+- cities = Country.cities.map(&:name)
+= render "navigations"
+p style="background-color:red" 代理，裁判设置：设置起始日期，日期格式yyyy-MM-dd；取消：设置日期为空
+= form_tag admin_users_path, method: :get do
+  = label_tag '类型：'
+  = select_tag(:search_type, options_for_select([['Email', 'email'], ['昵称', 'nickname'], ['手机', 'phone'], ['会员', 'vip']], params[:search_type]))
+
+  = label_tag '关键字：'
+  = text_field_tag :keyword, params[:keyword]
+  = hidden_field_tag(:invitor_id, params[:invitor_id]) 
+  = check_box_tag(:order_invitor)
+  = label_tag(:order_invitor, "按邀请人数排序")
+  = submit_tag '搜索'
+  i 可部分匹配
+
+table
+  tr
+    th ID
+    th 邮箱
+    th 等级
+    th 得分
+    th 设置手机
+    th 设置角色
+    th 设置取消代理
+    th 设置取消裁判
+    th 邀请者
+    th 删除用户
+  - @users.each do |user|
+    tr
+      td
+        = link_to "id : #{user.id}", "/user/#{user.id}", :style => "color: darkOrange;"
+        p
+         = user.nickname
+        p
+          - if user.has_subscribed_sms
+            = link_to '取消短信', admin_users_cancel_subscribed_sms_path( user_id: user.id ), method: :post, confirm: "你确定要取消 #{user.nickname} 短信订阅？"
+          - else
+            = link_to '订阅短信', admin_users_confirm_subscribed_sms_path( user_id: user.id ), method: :post, confirm: "你确定要让 #{user.nickname} 短信订阅？"
+      td 
+        = text_field_tag(:email,user.email, :disabled => true,:size => 17)
+        p
+          - if user.is_in_vip_period
+            p
+             = "会员:"
+             = user.vip_desc.html_safe
+            p 
+             = link_to '取消', admin_users_cancelvip_path(:id => user.id), :confirm => "是否取消 #{user.nickname} 成为会员"
+          - else
+             = link_to '设置为会员', admin_users_setvip_path(:id => user.id)
+        
+      td = user.grade
+      td = user.scores
+      td
+        = form_tag admin_users_phone_path(user_id: user.id) do
+          p 
+           = text_field_tag(:phone,user.phone,:size=>12)
+          p
+           = select_tag(:city, options_for_select(cities,user.city) )
+          p 
+           = submit_tag '修改手机|城市', confirm: "确认修改用户 #{user.nickname} 的手机号|城市？"
+      
+      td  
+        p  
+         - if user.admin?
+             = button_to '取消管理员', admin_users_admin_path( user_id: user.id), method: :post
+         - else
+             = button_to '设置管理员', admin_users_admin_path( user_id: user.id), method: :post
+      td 
+         - if user.agent && user.agent_day?
+             p 还有#{user.remain_agent_day}天
+         = link_to '设置代理', admin_users_setagent_path(:id => user.id)    
+      td
+         - if user.is_judge && user.judge_day?
+             p 还有#{user.remain_judge_day}天
+         = link_to '设置裁判', admin_users_setjudge_path(:id => user.id)
+      td = user.invitor && link_to(user.invitor.nickname, admin_users_profile_path(id: user.invitor.id))
+      td = button_to '删除', admin_users_destroy_path( user_id: user.id ), method: :post, confirm: "你确定要删除用户 #{user.nickname} 么？"
+= paginate @users

@@ -1,0 +1,42 @@
+common: &common
+  weibo:
+    api_key: "1851967417"
+    api_secret: "5dcabfbd084d421a4e56837ba01a5ba0"
+    redirect_uri: "http://kicktempo.cn/users/auth/weibo/callback"
+  qq_connect:
+    api_key: "100372235"
+    api_secret: "8dc11f0a58cfdd01707715c04da23136"
+    redirect_uri: "http://kicktempo.cn/users/auth/qq_connect/callback"
+  renren:
+    api_key: "f10a8eabffc345fc92ace2dd53999d87"
+    api_secret: "138b21cacd29456b914d22ca2afb874e"
+    redirect_uri: "http://kicktempo.cn/users/auth/renren/callback"
+  youku:
+    api_key: "5570b4b24049e570"
+    api_secret: "c40bcc367334ef63e42ef4562b460e7f"
+    redirect_uri: "http://kicktempo.cn/users/auth/Youku/callback"
+  qrcode:
+    googleapis: "http://chart.googleapis.com/chart?cht=qr"
+production:
+  <<: *common
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+# Weibo:
+#   当前域名：kicktempo.cn
+#   App Key:
+#   1851967417
+#   App Secret:
+#   5dcabfbd084d421a4e56837ba01a5ba0
+# QQ:
+#   APP ID: 100372235
+#   KEY: 8dc11f0a58cfdd01707715c04da23136
+# Renren:
+#   应用ID：149495
+#   API Key：f10a8eabffc345fc92ace2dd53999d87
+#   Secret Key：138b21cacd29456b914d22ca2afb874e
+  

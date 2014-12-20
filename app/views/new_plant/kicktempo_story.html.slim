@@ -1,0 +1,17 @@
+#new_plant_stroy.scroll-pane.np-scroll-pane
+  - if current_user && current_user.admin
+    div style='width: 70%'
+      a[style='color: yellow;float: right;'
+        href=new_admin_article_path(params: { type: 'story' })
+        ]
+        h3 +添加文章
+
+  - if @recommend_arts
+    h2.np-gold 推荐故事
+    = render partial: 'artical', collection: @recommend_arts
+  h2.np-gold 所有故事
+  = render partial: 'artical', collection: @stroy_articlas
+  .clear
+  br
+  = paginate @stroy_articlas
+  

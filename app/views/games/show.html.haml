@@ -1,0 +1,89 @@
+#game-page
+  .game-page-warp.clearfix
+    #leftside.fl
+      .game-img
+        - if @game.avatar.file?
+          = image_tag @game.avatar.url,:size => "200x320"
+        - else
+          = image_tag "newhome/game/game_default.jpg",:size => "200x320"
+      .game-title
+        上海龙岩足球杯
+      .game-club
+        = @game.club.try(:name)
+      .game-place
+        = @game.place
+      .game-time
+        = @game.time_start.strftime("%y.%m.%d") + " - " + @game.time_end.strftime("%y.%m.%d")
+      .game-traffic
+        = raw @game.traffic_intro
+      .game-join
+        = link_to "参加","javascript:;",:class => "joingame"
+    #map.fl
+      - if @game.location.present?
+        %iframe{src: "http://api.map.baidu.com/staticimage?center=#{@game.location}&width=500&height=500&zoom=15&markers=#{@game.location}&markerStyles=-1,http://localhost:3000/assets/newhome/game/bag.png,-1,24,25", width: "500", height: "500"}
+      .game-back
+        = link_to "回去看活动","/newhome/playkt"
+  .relative
+    #games-block
+      #games-btns.clearfix
+        = link_to "想要参加","javascript:;",:class => "gamebtn1"
+        = link_to "请朋友来","javascript:;",:class => "gamebtn2"
+      .games-warp
+        .games-word
+        #game-list1.games-list.clearfix{style: "height: 84px; overflow: hidden;" }
+          - @game.users.each do |user|
+            .game.fl
+              .game-img
+                = link_to image_tag(user.avatar),"/my/info1v1?user_id=#{user.id}"
+              .game-title{style: "width: 64px; overflow: hidden;"}
+                = user.nickname
+        #game-list2.games-list.clearfix.none{style: "padding: 32px;"}
+          #item1.fl
+            输入好友手机号码
+          #item2.fl
+            %input#mobile{type: "text"}
+          #item3.fl
+            = link_to "发送","javascript:;",:class => "send"
+        .gamesbtn
+          = link_to "多人","javascript:;",:class => "more-btn",:id => "more-btn"
+
+:coffeescript
+  $ ->
+    mode = 0
+    gameid = "#{params[:id]}"
+    $(".joingame").click ->
+      if confirm("是否确认要参加？") == true
+        $.post "/games/join",{id: gameid}
+    $("body").on "click",".gamebtn1", ->
+      $("#game-list2").hide()
+      $("#game-list1").show()
+      $(".more-btn").show()
+    $("body").on "click",".gamebtn2", ->
+      $("#game-list2").show()
+      $("#game-list1").hide()
+      $(".more-btn").hide()
+    $("body").on "click",".send", ->
+      mobile = $("input#mobile").val()
+      if mobile is ''
+        alert "请输入手机号"
+      else
+        $.post "/games/invite",{mobile: mobile,gameid: gameid}
+
+    isShowMore = "#{ @game.users.count > 10 ? '1' : '0' }"
+    if isShowMore is '1'
+      $("body").on "click",".more-btn", ->
+        if mode is 0
+          $("#game-list1").css("height","auto")
+          $("#games-block").css("position","absolute").css("bottom","-278px")
+          $("#game-page").css("height","840px")
+          $("#games-btns").hide()
+          $(this).text("收起")
+          mode = 1
+        else
+          $("#game-list1").css("height","84px")
+          $("#games-block").css("position","")
+          $("#game-page").css("height","auto")
+          $("#games-btns").show()
+          $(this).text("多人")
+          mode = 0
+

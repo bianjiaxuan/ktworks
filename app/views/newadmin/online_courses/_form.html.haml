@@ -1,0 +1,34 @@
+= javascript_include_tag 'ckeditor/init'
+= f.input :name
+
+= f.input :cover, as: :file
+- if resource.cover.present?
+  .input
+    %label 已上传标题图
+    .fl
+      = image_tag resource.cover.url,:size => "64"
+
+= f.input :common_error, as: :text,:size => '100x3'
+= f.input :prepare, as: :text,:size => '100x3'
+= f.input :sjx, as: :text,:size => '100x3'
+= f.input :video, as: :text,:size => '100x3'
+
+.input
+  %label
+    比赛详细介绍
+  .fl
+    = f.input :course_images, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+.input
+  %label
+    比赛详细介绍
+  .fl
+    = f.input :gif_images, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+.mt20
+  = f.submit "提  交", class: "btn btn-primary"
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      $("#sidebar").css("height",$("#main-container").height())
+    ,2000
+

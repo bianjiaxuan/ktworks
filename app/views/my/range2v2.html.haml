@@ -1,0 +1,82 @@
+- if @league.blank?
+  :css
+    .range-warp ul.rangetabs li a { box-shadow: none; }
+
+= render "mymenu"
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  #leftside.fl
+    - if @league.blank?
+      = render "infomy"
+    - else
+      = render "myleague"
+  / .headwarp2v2
+  /   .teamimg
+  /     = image_tag "default_avatar.jpg",size: "250x160"
+  /   .member-avatar.clearfix.mt20
+  /     .member1.fl.ml30
+  /       = image_tag "default_avatar.jpg",size: "80x80"
+  /       %br/
+  /       Stanley_老姜KT
+  /     .member2.fl.ml30
+  /       = image_tag "default_avatar.jpg",size: "80x80"
+  /       %br/
+  /       Stanley_老姜KT
+  /   .select-team.mt20#select_league
+  /     %option 选择我的战队
+  /     - current_user.leagues.each do |_league|
+  /       %option{value: _league.id, selected: params[:league_id] == _league.id.to_s ? "selected" : ""}= _league.name
+  / %hr/
+  / / .username Stanley_老姜KT
+  / / %hr
+  / .score 2660
+  / %hr
+  / .countrysex.clearfix
+  /   .country.fl
+  /     = image_tag "newhome/country/china.jpg"
+  /   .sex.fl
+  /     = image_tag "newhome/se1.jpg"
+  /   .headrange.fl 3
+  / %hr/
+  / .inviteimg
+  /   = image_tag "newhome/invite.jpg"
+  / .invitebtn
+  /   = link_to image_tag("newhome/btn-invite.jpg")
+  / .qrcode
+  /   = image_tag("newhome/qrcode.jpg")
+  / %hr
+  #rightside.range-warp.fl
+    %ul.rangetabs.clearfix
+      %li.fl
+        = link_to "1v1","/my/range1v1",class: action_name == "range1v1" ? "active" : ""
+      %li.fl
+        = link_to "2v2","/my/range2v2",class: action_name == "range2v2" ? "active" : ""
+      %li.fl
+        = link_to "俱乐部","/my/rangeclub",class: action_name == "rangeclub" ? "active" : ""
+    %ul.range-list{style: "#{'background-color: rgb(241,241,241);' if @league.blank?}"}
+      - if @league.blank?
+        .mt200.ml80
+          = image_tag "newhome/noteam.jpg"
+      - else
+        - if @league_scores && @league_scores.length>0
+          - @league_scores.each_with_index do |league,index|
+            %li.clearfix
+              .range.fl
+                = index + 1
+              .teamimg.fl
+                - unless league.avatar_file_name.nil?
+                  = image_tag "#{league.avatar.url(:thumb)}",size: "128x74"
+                - else
+                  = image_tag "default_avatar.jpg",size: "128x74"
+
+              .headrange.fl{ style: "margin-left: -12px;" }
+                = league.grade
+              .username.fl
+                = league.name
+              .score.fl
+                = league.scores
+              .country.fl
+                = image_tag "newhome/country/china.jpg", size: "50x32"
+:coffeescript
+  $ ->
+    $("body").on "change","select#select_league", ->
+      window.location.href = "/my/range2v2?league_id=" + $(this).val()

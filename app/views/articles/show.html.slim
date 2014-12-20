@@ -1,0 +1,7 @@
+
+- @page_title = @article.title
+
+div#article-page
+  h5 = @article.title
+  div.scroll-pane.article-scroll-pane
+    =raw @article.content

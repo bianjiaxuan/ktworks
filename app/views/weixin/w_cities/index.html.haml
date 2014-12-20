@@ -1,0 +1,29 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+    %table.table1
+      %tr
+        %th 名称
+        %th 英文名称
+        %th 封面
+        %th 内容
+        %th 排序
+        %th 创建时间
+        %th 操作
+      - _collection = collection.order("sort asc").page(params[:page]).per(10)
+      - _collection.each_with_index do |_item|
+        %tr{ class: cycle('odd', 'even') }
+          %td= _item.name
+          %td= _item.ename
+          %td= image_tag _item.cover.url,:size => "128x80"
+          %td= truncate _item.content,length: 20
+          %td= _item.sort
+          %td= format_time _item.created_at
+          %td
+            = link_to '修改', edit_weixin_w_city_path(_item)
+            = link_to '删除', [:weixin, _item], method: :delete, data: { confirm: '你确定删除么？' }
+
+    = paginate _collection
+

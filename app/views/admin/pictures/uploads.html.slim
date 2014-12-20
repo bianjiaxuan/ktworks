@@ -1,0 +1,33 @@
+= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
+= javascript_tag "var UPLOAD_PATH = '#{save_uploads_pictures_path(params: { album: @album.id })}';"
+= javascript_tag "var SRCIPT_DATA = { _session_id : '#{cookies['_session_id']}', #{request_forgery_protection_token} : '#{ form_authenticity_token}' };"
+
+.album-des
+  h1.gold
+    = @album.name
+
+  = link_to admin_album_path(@album) do
+    = image_tag "#{@album.cover_url(:thumb)}"
+
+  = link_to '批量编辑新图片', multi_edit_admin_album_pictures_path(@album)
+
+#file_upload_1.uploadify style='height: 30px; width: 120px;'
+a href="javascript:$('#file_upload_1').uploadify('upload','*')" Upload Files
+
+javascript:
+  $(function() {
+    $("#file_upload_1").uploadify({
+      height        : 30,
+      swf           : '/uploadify.swf',
+      uploader      : UPLOAD_PATH,
+      width         : 120,
+      buttonText    : '选择图片',
+      fileObjName   : 'picture',
+      fileSizeLimit : '3MB',
+      auto          : false,
+      fileTypeExts  : '*.jpg; *.png; *.gif; *.bmp',
+      progressData  : 'speed',
+      formData      : { authenticity_token : AUTH_TOKEN },
+      scriptData    : SRCIPT_DATA
+    });
+  });

@@ -1,0 +1,75 @@
+$origreen: rgb(0,102,27);
+
+$green1: rgb(12,161,206);
+$green2: rgb(122,216,241);
+
+
+@mixin alpha($alpha) {
+  -khtml-opacity : $alpha / 100;
+  -moz-opacity   : $alpha / 100;
+  opacity        : $alpha / 100;
+  filter         : alpha(opacity=$alpha);
+}
+@mixin inlineLeft($align) { display:inline-block; *display: inline; vertical-align: $align; overflow: hidden; zoom:1; }
+
+@mixin bfont($size,$color) {
+    font-size: $size;
+    color: $color;
+}
+
+@mixin bdfont($size,$color) {
+  @include bfont($size,$color);
+  font-weight: bold;
+}
+
+@mixin ab($left,$top) {
+  position: absolute; top:$top; left:$left;
+}
+
+@mixin rab($right,$bottom) {
+  position: absolute; bottom:$bottom; right:$right;
+}
+
+@mixin abb($left,$top,$width,$height) {
+  @include ab($left,$top); width:$width; height: $height;
+}
+
+@mixin bg($width,$height,$url) {
+  display:block; border:0; background: url("/assets/" + $url) no-repeat; width:$width; height:$height;
+}
+
+@mixin bgscale($url) {
+  background-position: center center; background-size:cover;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/'+$url, sizingMethod='scale');
+}
+
+@mixin bgposition($x,$y) {
+  background-position: $x $y;
+}
+
+@mixin wh($w,$h) {
+  width:$w; height:$h;
+}
+@mixin mxy($x,$y) {
+  margin-left:$x; margin-top:$y;
+}
+@mixin pxy($x,$y){
+  padding-left:$x; padding-top:$y;
+}
+@mixin ptl($top,$left){
+  padding-top: $top; padding-left:$left;
+}
+
+@mixin readmore-btn {
+  @include bg(75px,26px,"readmore.png");
+}
+@mixin clearFix {
+  overflow: hidden; zoom:1;
+}
+@mixin fl($w) {
+  float:left; width:$w;
+}
+@mixin split-line1 {
+  width:94%; height:0px; border-top:1px solid #d1d1d1; border-bottom: 1px solid #efefef; margin: 6px 0px;
+
+}

@@ -1,0 +1,16 @@
+#new_plant_stroy.scroll-pane.np-scroll-pane
+  - if current_user && current_user.admin
+    div style='width: 70%'
+      a[style='color: yellow;float: right;'
+        href=new_admin_article_path(params: { type: 'news' })
+        ]
+        h3 +添加新闻
+
+  /*- if @recommend_arts*/
+  /*  h2.np-gold 推荐新闻*/
+  /*  = render partial: 'artical', collection: @recommend_arts*/
+  h2.np-gold 新闻
+  = render partial: 'artical', collection: @news_articlas
+  hr style='width: 70%; float:left'
+  .clear
+  = paginate @news_articlas

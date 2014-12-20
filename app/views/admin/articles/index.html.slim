@@ -1,0 +1,35 @@
+span() = link_to '新建页面', new_admin_article_path
+
+span(style="margin-left: 10px;") = link_to '页面列表', admin_articles_path
+
+= form_tag admin_articles_path, method: :get do
+  = label_tag '标题：'
+  = text_field_tag :title
+  = submit_tag '搜索'
+  i 可部分匹配
+
+table
+  tr
+    th ID / 编辑
+    th 
+    th 标题
+    th 用途
+    th 创建时间
+    th 删除
+  - @articles.each do |article|
+    tr
+      td 
+      	= article.id 
+      	= link_to '修改', edit_admin_article_path(article)
+      td
+        - if article.is_private
+          = link_to '私有', "/admin/articles/#{article.id}/set_visit"
+        - else
+          = link_to '公有', "/admin/articles/#{article.id}/set_visit"
+
+      td 
+      	= link_to article.title, article_path( article ), :target=> '_blank'
+      td = @translation[article.art_types]
+      td = article.created_at
+      td = link_to '删除', [:admin, article], confirm: '你确定删除么？', method: :delete
+= paginate @articles

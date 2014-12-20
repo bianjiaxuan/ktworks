@@ -1,0 +1,17 @@
+- if flash[:subscribed] && current_user.has_subscribed_sms
+  p.notice 您已经成功订阅短信公告
+- elsif flash[:subscribed] && !current_user.has_subscribed_sms
+  p.notice 您已经成功取消短信公告
+
+fieldset.devise.varified_code
+  legend 订阅手机短信
+  = form_tag varify_subscribe_sms_path, method: :post do
+    div
+      - if current_user.has_subscribed_sms
+        = check_box_tag 'has_subscribed_sms', 'yes', true
+      - else
+        = check_box_tag 'has_subscribed_sms', 'yes', false
+
+      = label_tag "订阅KICK TEMPO街头足球PK赛比赛公告与资讯"
+    br/
+    = submit_tag '确定', class: 'submit_btn'

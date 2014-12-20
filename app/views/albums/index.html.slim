@@ -1,0 +1,8 @@
+.albums-title
+  h1.np-gold 相册
+
+#albums-content
+  = render partial: 'album', collection: @albums
+
+  .clear
+  .yellow = paginate @albums

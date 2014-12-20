@@ -1,0 +1,7 @@
+= render "admin/users/navigations"
+h1 编辑俱乐部
+= link_to '显示', [:admin, @club]
+||
+= link_to '后退', admin_clubs_path
+
+== render 'form'

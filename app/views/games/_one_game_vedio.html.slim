@@ -1,0 +1,33 @@
+
+.clear
+| <input type="hidden" id="game_vedio_id" value="#{game_vedio.split("|")[0]}"/>
+div align='center' 
+     | <iframe height=498 width=510 src="#{game_vedio.split("|")[1]}" frameborder=0 allowfullscreen></iframe>
+     p  
+       =  GameVedio.game_record?(game_vedio.split("|")[0])  
+.clear
+.clear
+div align='center'
+  p.recommend
+   = recommend_gameUrl?(game_vedio.split("|")[0]).html_safe
+
+.clear
+    - if check_score?(game_vedio.split("|")[0]) 
+          div#referee-score align='center'
+            h5 style='float:center' 给裁判评分,一周内未评分，系统自动评5分
+            =form_tag('/games/scores_list', :method => 'get',:remote => true ) do |f|
+               table style='float:center'
+                 tr
+                   td 
+                      = radio_button("game_record","score",1)
+                      | 1 分
+                      = radio_button("game_record","score",2)
+                      | 2 分
+                      = radio_button("game_record","score",3)
+                      | 3 分
+                      = radio_button("game_record","score",4)
+                      | 4 分 
+                      = radio_button("game_record","score",5)
+                      | 5 分
+                      = submit_tag " 提 交",:remote => true,:id=> 'f-score',:class=>'btn'
+.clear

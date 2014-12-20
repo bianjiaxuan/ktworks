@@ -1,0 +1,58 @@
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+
+.font36.mt40.ml20
+  培训管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px;"}
+    = link_to "学员管理", newadmin_students_path,class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "教练管理", newadmin_coaches_path,class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "课程资料", newadmin_online_courses_path(:is_solve => 0),class: "grey9"
+#main-container-body
+  - if params[:keyword].present?
+    - _collection = collection.where("name LIKE ?","%#{params[:keyword]}%").page(params[:page]).per(6)
+  - else
+    - _collection = collection.page(params[:page]).per(6)
+  - _collection.each do |_item|
+    .list1.clearfix
+      .titleimg.fl
+        = image_tag _item.avatar(:thumb),size: "30"
+      .title.fl.ml20.clearfix
+        .font20.grey6
+          = _item.name
+        .mt10.font20.grey6
+          = _item.country
+      .btns.fr.mt6
+        %div
+          = link_to "编辑",edit_newadmin_student_path(_item),class: "btn1"
+        .mt10
+          = link_to "删除","#",class: "btn1"
+      .fr.mr100.clearfix
+        .font16.grey6
+          剩余课时：xx(共xx节)
+        .mt10.font20.grey6
+          XXX(球技等级)
+      .fr.mr150.clearfix
+        .font16
+          = link_to "上课记录", "#",class: "grey6"
+        .font16.mt10
+          = link_to "任务列表", "#",class: "grey6"
+
+
+  .clearfix.mt10
+    .fl
+      %form{action: "/newadmin/students"}
+        %input{type: "text", name: "keyword", placeholder: "搜索学员"}
+    .fr
+      = paginate _collection
+
+#main-container-info.absolute.clearfix
+  #info-left.fl.mt10
+    #line1.centerText
+      总学员：
+      = Student.count
+  #info-right.fl
+    = link_to image_tag("newadmin/new-btn.jpg"),new_newadmin_student_path
+

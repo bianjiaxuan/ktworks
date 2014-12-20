@@ -1,0 +1,456 @@
+@import "mixins.css.scss";
+
+a:hover { color: rgb(12,161,206); }
+
+span.title { color: #aaa; }
+
+form.form-horizontal {
+  .checkbox {margin-top: 0px;}
+  .radio+.radio, .checkbox+.checkbox{margin-top:0px;}
+
+  padding-bottom: 12px;
+  label { @include inlineLeft(top);  width: 90px; text-align: right; @include bfont(14px,#333); margin-right: 20px; color: #aaa; }
+  label.checkbox { margin-right: 10px; }
+  textarea.middle { width: 240px; height: 80px; padding: 8px; color: gery; width: 400px; border: 1px solid rgb(208,208,208); border-radius: 4px; }
+  .input {
+    @include inlineLeft(top);  margin-top: 10px;
+    .select {
+      @include inlineLeft(top); padding-right: 4px;
+    }
+    input.default {
+      height: 24px; line-height: 24px; border: 1px solid rgb(208,208,208); border-radius: 4px;
+      padding-left: 4px; color: gery; width: 400px;
+    }
+    input.check_boxes { margin-top: 0px; }
+    input[type=text_field],input[type=password] { @extend input.default;  }
+    input.string { @extend input.default; }
+    input.numeric { @extend input.default; color: grey; }
+    input[type=submit]{ @include bg(120px,40px,"btns/btn3.png"); }
+    button[type=submit]{ @include bg(120px,40px,"btns/btn3.png"); }
+    textarea { width: 240px; height: 80px; padding: 8px; color: gery; width: 400px; border: 1px solid rgb(208,208,208); border-radius: 4px;}
+    textarea.post-text { width: 480px; height: 120px; color: gery; }
+    label.collection_radio_buttons { text-align: center; vertical-align: middle;}
+    select { height: 26px; line-height: 26px; color: #666; border: 1px solid rgb(208,208,208); border-radius: 4px; font-size: 14px; }
+  }
+
+  .form-groups2 {
+    .label {
+      float: left;
+    }
+    .inputs {
+      float: left;
+      input { width: 180px; height: 40px; background-color: white; color: grey; font-size: 14px; padding-left: 8px;}
+    }
+  }
+}
+
+.icon-16 { width: 16px; height: 16px; }
+.icon1 {  background: url(/assets/icons/icona.png) 0px 0px no-repeat; @extend .icon-16; }
+.icon2 {  background: url(/assets/icons/icona.png) 0px -16px no-repeat; @extend .icon-16; }
+.icon3 {  background: url(/assets/icons/icona.png) 0px -32px no-repeat; @extend .icon-16; }
+.icon4 {  background: url(/assets/icons/icona.png) 0px -48px no-repeat; @extend .icon-16; }
+.icon5 {  background: url(/assets/icons/icona.png) 0px -64px no-repeat; @extend .icon-16; }
+.icon6 {  background: url(/assets/icons/icona.png) 0px -80px no-repeat; @extend .icon-16; }
+.icon7 {  background: url(/assets/icons/icona.png) 0px -96px no-repeat; @extend .icon-16; }
+.icon8 {  background: url(/assets/icons/icona.png) 0px -112px no-repeat; @extend .icon-16; }
+.icon9 {  background: url(/assets/icons/icona.png) 0px -128px no-repeat; @extend .icon-16; }
+.icon10 {  background: url(/assets/icons/icona.png) 0px -144px no-repeat; @extend .icon-16; }
+.icon11 {  background: url(/assets/icons/icona.png) 0px -160px no-repeat; @extend .icon-16; }
+.icon12 {  background: url(/assets/icons/icona.png) 0px -176px no-repeat; @extend .icon-16; }
+.icon13 {  background: url(/assets/icons/icona.png) 0px -192px no-repeat; @extend .icon-16; }
+.icon14 {  background: url(/assets/icons/icona.png) 0px -208px no-repeat; @extend .icon-16; }
+.icon15 {  background: url(/assets/icons/icona.png) 0px -224px no-repeat; @extend .icon-16; }
+.icon16 {  background: url(/assets/icons/icona.png) 0px -240px no-repeat; @extend .icon-16; }
+.icon17 {  background: url(/assets/icons/icona.png) 0px -256px no-repeat; @extend .icon-16; }
+.icon18 {  background: url(/assets/icons/icona.png) 0px -272px no-repeat; @extend .icon-16; }
+.icon19 {  background: url(/assets/icons/icona.png) 0px -288px no-repeat; @extend .icon-16; }
+.icon20 {  background: url(/assets/icons/icona.png) 0px -304px no-repeat; @extend .icon-16; }
+
+.icon21 {  background: url(/assets/icons/icona.png) 0px -320px no-repeat; @extend .icon-16; }
+.icon22 {  background: url(/assets/icons/icona.png) 0px -336px no-repeat; @extend .icon-16; }
+.icon23 {  background: url(/assets/icons/icona.png) 0px -352px no-repeat; @extend .icon-16; }
+.icon24 {  background: url(/assets/icons/icona.png) 0px -368px no-repeat; @extend .icon-16; }
+.icon25 {  background: url(/assets/icons/icona.png) 0px -384px no-repeat; @extend .icon-16; }
+.icon26 {  background: url(/assets/icons/icona.png) 0px -400px no-repeat; @extend .icon-16; }
+.icon27 {  background: url(/assets/icons/icona.png) 0px -416px no-repeat; @extend .icon-16; }
+.icon28 {  background: url(/assets/icons/icona.png) 0px -432px no-repeat; @extend .icon-16; }
+.icon29 {  background: url(/assets/icons/icona.png) 0px -448px no-repeat; @extend .icon-16; }
+.icon30 {  background: url(/assets/icons/icona.png) 0px -464px no-repeat; @extend .icon-16; }
+.icon31 {  background: url(/assets/icons/icona.png) 0px -480px no-repeat; @extend .icon-16; }
+.icon32 {  background: url(/assets/icons/icona.png) 0px -496px no-repeat; @extend .icon-16; }
+.icon33 {  background: url(/assets/icons/icona.png) 0px -512px no-repeat; @extend .icon-16; }
+.icon34 {  background: url(/assets/icons/icona.png) 0px -528px no-repeat; @extend .icon-16; }
+.icon35 {  background: url(/assets/icons/icona.png) 0px -544px no-repeat; @extend .icon-16; }
+.icon36 {  background: url(/assets/icons/icona.png) 0px -560px no-repeat; @extend .icon-16; }
+.icon37 {  background: url(/assets/icons/icona.png) 0px -576px no-repeat; @extend .icon-16; }
+.icon38 {  background: url(/assets/icons/icona.png) 0px -592px no-repeat; @extend .icon-16; }
+
+
+
+
+.sicon { @include bg(16px,16px,"icons2.png");  }
+.s1icon { @extend .sicon; background-position: 0px 0px; }
+.s2icon { @extend .sicon; background-position: 0px -17px; }
+.s3icon { @extend .sicon; background-position: 0px -32px; }
+.s4icon { @extend .sicon; background-position: 0px -49px; }
+.s5icon { @extend .sicon; background-position: 0px -64px; }
+.s6icon { @extend .sicon; background-position: 0px -80px; }
+.s7icon { @extend .sicon; background-position: 0px -96px; }
+.s8icon { @extend .sicon; background-position: 0px -112px; }
+.s9icon { @extend .sicon; background-position: 0px -128px; }
+.s10icon { @extend .sicon; background-position: 0px -141px; }
+.s11icon { @extend .sicon; background-position: 0px -160px; }
+.s12icon { @extend .sicon; background-position: 0px -176px; }
+.s13icon { @extend .sicon; background-position: 0px -192px; }
+.s14icon { @extend .sicon; background-position: 0px -208px; }
+.s15icon { @extend .sicon; background-position: 0px -220px; }
+.s16icon { @extend .sicon; background-position: 0px -240px; }
+.s17icon { @extend .sicon; background-position: 0px -252px; }
+.s18icon { @extend .sicon; background-position: 0px -272px; }
+.s19icon { @extend .sicon; background-position: 0px -286px; }
+.s20icon { @extend .sicon; background-position: 0px -302px; }
+
+.ss1icon { @extend .sicon; background-position: -16px 0px; }
+.ss2icon { @extend .sicon; background-position: -16px -17px; }
+.ss3icon { @extend .sicon; background-position: -16px -32px; }
+.ss4icon { @extend .sicon; background-position: -16px -49px; }
+.ss5icon { @extend .sicon; background-position: -16px -64px; }
+.ss6icon { @extend .sicon; background-position: -16px -80px; }
+.ss7icon { @extend .sicon; background-position: -16px -96px; }
+.ss8icon { @extend .sicon; background-position: -16px -112px; }
+.ss9icon { @extend .sicon; background-position: -16px -128px; }
+.ss10icon { @extend .sicon; background-position: -16px -141px; }
+.ss11icon { @extend .sicon; background-position: -16px -160px; }
+.ss12icon { @extend .sicon; background-position: -16px -176px; }
+.ss13icon { @extend .sicon; background-position: -16px -192px; }
+.ss14icon { @extend .sicon; background-position: -16px -208px; }
+.ss15icon { @extend .sicon; background-position: -16px -220px; }
+.ss16icon { @extend .sicon; background-position: -16px -240px; }
+.ss17icon { @extend .sicon; background-position: -16px -252px; }
+.ss18icon { @extend .sicon; background-position: -16px -272px; }
+.ss19icon { @extend .sicon; background-position: -16px -286px; }
+.ss20icon { @extend .sicon; background-position: -16px -302px; }
+
+.sss1icon { @extend .sicon; background-position: -32px 0px; }
+.sss2icon { @extend .sicon; background-position: -32px -17px; }
+.sss3icon { @extend .sicon; background-position: -32px -32px; }
+.sss4icon { @extend .sicon; background-position: -32px -49px; }
+.sss5icon { @extend .sicon; background-position: -32px -64px; }
+.sss6icon { @extend .sicon; background-position: -32px -80px; }
+.sss7icon { @extend .sicon; background-position: -32px -96px; }
+.sss8icon { @extend .sicon; background-position: -32px -112px; }
+.sss9icon { @extend .sicon; background-position: -32px -128px; }
+.sss10icon { @extend .sicon; background-position: -32px -141px; }
+.sss11icon { @extend .sicon; background-position: -32px -160px; }
+.sss12icon { @extend .sicon; background-position: -32px -176px; }
+.sss13icon { @extend .sicon; background-position: -32px -192px; }
+.sss14icon { @extend .sicon; background-position: -32px -208px; }
+.sss15icon { @extend .sicon; background-position: -32px -220px; }
+.sss16icon { @extend .sicon; background-position: -32px -240px; }
+.sss17icon { @extend .sicon; background-position: -32px -252px; }
+.sss18icon { @extend .sicon; background-position: -32px -272px; }
+.sss19icon { @extend .sicon; background-position: -32px -286px; }
+.sss20icon { @extend .sicon; background-position: -32px -302px; }
+
+
+.bicon { @include bg(32px,32px,"icons1.png");  }
+.b1icon { @extend .bicon; background-position: 0px 0px; }
+.b2icon { @extend .bicon; background-position: 0px -32px; }
+.b3icon { @extend .bicon; background-position: 0px -64px; }
+.b4icon { @extend .bicon; background-position: 0px -97px; }
+.b5icon { @extend .bicon; background-position: 0px -129px; }
+
+.arrow-default { background: url("/assets/arrow.png"); }
+.larrow1 { @extend .arrow-default; width: 8px; height: 15px; background-position: -8px -8px; }
+.rarrow1 { @extend .arrow-default; width: 16px; height: 8px; background-position: 0px -8px; }
+.tarrow1 { @extend .arrow-default; width: 15px; height: 8px; background-position: 0px 0px;  }
+.barrow1 { @extend .arrow-default; width: 15px; height: 8px; background-position: 0px -23px; }
+
+.larrow2 { @extend .arrow-default; width: 8px; height: 15px; background-position: -24px -8px; }
+.rarrow2 { @extend .arrow-default; width: 16px; height: 8px; background-position: -16px -8px; }
+.tarrow2 { @extend .arrow-default; width: 16px; height: 8px; background-position: -16px 0px;  }
+.barrow2 { @extend .arrow-default; width: 16px; height: 8px; background-position: -16px -23px; }
+
+.larrow3 { @extend .arrow-default; width: 8px; height: 15px; background-position: -40px -8px; }
+.rarrow3 { @extend .arrow-default; width: 16px; height: 8px; background-position: -32px -8px; }
+.tarrow3 { @extend .arrow-default; width: 16px; height: 8px; background-position: -32px 0px;  }
+.barrow3 { @extend .arrow-default; width: 16px; height: 8px; background-position: -32px -23px; }
+
+.moreicon { @include bg(35px,13px,"more1.png"); }
+
+ul.ul-hori {
+  @include clearFix;
+  li {
+    float: left; padding: 4px 8px;
+  }
+  li.active { background-color: yellow; }
+}
+
+.hori {
+  @include clearFix;
+  .hori-left { float: left;  }
+  .hori-center { float: left; }
+  .hori-right { float: left;  }
+}
+.hori-btn1 {
+  .hori-btn1-bg { @include bg(16px,32px,"btns/btn1.png"); display: inline-block;  }
+  .hori-left {  @extend .hori-btn1-bg;  background-position: 0px 0px; }
+  a.hori-center {
+    @include bg(16px,32px,"btns/btn1a.png");  background-position: 0px 0px; background-size: 1px 32px;
+    font-size: 14px; padding: 9px 0px; width: auto; color: white; background-repeat: repeat-x;
+  }
+  a.hori-center:hover { color: rgb(0,102,0); }
+  .hori-right { @extend .hori-btn1-bg;  background-position: -74px 0px; }
+}
+.hori-btn2 {
+  .hori-btn1-bg { @include bg(16px,32px,"btns/btn2.png"); display: inline-block;  }
+  .hori-left {  @extend .hori-btn1-bg;  background-position: 0px 0px; }
+  a.hori-center {
+    @extend .hori-btn1-bg;  background-position: -16px 0px; background-size: 1px 32px;
+    font-size: 14px; padding: 7px 0px; width: auto; color: white; background-repeat: repeat-x;
+  }
+  a.hori-center:hover { color: rgb(0,102,0); }
+  .hori-right { @extend .hori-btn1-bg;  background-position: -72px 0px; }
+}
+
+.row_nav_bar {
+  background-color: rgb(242,242,242); height: 52px; padding: 0px 24px;
+  a {
+    width: 96px; height: 32px; line-height: 32px; margin: 11px 10px 0px 10px; text-align: center;
+    display: block; float: left; @include bdfont(14px,#aaa);  border-radius: 4px;
+  }
+  a.active { background-color: rgb(100,172,228); color: white; }
+  a:hover { background-color: rgb(100,172,228); color: white; }
+
+  .row_nav {
+    display: block; position: relative; width: 100px; height: 46px; z-index: 100;
+    .row-nav-first-item {
+      a{ display:block; }
+    }
+  }
+}
+
+.navbar1 {
+  width: 100%; padding: 9px; background-color: rgb(247,247,247);
+  a { @include bfont(14px, #999); }
+}
+
+.help {
+  width: 100%; text-align: center; padding: 32px;
+  @include bdfont(18px,#888); background-color: #ffe; border: 1px solid #888;
+}
+
+
+
+.welcome { @include bdfont(24px,#033); height: 1.5em; line-height: 1.5em; margin: 20px;}
+.welcome2 { @include bdfont(16px,#00B1C1); padding-bottom: 16px; text-align: left;}
+
+.defaut_tabs {
+  @include clearFix();
+  a.tab {
+    @include inlineLeft(top);
+    background-color:#eee; border:1px solid grey;
+  }
+  a.tab:hover { background-color: white; };
+}
+
+.tags1 {
+  @include clearFix;
+  li {
+    float:left;
+    border: 1px solid rgb(250,250,250); width: 208px;
+    a { @include bfont(16px,#333);padding: 16px 0px; display: block; background-color: #eee; text-align: center;}
+    a:hover { background-color: #ddd; color: white; }
+  }
+}
+
+.tabs1 {
+  @extend .defaut_tabs;
+  a.tab {
+    @include bfont(14px,#666);
+    padding: 4px 10px; margin-right:12px;
+  }
+  margin-bottom: 12px;
+}
+
+.tabs2 {
+  @extend .defaut_tabs;
+  a.tab {
+    @include bfont(12px,#666); border: none; background: none;
+    margin-right:4px; padding: 4px 4px;
+  }
+  .active { border-bottom: 3px solid rgb(108,184,203); padding: 4px 4px 2px 4px; }
+  a.active { @extend .active; }
+  a:hover { @extend .active; }
+  margin-bottom: 0px;
+}
+
+.tabs3 {
+  @include clearFix; background-color: white;
+  a {
+    display: block; float: left; padding: 6px; @include bfont(12px,#999); background-color: rgb(247,247,247) ;
+  }
+  a:hover { color: white; background-color: $green1; }
+  a.active { color: white; background-color: $green1; }
+}
+
+.tabs4 {
+  a { border: 1px solid #aaa; padding: 4px 12px; background-color: rgb(250,250,249);  }
+  a.active { background-color: rgb(102,182,201); color: white; }
+  a:hover { background-color: rgb(102,182,201); color: white; }
+}
+
+.title-bar {
+  @include clearFix; padding: 4px; border-bottom: 2px solid rgb(223,223,223);
+  .title { float: left; @include bdfont(18px,#336666); margin-top: 4px;}
+  a { float: right; @include bg(100px,25px,"btns/new1.png"); text-align: center; color: white; line-height: 25px; }
+}
+
+.table1 {
+  text-align: left; margin-bottom:12px; margin-top:12px;
+  width: 100%;
+  tr {
+    th {
+      padding:8px 16px; @include bdfont(12px,#999);
+      background-color: rgb(247,247,247);
+    }
+    td {
+      padding:4px 8px;  @include bfont(12px,#999);
+      a { text-decoration: none; @include bfont(12px,#999); }
+      a.btn { border: 1px solid rgb(223,223,223); background-color: rgb(247,247,247); padding: 2px 8px; }
+    }
+  }
+  tr.cycle { background-color: rgb(247,247,247); }
+  tr.first { border: 1px solid rgb(234,234,234); }
+}
+
+.table2 {
+  @extend .table1;
+  border: none;
+  background-color: white;
+  tr {
+    border: none;
+    td {
+      border: none;
+      background-color: white;
+      span { color: #666; }
+    }
+  }
+  tr:hover { background-color : black; }
+}
+
+.dl1 {
+  dt { @include inlineLeft(top); text-align: right; }
+  dd { @include inlineLeft(top); text-align: left; }
+}
+
+.default-btn { width: 128px; @include bdfont(16px,white); border: none; }
+.btn1 { @extend .default-btn; background-color: rgb(236,73,83); }
+.btn2 { @extend .default-btn; background-color: rgb(108,184,203); }
+.btn3 { @extend .default-btn; background-color: $green1; border-radius: 2px;}
+.btn4 { @extend .default-btn; background-color: #ddd; border-radius: 2px; color: white;  }
+.btn5 {
+  font-size: 15px; border: none; background-color: rgb(61,132,234); text-align: center;
+  border-radius: 2px; border: 1px solid rgb(45,122,230); color: white; width: 76px; height: 32px;
+}
+.btn6 { @extend .default-btn; background-color: yellow; color: black; }
+.add-btn { @include bg(100px,25px,"btns/new1.png"); @include bfont(12px,white); text-align: center; line-height: 25px; }
+.btn3:hover { color: $green2; }
+.btn4:hover { color: white; cursor: default;}
+.btn5:hover { background-color: rgb(66,203,240); border-color: rgb(50,200,238); }
+.btna {
+  @extend .default-btn; background: url("/assets/btnbg/bg01.jpg") repeat-x; border-radius: 0px;
+}
+
+.dl-form {
+  @extend .dl1;
+  margin-top: 12px; height: 32px; line-height: 32px;
+  dt { width:64px;  @include bfont(14px, grey);}
+  dt.remember_me {
+    margin-top: 12px;
+  }
+  dd { text-align: left; padding-left: 12px;
+    .input-string { width: 200px; height: 28px; padding: 2px 8px; color: grey;}
+    input.email { @extend .input-string;  }
+    input.password { @extend .input-string; }
+  }
+}
+dl.submit {
+  margin-top: 24px;
+}
+
+input.ninput {
+  overflow: hidden; z-index: 9999;
+  border: 1px solid rgb(231,231,231); background-color: rgb(242,242,243); border-radius: 4px;
+  text-shadow: 2px 2px 5px #ccc; box-shadow:inset 1px 1px 3px #ccc;
+  @include clearFix;
+}
+input.ninput-lg { height: 48px; padding: 8px 16px; line-height: 48px; font-size: 22px; color: grey; width: 320px; padding-top: 0px\0; }
+input.ninput-mid { height: 40px; padding: 4px 8px; line-height: 40px; font-size: 15px; color: grey; width: 320px; padding-top: 0px\0; }
+input.ninput-default { height: 32px; padding: 5px 10px; line-height: 32px; font-size: 16px; color: grey; width: 320px; padding-top: 0px\0; }
+
+.num { padding: 0px; background-color: $green1; @include bfont(8px, white); }
+.num1 { @extend .num; background-color: rgb(254,52,5); }
+.num2 { @extend .num; background-color: rgb(254,102,5); }
+.num3 { @extend .num; background-color: rgb(254,152,5); }
+
+.titlebar1 {
+  padding: 2px 8px; border-top: 1px solid rgb(220,220,220);
+  border-bottom: 1px solid rgb(220,220,220); background-color: rgb(245,245,245);
+
+  @include bdfont(13px,#333);
+}
+
+.titlebar-default {
+  background-color: $green2; color: white; position: relative; height: 24px; line-height: 24px; @include clearFix;
+}
+.titlebar2 {
+  @extend .titlebar-default;
+  .titlebar-icon { float: left; margin-top: 5px; margin-left: 6px; }
+  .titlebar-title { float: left; padding-left: 16px;}
+  .titlebar-more { float: right;  margin-right: 6px;}
+}
+
+.sidebarlist {
+  ul {
+    margin-bottom: 4px; padding-left: 12px; padding-right: 12px;
+    li {
+      height: 20px; line-height: 20px;  border-bottom: 1px dotted #aaa;
+      dl{
+        dt { width: 18px; text-align: center; margin-top: 2px;}
+        dd { padding-left: 4px;  }
+      }
+      a { color: #5e5b5b;  }
+    }
+  }
+}
+
+
+table.posts {
+  width: 100%; font-size: 13px; color: #666; margin-top: 12px;
+  .tr-default { background-color: white; }
+  .tr-cycle { background-color: rgb(238,238,238) }
+  .tr-cycle2 { background-color: rgb(247,247,247) }
+  tr {
+    th { padding-bottom: 10px; font-size: 14px; padding: 10px 4px; a { color: rgb(6,102,10); } }
+    td { padding-top: 4px; padding-bottom: 4px;  a { color: rgb(6,102,10);} }
+    td.first { padding-left: 8px; }
+  }
+}
+
+.alert-danger {
+  padding: 6px; width: 100%; background-color: rgb(229,250,254); @include bfont(12px,#366);
+  margin-bottom: 20px;
+}
+.alert-info {
+  padding: 6px; width: 100%; background-color: rgb(229,250,254); @include bfont(12px,#366);
+  margin-bottom: 20px;
+}
+.alert-success {
+  padding: 6px; width: 100%; background-color: #dff0d8; @include bfont(12px,#366);
+  margin-bottom: 20px;
+}
+
+@import "module.css.scss";
+
+.red_font{color: red}

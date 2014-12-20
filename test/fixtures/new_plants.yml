@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  support_counter: 1
+  indentify: MyString
+
+two:
+  support_counter: 1
+  indentify: MyString

@@ -1,0 +1,38 @@
+= javascript_include_tag "jquery"
+
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/signup-bg.jpg",width: "100%"
+  .ktlogo-warp
+    .ktinput
+      %input#input-authcode{type: "text",placeholder: "验证码"}
+
+    .ktbtn1
+      = link_to image_tag("weixin/q/btn4.png",width: "33.6%"),"javascript:;", :id => "ok"
+
+    .ktbtn2
+      = link_to "收不到验证码?","javascript:;", :id => "getcode"
+
+    %form#send-authcode{action: request.url, method: "post"}
+      %input#authcode{type: :hidden, name: "authcode", value: ""}
+      %input#mobile{type: :hidden, name: "mobile", value: params[:mobile]}
+
+
+:coffeescript
+  $ ->
+    wx_id = "#{params[:wx_id]}"
+    mobile = "#{params[:mobile]}"
+
+    flash = "#{flash[:alert]}"
+
+    if flash isnt ""
+      alert flash
+
+
+    $("a#ok").click ->
+      authcode = $("input#input-authcode").val()
+      $("input#authcode").val(authcode)
+      $("form#send-authcode").submit()
+
+    $("a#getcode").click ->
+      $.get "/weixin/users/get_authcode?mobile="+mobile+"&wx_id="+wx_id

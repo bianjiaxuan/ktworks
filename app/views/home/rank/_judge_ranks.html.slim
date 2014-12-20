@@ -1,0 +1,29 @@
+#games_rank_list.game_rank.word_container
+  h5 style='float:left' 裁判积分榜
+  div#ranking-list
+    table.game_ranks
+       tr.header
+          th.ranks 排名
+          th.avatar 头像
+          th.nickname 昵称
+          th.scores 积分
+       - @judges.each_with_index do |j,index|
+        tr.users class="#{(j.user == current_user) ? 'current' : ''}"
+                td.ranks = index +1
+                td.avatar
+                  - unless j.user.profile.nil?
+                    - unless j.user.profile.avatar_file_name.nil?
+                      = image_tag "#{j.user.profile.avatar.url(:thumb)}"
+                    - else
+                      = image_tag('default_small_avatar.jpg')
+                  - else
+                      = image_tag('default_small_avatar.jpg')
+
+                td.nickname
+                  - if j.user.nickname.length > 10
+                    = link_to j.user.nickname, "/user/#{j.user_id}", :style => "color: darkOrange; font-size: 12px;"
+                  - else
+                    = link_to j.user.nickname, "/user/#{j.user_id}", :style => "color: darkOrange;"
+
+                td.scores = j.scores
+= paginate @judges

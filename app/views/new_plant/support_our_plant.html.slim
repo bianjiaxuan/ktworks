@@ -1,0 +1,72 @@
+.su-content
+  .su-item.img-0.clear
+    = image_tag 'sup/0.jpg'
+  .su-item.img-1
+    = link_to sign_up_path do
+      = image_tag 'sup/1.jpg'
+  #share-item.su-item.img-2
+    a class="jiathis_button_tsina"
+      = image_tag 'sup/2.jpg'
+    #share-content.formregion.jiathis_style_32x32
+      a class="jiathis_button_qzone"
+      a class="jiathis_button_tsina"
+      a class="jiathis_button_tqq"
+      a class="jiathis_button_renren"
+      a class="jiathis_button_kaixin001"
+      a class="jiathis_button_douban"
+      a class="jiathis_button_fb"
+      a class="jiathis_counter_style"
+
+  .su-item.img-3
+    = link_to album_path(@new_plant.other_a.to_s) do
+      = image_tag 'sup/3.jpg'
+  .su-item.img-4
+    = link_to "#{about_us_path}#donate" do
+      = image_tag 'sup/4.jpg'
+  .su-item.img-5
+    = link_to "#{about_us_path}#donate-school" do
+      = image_tag 'sup/5.jpg'
+  .clear
+
+
+/*<!-- JiaThis Button BEGIN -->*/
+javascript:
+  var jiathis_config={
+    title: " ",
+    summary: "中国足球到了最危险的时刻,对巴西热身赛踢成0比8,全方面发展数据不如日本.拯救中国足球刻不容缓,每个人都可以成为拯救国足的英雄.转发#2026计划#,聚集全民力量,引导全社会聚焦,让更多企业参与到充气式足球场捐赠,帮助解决校园足球发展无场地的困局http://v.youku.com/v_show/id_XNDYzMjM5NTY0.html",
+    hideMore:false
+  }
+
+script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"
+/*<!-- JiaThis Button END -->*/
+
+/*div style="margin-left: 20px"*/
+  h1.np-gold 
+    | 我该怎么做才能帮助到这一计划？
+
+  /*div.np-about-des*/
+    p.np-des
+      |1. 
+      a href=sign_up_path
+        '加入
+      |2016, 为中国足球添加一份属于你的力量吧！
+    div.np-des style='float:left'
+      '2. 分享这一计划，让更多人来加入吧！
+      /*<!-- JiaThis Button BEGIN -->*/
+    div class="jiathis_style" style='float:left;'
+      a class="jiathis_button_qzone"
+      a class="jiathis_button_tsina"
+      a class="jiathis_button_tqq"
+      a class="jiathis_button_renren"
+      a class="jiathis_button_kaixin001"
+      a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"
+      a class="jiathis_counter_style"
+    /*<!-- JiaThis Button END -->*/
+    .clear
+    p.np-des
+      |3. 给你所喜欢的明星、球星留言，希望他们能够关注这一计划。
+      = "(#{link_to '点击列表', ''})".html_safe
+    p.np-des
+      = "4. 捐赠气场给学校，让更多的孩子享受足球，您可以#{link_to('留下您的联系方式',about_us_path + "#donate")}, 或者#{link_to("直接联系我们",about_us_path + "#donate")}。".html_safe
+    p.np-des
+      = "5. 提供需要气场的学校的联系方式给我们，您可以#{link_to('留言',about_us_path + "#donate-school")},或者#{link_to("直接联系我们",about_us_path + "#donate")}。".html_safe

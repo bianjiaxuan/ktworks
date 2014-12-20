@@ -1,0 +1,17 @@
+- if params[:type] == "0"
+  %textarea.middle{name: "w_service[gz_reply_content]"}
+    = @w_service.gz_reply_content if @show_content
+- if params[:type] == "1"
+  %select{name: "w_service[gz_reply_content]"}
+    - Material.all.each do |_item|
+      %option{value: _item.id, selected: (@show_content && _item.id == @w_service.gz_reply_content.to_i) ? true : false}= _item.name
+
+- if params[:type] == "2"
+  %select{name: "w_service[gz_reply_content]"}
+    - MultipleMaterial.all.each do |_item|
+      %option{value: _item.id, selected: (@show_content && _item.id == @w_service.gz_reply_content.to_i) ? true : false}= _item.name
+
+- if params[:type] == "3"
+  %select{name: "w_service[gz_reply_content]"}
+    - AudioMaterial.all.each do |_item|
+      %option{value: _item.id, selected: (@show_content && _item.id == @w_service.gz_reply_content.to_i) ? true : false}= _item.name

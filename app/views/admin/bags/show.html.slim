@@ -1,0 +1,41 @@
+= render "navigations"
+p#notice = notice
+= link_to '编辑', edit_admin_bag_path(@bag)
+||
+= link_to '后退', admin_bags_path
+p
+  string 气场识别码:
+  = @bag.code
+p
+  string 气场名称:
+  = @bag.name
+p
+  string 气场链接:
+  = @bag.url
+p
+  string 俱乐部:
+  = @bag.club.nil? ? "": @bag.club.name
+p
+  string 二维码
+  .qrcode
+    = image_tag bag_qrcode_img_url(@bag)
+.clear
+
+- users = User.where(:binding_code => @bag.code)
+- _users = users.page(params[:page]).per(30)
+h2 共绑定#{users.count}个用户
+table.table.table1
+  tr
+    th 用户id
+    th 用户昵称
+    th 用户积分
+    th 用户排名
+    th 用户头像
+  - _users.each do |user|
+    tr
+      th= user.id
+      th= user.nickname
+      th= user.scores
+      th= user.rank
+      th= image_tag user.profile.try(:avatar,:thumb),:size => 32
+= paginate _users

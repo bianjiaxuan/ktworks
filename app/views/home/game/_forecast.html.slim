@@ -1,0 +1,12 @@
+div
+ fieldset.devise#game_lists
+   
+   div#games-list
+      table
+        - if @fgames.length==0
+          | 精彩比赛，敬请期待
+        else
+        - @fgames.each do |game|
+          tr 
+            td 
+             = gameUrl(game).html_safe

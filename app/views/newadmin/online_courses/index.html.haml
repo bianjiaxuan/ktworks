@@ -1,0 +1,49 @@
+= stylesheet_link_tag "lib/fancybox/jquery.fancybox.css"
+= javascript_include_tag "lib/fancybox/jquery.fancybox.js"
+
+.font36.mt40.ml20
+  培训管理
+#main-container-title.clearfix{style: "height: 92px;"}
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "学员管理", newadmin_students_path,class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px; border: none;"}
+    = link_to "教练管理", newadmin_coaches_path,class: "grey9"
+  %span.block.fl{style: "height: 48px; margin-top: 44px;"}
+    = link_to "课程资料", newadmin_online_courses_path(:is_solve => 0),class: "grey9"
+#main-container-body
+  - _collection = collection.page(params[:page]).per(6)
+  - _collection.each do |_item|
+    .list1.clearfix
+      .titleimg.fl
+        = image_tag _item.cover.url,size: "30"
+      .title.fl.ml20.mt10
+        = link_to (_item.name || "未命名"),newadmin_online_course_path(_item),target: "_blank",class: "grey3 font20"
+
+      .btns.fr.mt10
+        = link_to "> 视频",_item.video, class: "btn1 fancybox fancybox.iframe"
+      .fr.mt10.mr20
+        = link_to "编辑",edit_newadmin_online_course_path(_item),target: "_blank",class: "btn1"
+  = paginate _collection
+
+#main-container-info.absolute.clearfix
+  #info-left.fl.mt10
+    #line1.centerText
+      总课程：
+      = OnlineCourse.count
+  #info-right.fl
+    = link_to image_tag("newadmin/new-btn.jpg"),new_newadmin_online_course_path
+
+:coffeescript
+  $ ->
+    $("body").on "click",".view-game-applications", ->
+      _id = $(this).attr("data-id")
+      $.getJSON "/newadmin/games/"+_id+"/view_applications", (r)->
+        $.fancybox type: "inline", title: "参赛选手名单", content: r.content, width: "640", height: "480", titlePosition: "inside"
+
+    $('.fancybox').fancybox(
+      padding : 0,
+      autoScale:true,
+      width:1000,
+      height:600,
+      openEffect: 'elastic'
+    )

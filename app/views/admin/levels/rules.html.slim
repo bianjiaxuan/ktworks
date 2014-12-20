@@ -1,0 +1,13 @@
+table
+  tr
+    th 等级A
+    th 等级B
+    th 胜者得分
+    th 平场得分
+    
+  - @rules.each do |rule|
+    tr
+      td = rule.grade1
+      td = rule.grade2
+      td = rule.win_score
+      td = rule.draw_score

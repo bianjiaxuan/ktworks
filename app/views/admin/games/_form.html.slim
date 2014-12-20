@@ -1,0 +1,77 @@
+= javascript_include_tag 'ckeditor/init'
+= form_for [:admin, @game] do |f|
+  - if @game.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@game.errors.count, "error")} prohibited this game from being saved:"
+      ul
+        - @game.errors.full_messages.each do |message|
+          li = message
+  .field
+    = f.label "名称"
+    = f.text_field :name
+  .field
+    = f.label "所属俱乐部"
+    = f.select :club_id, Club.all.map { |club| [club.name,club.id] }, include_blank: false
+
+  .field
+    = f.label "URL"
+    = f.text_field :url
+    | 
+      必填项，例子：shanghai-midi-music-festival 或者 shanghai-midi-yinyuejie
+  .field
+    = f.label "Level"
+    = f.select(:priority, options_for_select((0..9).to_a, @game.priority) ) 
+    |  显示优先顺序，值高的靠前显示
+  .field
+    = f.label "国家"
+    = f.select(:country, options_for_select(Country.countries.map(&:name),@game.country))
+  .field
+    = f.label '城市'
+    = f.select(:city, options_for_select(Country.cities.map(&:name),@game.city) )
+  .field
+    = f.label "地点"
+    = f.text_field :place
+  .field
+    = f.label "经纬度"
+    = f.text_field :location
+    |  
+    = link_to "去百度地图获取经纬度","http://api.map.baidu.com/lbsapi/getpoint/index.html",:target => "_blank"
+
+
+  /!.field
+    /!= f.label '日期'
+    /!= f.date_select :date
+  .field
+    = f.label '开始时间'
+    = f.date_select :time_start
+  .field
+    = f.label '结束时间'
+    = f.date_select :time_end
+  .field
+    = f.label '图片'
+    = f.file_field :avatar
+  .field
+    = f.label "APP端:比赛详细介绍"
+    br
+    == f.text_area :introduction, :size => '100x3'
+  .field
+    = f.label "APP端:比赛交通说明"
+    br
+    = f.text_area :traffic_intro, :size => '100x3'
+  .field
+    = f.label "APP端:比赛周边信息介绍"
+    br
+    = f.text_area :arround_intro, :size => '100x3'
+  .field
+    = f.label "网站：比赛详细介绍"
+    br
+    = cktext_area_tag("game[site_introduction]", "#{@game.site_introduction}", :height => 150)
+  .field
+    = f.label "网站：比赛交通说明"
+    br
+    = cktext_area_tag("game[site_traffic]", "#{@game.site_traffic}", :height => 150)
+  .field
+    = f.label "网站：比赛周边信息介绍"
+    br
+    = cktext_area_tag("game[site_arround]", "#{@game.site_arround}", :height => 150)
+  .actions = f.submit '保存'

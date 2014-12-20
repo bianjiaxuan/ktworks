@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    创建课程
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource || OnlineCourse.new, url: newadmin_online_courses_path() do |f|
+    = render partial: "form", locals: { f: f, ftype: :new  }
+

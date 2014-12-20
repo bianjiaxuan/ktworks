@@ -1,0 +1,25 @@
+= link_to '新建新的信息条目', new_admin_info_url_path
+div align="center"
+    table
+      tr
+        th 用处
+        th 路径
+        th 题目
+        th 详细说明
+        th 链接
+        th
+        th
+        th
+
+      - @info_urls.each do |info_url|
+        tr
+          td = @translation[info_url.usage]
+          td = text_field_tag(:url,info_url.url, :disabled => true,:size => 25)
+          td = text_field_tag(:title,info_url.title, :disabled => true,:size => 9)
+          td = text_field_tag(:description,info_url.description, :disabled => true,:size => 35)
+          td = link_to '链接', info_url.article_link, :target=> '_blank'
+          td = link_to '显示', [:admin, info_url]
+          td = link_to '修改', edit_admin_info_url_path(info_url)
+          td = link_to '删除', [:admin, info_url], confirm: '你确定删除么？', method: :delete
+    = paginate @info_urls
+br

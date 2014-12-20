@@ -1,0 +1,65 @@
+= javascript_include_tag "jquery"
+
+.wq-background
+  .wq-background-img
+    = image_tag "weixin/q/sign_up_auth.jpg",width: "100%"
+  .ktlogo-warp
+    .ktinput
+      %input#input-mobile{type: "text",placeholder: "电话", value: flash[:mobile].present? ? flash[:mobile] : ""}
+    .ktinput2
+      %input#input-authcode{type: "text",placeholder: "输入验证码"}
+
+    .ktbtn1{ style: params[:mobile].present? ? "display: none;" : "" }
+      = link_to image_tag("weixin/q/btn2.png",width: "47.8%"),"javascript:;", :id => "getcode"
+    .ktbtn1#ok-btn{style: params[:mobile].present? ? "" : "display: none;"}
+      = link_to image_tag("weixin/q/btn4.png",width: "33.6%"),"javascript:;", :id => "ok"
+    .ktbtn2#isnt_receive_auth{style: params[:mobile].present? ? "" : "display: none;"}
+      = link_to "收不到验证码?","javascript:;", :id => "getcode2"
+
+    %form#signup-form{action: request.url, method: "post"}
+      %input#authcode{type: :hidden, name: "authcode", value: ""}
+      %input#mobile{type: :hidden, name: "mobile", value: ""}
+
+:coffeescript
+  $ ->
+    flash = "#{flash[:alert]}"
+
+    if flash isnt ""
+      alert flash
+
+    wx_id = "#{params[:wx_id]}"
+
+
+    $("a#getcode").click ->
+      $obj = $(this)
+      mobile = $("#input-mobile").val()
+
+      if mobile.length != 11 && mobile.length != 10 && mobile.length != 8
+        alert "请正确输入手机号"
+      else
+        $obj.hide()
+        $.get "/weixin/users/get_authcode?mobile="+mobile+"&wx_id="+wx_id, ->
+          $("#isnt_receive_auth").show()
+          $("#ok-btn").show()
+
+    $("a#getcode2").click ->
+      $obj = $(this)
+      mobile = $("#input-mobile").val()
+      if mobile.length != 11 && mobile.length != 10 && mobile.length != 8
+        alert "请正确输入手机号"
+      else
+        $obj.hide()
+        $.get "/weixin/users/get_authcode?mobile="+mobile+"&wx_id="+wx_id
+
+    $("a#ok").click ->
+      mobile = $("input#input-mobile").val()
+      authcode = $("input#input-authcode").val()
+
+      if mobile is "" || authcode is ""
+        alert "请输入手机或验证码"
+        return
+
+      $(this).hide()
+      $("input#mobile").val(mobile)
+      $("input#authcode").val(authcode)
+      $("form#signup-form").submit()

@@ -1,0 +1,25 @@
+.album-des
+  h1.gold
+    = @album.name
+
+  = link_to admin_album_path(@album) do
+    = image_tag "#{@album.cover_url(:thumb)}"
+
+= form_tag multi_update_admin_album_pictures_path(@album), :method => :post do
+  = hidden_field_tag('pids', @pids)
+  table
+    tr
+      th ID
+      th 图片
+      th 名称
+      th 微博链接
+      th 鼠标悬停提示
+    - @undetail_pictures.each do |picture|
+      tr
+        td = picture.id
+        td = image_tag "#{picture.avatar.url(:thumb)}"
+        td = text_field("album[#{picture}]", :name, value: picture.name)
+        td = text_field("album[#{picture}]", :weibo_link, value: picture.weibo_link ) 
+        td = text_field("album[#{picture}]", :weibo_tip, value: picture.weibo_tip)
+
+  = submit_tag("保存")

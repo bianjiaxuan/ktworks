@@ -1,0 +1,69 @@
+div style="overflow: hidden; zoom: 1;"
+  div style="float: left;"
+    p#notice = notice
+    = link_to '编辑', edit_admin_game_path(@game)
+    ||
+    = link_to '后退', admin_games_path
+    p
+      string 名称:
+      = @game.name
+    p
+      string 所属俱乐部:
+      = @game.club.try(:name)
+    p
+      string URL:
+      = @game.url
+    p
+      strong 国家：
+      = @game.country
+    p
+      strong 城市：
+      = @game.city
+    p
+      strong 地点：
+      = @game.place
+    p
+      strong 经纬度：
+      = @game.location
+    p
+      strong 开始时间：
+      = @game.time_start.strftime('%Y-%m-%d')
+    p
+      strong 结束时间：
+      = @game.time_end.strftime('%Y-%m-%d')
+    p
+      strong 比赛详细介绍：
+      br
+      = raw @game.site_introduction
+    .clear
+    p
+      strong 比赛交通说明：
+      br
+      = raw @game.site_traffic
+    .clear
+    p
+      strong 比赛周边信息介绍：
+      br
+      = raw @game.site_arround
+    .clear
+  / div style="float: left; margin-left:60px; margin-top: 30px; width: 640px; "
+  /   table style="width: 640px;"
+  /     tr
+  /       th ID
+  /       th 标题
+  /       th 积分
+  /       th 积分
+  /       th 积分
+  /       th 积分
+  /       th 积分
+  /       th 积分
+  /     - 10.times do
+  /       tr
+  /         td 123
+  /         td 456sfkljslkjfd
+  /         td 789sfkljjkfdsfs
+  /         td 789dsflkffs
+  /         td 789dlkfsdkklfsdkfl;
+  /         td 789fskljsjfsk
+  /         td 789flkfklkjlfsjksklj
+  /         td 789sfkldjfjsf

@@ -1,0 +1,19 @@
+# 活跃用户统计
+<% users.each do |user| %>
+<% until time0 < user.created_at %>
+<% time1=time0 %>
+<% user.rounds.each do |r| %>
+<% if time0 >r.created_at && time0-Weektime < r.created_at %>
+<% time0=time0-Weektime %>
+<% end %>
+<% end %>
+<% if time1==time0 %>
+	<% break %>
+	<% end %>
+	<% end %>
+	<% if time0 >user.created_at %>
+	<% user.week_active=0 %>
+	<% else %>
+	<% user.week_active=1 %>
+	<% end %>
+	<% end %>

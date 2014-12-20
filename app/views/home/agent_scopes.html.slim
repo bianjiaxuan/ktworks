@@ -1,0 +1,32 @@
+div id='plan_div' 
+    h2.np-gold style='margin: 0 0 10px 30px;' 布点城市
+
+    #map
+     = image_tag 'map.png'
+     = render partial: '/home/plan/province', :as => :user, collection: @agent_users
+
+
+    #school_lists.formregion
+      .loading.np-gold Loading
+      = render partial: 'shared/close_btn'
+      p.np-gold 代理球员统计
+      #citys.formregion
+      
+
+    .clear
+
+     #games_rank_list.game_rank.word_container
+      h5 style='float:left' 城市榜
+      div#ranking-list
+        table.game_ranks
+           tr.header
+              th.ranks 排名
+              th.city 城市
+              th.count 人数
+           - @users.each_with_index do |user,index|
+            tr.users 
+                 td.ranks = index +1
+                 td.city = user.city
+                 td.count = user.count
+.clear
+

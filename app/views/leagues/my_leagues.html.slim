@@ -1,0 +1,108 @@
+
+#games_rank_list.game_rank.word_container
+  div#notice_msg
+  = form_tag('/leagues/search_friends', :method => 'POST',:remote => true ) do |f|
+    table 
+     tr
+      td = text_field_tag 'name', nil,size: 35, placeholder: '输入队友昵称或Email....',style: 'background-color: rgb(250, 255, 189)'
+      td 
+        span
+         = submit_tag "找队友组战队",:remote => true,:id=> 'f-search',:class=>'btn'
+  div#ranking-list
+     =render :partial => 'friends_list' 
+.clear
+#games_rank_list.game_rank.word_container
+ h5 我的KT战队
+ table.game_ranks
+    tr.header
+      th 战队
+      th 图标
+      th 创立时间
+      th 球员A
+      th 球员B
+      th 状态
+      th 
+      
+    - @leagues && @leagues.each_with_index do |l,index|
+      tr.users
+        td = l.name
+        td.avatar
+            - unless l.avatar_file_name.nil?
+              = image_tag "#{l.avatar.url(:thumb)}"
+            - else
+              = image_tag('default_small_avatar.jpg')
+          
+        td = l.updated_at.strftime('%Y年%m月%d日')  
+        td 
+           - if current_user.id == l.usera.id  
+            p 我
+           - else
+            = link_to l.usera.nickname, "/user/#{l.usera.id}"
+        td 
+           - if current_user.id == l.userb.id  
+            p 我
+           - else
+            = link_to l.userb.nickname, "/user/#{l.userb.id}"
+        td 
+            - if current_user.id == l.usera.id && l.status == 2
+              p 等待队友同意
+            - elsif current_user.id == l.usera.id && l.status== 3
+              p 被队友忽视了
+            - elsif current_user.id == l.userb.id && l.status== 2 
+              = link_to "结盟 ", "leagues/accept/#{l.id}" 
+              = link_to " 无视", "leagues/ignore/#{l.id}"
+            - else
+              p 固定战盟
+        td = link_to '修改', edit_league_path(l)
+
+.clear
+
+javascript:
+  $(document).ready(function() {
+     $('#f-search').click(function(event) {
+        var name=$('#name').val();
+         if($.trim(name)===""){
+            event.preventDefault();
+            $('#notice_msg').html("我是Robot,请告诉我你想找谁呢？");
+            return;
+         }
+      });
+    
+   });
+  function invite_league(user){
+    if(invite_check(user)!=1){
+      $('#notice_msg').css("color","red");
+      $('#notice_msg').html("只能邀请未邀请过的其他队友组队");
+       return;
+    }
+    var result=0; 
+     $.ajax({
+      type  : "post",
+      url   : "/leagues/invite",
+      data  : {user_id:user},
+      async : false,
+      success : function(data){
+        if(data==1){
+           $('#notice_msg').css("color","green");
+           $('#notice_msg').html("已经成功发送组队邀请，请等待对方接受.");
+        }else{
+           $('#notice_msg').css("color","red");
+           $('#notice_msg').html("OOps....");
+          }
+      }
+    });
+  }
+
+  function invite_check(user){
+    var result=0; 
+     $.ajax({
+      type  : "get",
+      url   : "/leagues/invite_check",
+      data  : {user_id:user},
+      async : false,
+      success : function(data){
+        result = data;
+      }
+    });
+     return result;
+  }

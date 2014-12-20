@@ -1,0 +1,93 @@
+= javascript_include_tag "jquery"
+
+:css
+  img { margin: 0; padding: 0;}
+  li { margin: 0; padding: 0; }
+
+.user-profile-warp
+  .user-profile.relative
+    .scorebg1.absolute
+      = image_tag "weixin/scorebg1.jpg"
+    .user-avatar.absolute{ style: "width: 29.43%;" }
+      = image_tag @user.profile.present? && @user.profile.avatar.url == "/avatars/original/missing.png" ? "/assets/default_avatar.jpg" : @user.profile.avatar.url
+    .username.absolute
+      %div
+        = @user.nickname
+      .mt8
+        剩余场次：@user.vip_count
+
+    .user-scores.absolute
+      .user-scores-content
+        %table
+          %tr
+            %td.first= image_tag "weixin/score.png",:size=>"12x23"
+            %td.last= @user.scores
+
+    / .user-scores.absolute
+    /   .user-scores-content
+    /     .user-score1.absolute
+    /       .text
+    /         = @total
+    /     .user-score2.absolute
+    /       .text= @wins
+    /     .user-score3.absolute
+    /       .text= @loses
+
+
+
+    .other-user.absolute
+      - @scores.each do |user|
+        .other-users
+          .relative
+            .other-user1.absolute
+
+            .other-user2.absolute
+              - if user.profile.present?
+                - if user.profile.avatar.present?
+                  - if user.profile.avatar.url == "/avatars/original/missing.png"
+                    = image_tag "/assets/default_avatar.jpg"
+                  - else
+                    = image_tag user.profile.avatar.url
+                - else
+                  = image_tag "/assets/default_avatar.jpg"
+
+              - else
+                = image_tag "/assets/default_avatar.jpg"
+
+            .other-user3.absolute
+              .clearfix
+                .u1.fl
+                  %div{ style: "font-weight: bold; font-size: 16px;" }
+                    = truncate user.nickname, length: 8
+                  .mt2
+                    = user.rank
+                .u2.fl
+                  = user.scores
+            .other-user4.absolute
+              - if user.profile.country.blank? || !["中国","台湾","香港"].include?(user.profile.country)
+                = image_tag "country/中国.png",size: "42x26"
+              - else
+                = image_tag "country/#{user.profile.country}.png",size: "42x26"
+
+:coffeescript
+  $ ->
+    setTimeout ->
+      height = $(".user-avatar").height()
+      window_width = $(window).width()
+      window_height = $(window).height()
+      _title_height = $(".scorebg1").height()
+      _username_top = parseInt(_title_height * 0.665)
+
+      $(".username").css("top",_username_top+"px").css("left",window_width/2-$(".username").width()/2+"px")
+      $(".user-scores").css("top",height/2+"px").css("right",0)
+
+      $(".other-user").css("height",(window_height-_title_height)+"px").css("top",_title_height-10+"px")
+
+      _height = $(".other-user1").height()
+      $(".other-users").css("height",_height+"px")
+    ,200
+
+
+
+
+

@@ -1,0 +1,23 @@
+= render "tally_navigations"
+= form_tag admin_users_day_rounds_path, method: :get do
+  = label_tag '统计日期：'
+  = text_field_tag 'some_date',nil, placeholder: '统计日期',:readonly => true
+  = submit_tag '确定'
+
+table
+  tr
+    th ID
+    th 比赛次数
+    th 比赛人数
+    th 城市
+    th 场次
+    th 日期
+    
+  - @rounds.each_with_index do |r,index|
+    tr
+      td = index+1
+      td = r.round_count.to_i
+      td = r.user_count.to_i
+      td = r.game.city
+      td = r.game.place
+      td = r.game.date

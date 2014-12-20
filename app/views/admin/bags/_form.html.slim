@@ -1,0 +1,21 @@
+= form_for [:admin, @bag] do |f|
+  - if @bag.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@bag.errors.count, "error")} prohibited this bag from being saved:"
+      ul
+        - @bag.errors.full_messages.each do |message|
+          li = message
+  
+  .field
+    = f.label "气场识别："
+    = f.text_field :code
+  .field
+    = f.label "气场名称："
+    = f.text_field :name
+  .field
+    = f.label "气场链接："
+    = f.text_field :url
+  .field
+    =  " 俱 乐 部："
+    = f.select "club_id", options_from_collection_for_select(@clubs, "id", "name"), prompt: "选择俱乐部："
+  .actions = f.submit '保存'

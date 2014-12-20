@@ -1,0 +1,10 @@
+.admission
+  .box
+    = form_tag admin_admission_admit_path do
+      = label_tag "昵 称："
+      = text_field_tag 'nickname'
+      br/
+      = label_tag "验证码："
+      = text_field_tag 'varified_code'
+      br/
+      = submit_tag "验 证", class: 'submit_btn'

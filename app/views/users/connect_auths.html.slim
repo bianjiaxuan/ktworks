@@ -1,0 +1,23 @@
+fieldset.devise.varified_code
+  legend 关联第三方帐号
+
+  div
+    - if current_user.authentications.find_by_provider('weibo')
+      = "已关联#{omniauth_provider_to_cn(:weibo)}"
+    - else
+      = link_to "关联#{omniauth_provider_to_cn(:weibo)}", omniauth_authorize_path(current_user, :weibo)
+
+  br
+  div
+    - if current_user.authentications.find_by_provider('qq_connect')
+      = "已关联#{omniauth_provider_to_cn(:qq_connect)}"
+    - else
+      = link_to "关联#{omniauth_provider_to_cn(:qq_connect)}", omniauth_authorize_path(current_user, :qq_connect)
+
+  br
+  div
+    - if current_user.authentications.find_by_provider('renren')
+      = "已关联#{omniauth_provider_to_cn(:renren)}"
+    - else
+      = link_to "关联#{omniauth_provider_to_cn(:renren)}", omniauth_authorize_path(current_user, :renren)
+

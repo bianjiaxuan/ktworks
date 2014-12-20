@@ -1,0 +1,28 @@
+= link_to '所有用户', admin_users_path
+span style="padding-left: 20px;"
+  = link_to '代理', admin_users_agent_list_path
+span style="padding-left: 20px;"
+  = link_to '裁判', admin_users_judge_list_path
+span style="padding-left: 20px;"
+  = link_to '批量建用户', admin_users_new_path
+span style="padding-left: 20px;"
+  = link_to '俱乐部', admin_clubs_path
+
+span style="padding-left: 20px;"
+  /= link_to '已经短信订阅用户', admin_users_subscribed_sms_path
+  = link_to '统计', admin_users_tally_path
+
+span style="padding-left: 20px;"
+  = link_to '尚未短信订阅用户', admin_users_unsubscribed_sms_path
+
+
+span style="padding-left: 20px;"
+  = link_to '发送短信', admin_sms_new_path
+
+
+span style="padding-left: 20px;"
+  = link_to '发送记录', admin_sms_path
+
+- if false
+  span style="padding-left: 20px;"
+    = link_to '是范者排行',"/admin/users_score_tops"

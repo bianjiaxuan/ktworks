@@ -1,0 +1,9 @@
+
+#shows_container
+  h5 style='float:left' KT装备
+  - @gifts.each_with_index do |g|
+    .show
+        = link_to image_tag("#{g.images}", :size => "150x150", :alt => "#{g.name}"), g.url,:target=>"_blank"
+        .show_desc
+          /!/address/#{g.id}
+          pre = raw g.desc

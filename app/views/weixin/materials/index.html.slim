@@ -1,0 +1,32 @@
+.clearfix
+  .fl.w120
+    = render "shared/weixin_sidebar"
+  .fl.w860.ml20
+    = render "tab"
+
+    table.table1
+      tr
+        th 名称
+        th 预览图
+        / th 是否内容里显示预览图
+        th 摘要
+        th 链接类型
+        th 内容
+        th 创建时间
+        th 操作
+      - _collection = collection.order("updated_at desc").page(params[:page]).per(10)
+      - _collection.each do |item|
+        tr
+          td.pr10 = item.name
+          td = image_tag item.preview_img.url,:size => "120x80"
+          / td = item.preview_in_content ? "是" : "否"
+          td = truncate item.summary, :length => 10
+          td = item.link_type == "content" ? "显示内容" : "外部链接"
+          td = truncate strip_tags(item.content), :length => 15
+          td = format_time item.created_at
+          td.pr10
+            = link_to '修改', edit_weixin_material_path(item)
+            | &nbsp;
+            = link_to '删除', [:weixin, item], method: :delete, data: { confirm: '你确定删除么？' }
+
+    = paginate _collection

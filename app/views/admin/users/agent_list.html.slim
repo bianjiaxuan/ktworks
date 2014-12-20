@@ -1,0 +1,36 @@
+= render "navigations"
+
+table
+  tr
+    th ID
+    th 邮箱
+    th 昵称
+    th 手机
+    th 城市
+    th 设置区域码
+    th 代理时间
+    th 邀请人数
+    th 激活用户
+  - @agents.each do |user|
+    tr
+      td
+        = link_to user.id, admin_users_profile_path(id: user.id)
+        
+      td 
+        = text_field_tag(:email,user.email, :disabled => true,:size => 17)
+      td 
+        = user.nickname
+      td = user.phone
+      td = user.city
+      td
+        = form_tag admin_users_area_path(user_id: user.id) do
+          p 
+           = text_field_tag(:area,user.area,:size=>3,:placeholder=>'sh')
+           = submit_tag '修改', confirm: "确认修改代理商 #{user.nickname} 的区域码？"
+      
+      td = text_field_tag(:agent_day,user.agent_day.strftime("%Y-%m-%d"),:disabled => true,:size => 12) if user.agent_day
+         
+      td = user.get_inviter.invitees_count
+      td = user.get_inviter.lives_count
+      
+= paginate @agents

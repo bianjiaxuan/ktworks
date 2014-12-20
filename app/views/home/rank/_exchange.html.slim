@@ -1,0 +1,9 @@
+
+#shows_container
+  h5 style='float:left' 米币兑换
+  - @gifts and @gifts.each_with_index do |g|
+    .show
+        = link_to image_tag("#{g.images}", :size => "150x150", :alt => "#{g.name}"), g.url,:target=>"_blank"
+        .show_desc
+          | <a href="/address/#{g.id}"  target='_blank' style="color: #cccc00;font-size: 20px;" >兑换</a>
+             

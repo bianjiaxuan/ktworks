@@ -1,0 +1,15 @@
+= render "admin/users/navigations"
+p#notice = notice
+= link_to '编辑', edit_admin_club_path(@club)
+||
+= link_to '后退', admin_clubs_path
+p
+  string 名称:
+  = @club.name
+p
+  string 代理:
+  = @club.agency.nickname
+p
+  string 俱乐部Manager:
+  = @club.manager.nickname
+.clear

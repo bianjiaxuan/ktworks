@@ -1,0 +1,11 @@
+= render "navigations"
+
+
+= form_tag admin_users_path, method: :get do
+  = label_tag '类型：'
+  = select_tag(:search_type, options_for_select([['', ''], ['Email', 'email'], ['昵称', 'nickname'], ['手机', 'phone'], ['会员', 'vip']], params[:search_type]))
+
+  = label_tag '关键字：'
+  = text_field_tag :keyword, params[:keyword]
+  = submit_tag '搜索'
+  i 可部分匹配

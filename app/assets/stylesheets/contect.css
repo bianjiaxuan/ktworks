@@ -1,0 +1,112 @@
+.display-none {
+  display: none;
+}
+
+.formregion {
+    width: 620px;
+    float: left;
+    background-color:#141516;
+    background: rgba(0, 0, 0, .5);
+    border: 1px solid rgba(255, 255, 255, .02);
+    margin: 0 0 6px 50px;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    /* IE mess */
+position: relative;
+    behavior: url(css/PIE.htc);
+}
+#contactcontent h2 {
+    margin: 0 0 30px 0;
+}
+.formregion .texty {
+    width: 410px;
+    font-size: 16px;
+    color: #ddd;
+    background-color:#000;
+    background: rgba(000, 0, 0, .2);
+    border: 1px solid #222;
+    float:right;
+    box-shadow:inset 0 2px 6px #000000;
+}
+.formregion .texty:focus {
+    border: 1px solid #333;
+    background: rgba(000, 0, 0, .5);
+}
+.formregion .tk-ff-din-web-condensed {
+    font-size: 17px;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 0 #000;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    margin: 6px 0 0 30px;
+}
+.formregion input, 
+.formregion textarea {
+    margin: 0 30px 0 0;
+    padding: 2px 3px;
+}
+.formregion .sendit {
+    width: 165px;
+    height: 45px;
+    margin: 15px 28px 6px 0;
+    clear:both;
+    float: right;
+    background-image:url(send_btn.png);
+    background-repeat:no-repeat;
+}
+.formregion .sendit input {
+    color: #E7E6DF;
+    text-align: center;
+    width: 165px;
+    height: 45px;
+    padding: 6px 0 4px 0;
+    margin: 0;
+    vertical-align:bottom;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.formregion .sendit input:hover, 
+.formregion .sendit input:focus {
+    background-image:url(tapeContactSubmit.png);
+    background-repeat:no-repeat;
+}
+.contact #contactcontent ul li {
+    padding: 0 0 0 16px;
+    background-image: url(arraLink.png);
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+}
+.contact #headerinner {
+    background-image:url(postmark.png);
+    background-repeat:no-repeat;
+    background-position: 225px 70px;
+}
+
+.coltitle {
+    width: 300px;
+    color: #CECECE;
+    height: 26px;
+    margin: 34px 0 20px 80px;
+    background-image: url(coltitlebullet.png);
+    background-repeat:no-repeat;
+    background-position: 0 4px;
+    padding: 3px 0 0 20px;
+    text-shadow:8px 5px 4px #000000;
+    writing-mode: lr-tb;
+    -webkit-transform: rotate(350deg);
+    -moz-transform: rotate(350deg);
+    -o-transform: rotate(350deg);
+}
+.user-vedio {
+  float: left;
+  padding: 0 25px 15px;
+}
+.pagination {
+  margin-top: 30px;
+  text-align: center;
+}

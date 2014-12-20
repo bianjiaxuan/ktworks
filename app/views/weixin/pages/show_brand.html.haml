@@ -1,0 +1,25 @@
+= javascript_include_tag "jquery"
+
+:css
+  body { background-color: rgb(48,48,48); }
+  .content {
+   color: white; line-height: 1.3em; width: 100%;
+  }
+  .content img { height: auto; width: 100%; }
+
+= image_tag @brand.logo.url,class: "title-img full-width", style: "border-top: 4px solid yellow;"
+
+.content{style: "overflow-y: scroll; overflow-x: auto;"}
+  %div{style: "padding: 12px;"}
+    = raw @brand.content
+
+
+:coffeescript
+  $ ->
+    _img_height = $("img.title-img").height()
+    _height = $(window).height()
+
+    $(".content").css("height",(_height-_img_height)+"px")
+
+    $(".content img").each (index,img)->
+      $(img).css("width","100%")

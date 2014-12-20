@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    新增学员
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource || Student.new, url: newadmin_students_path() do |f|
+    = render partial: "form", locals: { f: f, ftype: :new  }
+

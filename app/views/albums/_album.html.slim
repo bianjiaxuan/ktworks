@@ -1,0 +1,4 @@
+= link_to album_path(album) do
+  .image-item.formregion
+    = image_tag album.cover_url(:middle)
+    .des = "#{album.name}  (#{album.pictures.count}张)"

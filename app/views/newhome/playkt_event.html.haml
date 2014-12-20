@@ -1,0 +1,16 @@
+#playkt-page.clearfix
+  #leftside.fl
+    .games-title
+      上海龙岩足球杯
+    .games-warp
+      .games-word 想要参加
+      .games-list.clearfix
+        - 30.times do |n|
+          .game.fl
+            .game-img
+            .game-title
+              奶油先生
+      .gamesbtn
+        = link_to "取消","#"
+  #map.fr
+    = image_tag "newhome/gamemap.jpg"

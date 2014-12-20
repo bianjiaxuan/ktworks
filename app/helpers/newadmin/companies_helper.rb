@@ -1,0 +1,2 @@
+module Newadmin::CompaniesHelper
+end

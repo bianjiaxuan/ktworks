@@ -1,0 +1,47 @@
+= render "mymenu"
+#rangebattle-page.clearfix{style: "height: 1200px;"}
+  #leftside.fl
+    = render "infomy"
+  #rightside.fl
+    %ul.headmenu.clearfix
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "俱乐部","/my/infomyclub?user_id=#{params[:user_id]}",class: action_name == "infomyclub" ? "active" : ""
+        - else
+          = link_to "俱乐部","/my/infomyclub",class: action_name == "infomyclub" ? "active" : ""
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "2v2","/my/info2v2?user_id=#{params[:user_id]}",class: action_name == "info2v2" ? "active" : ""
+        - else
+          = link_to "2v2","/my/info2v2",class: action_name == "info2v2" ? "active" : ""
+      %li.fr
+        - if params[:user_id].present?
+          = link_to "1v1","/my/info1v1?user_id=#{params[:user_id]}",class: action_name == "info1v1" ? "active" : ""
+        - else
+          = link_to "1v1","/my/info1v1",class: action_name == "info1v1" ? "active" : ""
+    .rigngteaminfo
+      - if @user.clubs.count > 0
+        - club = @user.clubs.first
+        .clubname.mt20{style: "font-size: 40px;"}= club.name
+        .level.relative{style: "margin-top: 96px;"}
+          .levelname.absolute{style: "left:0;"} 俱乐部会员
+          .levelnum.absolute 3
+          .levelbarback.absolute
+          .levelbar.absolute
+          .levelscore.absolute
+            = club.members.count
+            会员
+        .level.relative{style: "margin-top: 64px;"}
+          .levelname.absolute 赛事
+          .levelnum.absolute 3
+          .levelbarback.absolute
+          .levelbar.absolute
+          .levelscore.absolute
+            = club.games.count
+            比赛
+      - else
+        .mt200.ml80
+          = image_tag "newhome/noclub.jpg"
+
+
+

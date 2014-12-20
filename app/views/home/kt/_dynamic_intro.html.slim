@@ -1,0 +1,18 @@
+#shows_container
+  - @shows && @shows.each do |show|
+    .show
+      - if show.article_link.blank?
+        = image_tag("#{show.url}", :size => "150x150", :alt => "#{show.title}")
+      
+        .show_title
+          h5 = show.title
+        .show_desc
+          pre = show.description
+          
+      - else
+        = link_to image_tag("#{show.url}", :size => "150x150", :alt => "#{show.title}"), show.article_link,:target=>"_blank"
+        .show_title
+          h5 = link_to show.title, show.article_link, :style => 'color: #CCCC00;font-weight:bold;',:target=>"_blank"
+        .show_desc
+          pre = link_to show.description, show.article_link,:target=>"_blank"
+  .clear

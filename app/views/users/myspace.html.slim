@@ -1,0 +1,10 @@
+.personal_infos
+
+.game_rank.word_container
+  h5 比赛积分
+  = render 'scores'
+.word_container
+  h5 近期比赛
+  .word_box
+    - @announces.each do |announce|
+      .word_item = announce.description

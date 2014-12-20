@@ -1,0 +1,111 @@
+//= require global
+//= require base
+//= require uploadify
+
+@import "compass/css3"
+
+.red
+  color: red
+
+.border_frame
+  padding: 10px
+  border: 1px solid
+
+.clear
+  clear: both
+
+.notice
+  color: black
+  background: #3f8
+.alert
+  color: black
+  background: #f66
+
+table
+  border-collapse: collapse
+table,th, td
+  border: black solid 1px
+
+body
+  background: #fff
+  width: 1000px
+  margin: 10px auto
+  font-size: 16px
+  line-height: 20px
+
+header
+  .logo, nav, .status
+    float: left
+    padding: 5px
+  // .status
+    // margin-top: 80px
+  nav
+    margin-top: 0px
+    a
+      color: #222
+      padding: 10px
+    a.true
+      background: #e8e8e8
+      border-bottom: yellow solid 3px
+
+
+
+.border
+  height: 20px
+  background: yellow
+  border-top: #000 solid 2px
+
+.admission
+  width: 960px
+  height: 800px
+  margin: 10px auto
+  padding: 200px 0
+  background: black url('admin_background.jpg') no-repeat
+  .box
+    color: #ee3
+    font-size: 24px
+    font-weight: bold
+    line-height: 22px
+    text-align: center
+    margin: 0 auto
+    width: 350px
+    padding: 24px
+    background: rgba(0,0,0,0.6)
+    +box-shadow(black 5px 5px 10px)
+    +text-shadow(black 1px 1px 10px)
+    input
+      margin: 2px
+      height: 24px
+      width: 200px
+      border: black solid 1px
+    .submit_btn, .next
+      display: block
+      width: 140px
+      height: 35px
+      color: white
+      font-size: 22px
+      font-weight: bold
+      margin: 0 auto
+      margin-top: 20px
+      border: none
+      background: url(save_btn.png) no-repeat
+    .number
+      color: white
+      background: rgba(0,0,0,0.6)
+      padding: 10px
+      margin: 20px
+    .next
+      padding: 5px
+      a
+        color: white
+        text-decoration: none
+
+.album-des
+  border-bottom: gray solid 1px
+  margin-bottom: 10px
+  h1, img
+    display: inline-block
+    margin: 10px
+.album-show-handle
+  a
+    margin-right: 10px

@@ -1,0 +1,36 @@
+= javascript_include_tag 'ckeditor/init'
+= form_for [:admin, @info_url] do |f|
+  - if @info_url.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@info_url.errors.count, "error")} prohibited this info_url from being saved:"
+      ul
+        - @info_url.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :usage
+    = f.select :usage, [['', '']] + @selects, selected: f.object.usage
+  .field
+    = f.label "Level"
+    = f.select(:priority, options_for_select((0..9).to_a, @info_url.priority) ) 
+    |  显示优先顺序，值高的靠前显示
+  .field
+    = f.label "显示/隐藏"
+    = f.select(:status, options_for_select({"显示"=>true,"隐藏"=>false}, @info_url.status) ) 
+  .field
+    = f.label '资源图片'
+    = f.text_field :url
+  .field
+    = f.label '标题'
+    = f.text_field :title
+  .field
+    = f.label '描述'
+  .field
+    = cktext_area_tag("info_url[description]", "#{@info_url.description}", :height => 100)
+    
+    
+  .field
+    = f.label '文章链接'
+    = f.text_field :article_link
+    
+  .actions = f.submit '保存'

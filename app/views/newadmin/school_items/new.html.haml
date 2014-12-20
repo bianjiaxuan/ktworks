@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    创建学校
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource || SchoolItem.new, url: newadmin_school_items_path() do |f|
+    = render partial: "form", locals: { f: f, ftype: :new  }
+

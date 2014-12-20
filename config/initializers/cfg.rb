@@ -1,0 +1,1 @@
+HOME_URL = Rails.env.development? ? "localhost:3000" : "114.215.179.58"

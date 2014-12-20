@@ -1,0 +1,27 @@
+css:
+  .profile_field {
+    margin-bottom: 20px;
+  }
+
+- unless flash[:error].nil?
+  p.alert= flash[:error]
+
+
+
+fieldset.devise.avatar
+    div style="margin-bottom: 15px; font-size: 16px; font-weight:bold;"
+      = "当前头像:"
+
+    div.profile_field
+      - @game_albums.each do |album|
+        - unless album.face_file_name.nil?
+          span style="margin-right: 15px;"
+            = image_tag album.face.url(:s800)
+
+          span style="margin-right: 15px;"
+            = image_tag album.face.url(:normal)
+
+          span
+            = image_tag album.face.url(:original)
+
+

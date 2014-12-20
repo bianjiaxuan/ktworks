@@ -1,0 +1,1062 @@
+body { background-color: rgb(30,30,30); }
+
+input.text1{ 
+  width: 320px; border:none; background-color: white; color: #555; font-size: 16px; 
+  padding: 6px 12px; 
+}
+
+input.text2{ 
+  width: 320px; border:none; background-color: white; color: #555; font-size: 12px; 
+  border: 1px solid rgb(235,210,47);
+  padding: 16px 22px; 
+}
+
+
+textarea.textarea1 {
+  width: 320px; height: 160px; padding: 6px 12px; background-color: white; color: #555; 
+  font-size: 16px; border: none;
+}
+
+.button1 {
+  background:none; border: none; background-color: rgb(235,210,47); font-size: 20px; color: white;
+  width: 344px; padding: 12px;
+}
+
+.button2 {
+  background:none; border: none; background-color: rgb(254,242,144); font-size: 20px; color: #444;
+  width: 344px; padding: 12px;
+}
+
+.rigngteaminfo {
+  width: 518px; height: 707px; background-color: rgb(241,241,241); border-radius: 10px;
+  box-shadow: 0px 1px 1px 1px #bbb; margin-left: 40px; margin-top: 32px;
+  padding: 25px;
+  .level {
+    width: 500px; height: 176px; color: #444;
+    .levelname { font-size: 30px; top: 0; left: 40px;  }
+    .levelnum {
+      left: 0; top: 16px;
+      width: 120px; height: 72px; border-radius: 60px; border: 2px solid white; background-color: rgb(33,180,223);
+      text-align: center; font-size: 48px; color: white; padding-top: 48px;
+      box-shadow: 2px 0px 2px 2px #666; margin-top: 16px; margin-left: 8px; z-index: 2;
+    }
+    .levelbarback {
+      width: 390px; height: 48px; z-index: 0; left: 123px; top: 62px;
+      border: 2px solid rgb(150,150,150); background-color: rgb(51,51,51); 
+    }
+    .levelbar {
+      width: 190px; height: 48px; z-index: 1; left: 123px; top: 62px;
+      border: 2px solid rgb(200,231,146); background-color: rgb(140,195,71); 
+    }
+    .levelscore {
+      top: 131px; left: 392px;
+      color: #444; font-size: 18px;
+    }
+  }
+  .games {
+    width: 500px; height: 220px; color: #444; margin-top: 64px;
+    .gamename { font-size: 30px; top: 0; left: 230px; }
+    .levelnum {
+      left: 193px; top: 16px;
+      width: 120px; height: 72px; border-radius: 60px; border: 2px solid white; background-color: rgb(234,209,47);
+      text-align: center; font-size: 48px; color: black; padding-top: 48px;
+      box-shadow: 2px 0px 2px 2px #666; margin-top: 16px; margin-left: 8px; z-index: 2;
+    }
+    .levelbar1 {
+      width: 200px; height: 48px; z-index: 1; right: 290px; top: 62px;
+      border: 2px solid rgb(200,231,146); background-color: rgb(140,195,71); 
+    }
+    .levelbar2 {
+      width: 80px; height: 48px; z-index: 1; left: 317px; top: 62px;
+      border: 2px solid rgb(244,168,141); background-color: rgb(252,99,40);
+    }
+    .win{ left: 0; top: 5px; font-size: 20px; line-height: 1.3em; }
+    .lost{ right: 0; top: 5px; font-size: 20px; line-height: 1.3em;text-align: right;}
+    .draw{ left: 247px; top: 160px; font-size: 20px; line-height: 1.3em;text-align: center;}
+    .winrate { color: #68962E; font-size: 22px; left: 0; top: 122px; }
+    .lostrate { color: rgb(252,99,40); font-size: 22px; right: 0; top: 122px;}
+
+  }
+  .allkt {
+    width: 500px; height: 164px; margin-top: 64px;
+    .ktname{
+      font-size: 30px; top: 0; left: 196px;
+    }
+    .ktnum{
+      left: 193px; top: 16px;
+      width: 120px; height: 72px; border-radius: 60px; border: 2px solid white; background-color: black;
+      text-align: center; font-size: 48px; color: rgb(239,209,47); padding-top: 48px;
+      box-shadow: 2px 0px 2px 2px #666; margin-top: 16px; margin-left: 8px; z-index: 2;
+    }
+    .ktbar1{
+      width: 200px; height: 48px; z-index: 1; right: 290px; top: 62px;
+      border: 2px solid rgb(200,231,146); background-color: rgb(140,195,71); 
+    }
+    .ktbar2{
+      width: 80px; height: 48px; z-index: 1; left: 317px; top: 62px;
+      border: 2px solid rgb(244,168,141); background-color: rgb(252,99,40);
+    }
+    .win{ left: 0; top: 32px; font-size: 20px; line-height: 1.3em; }
+    .lost{ right: 0; top: 32px; font-size: 20px; line-height: 1.3em;text-align: right;}
+    .winrate { color: #68962E; font-size: 22px; left: 0; top: 122px; }
+    .lostrate { color: rgb(252,99,40); font-size: 22px; right: 0; top: 122px;}
+
+  }
+}
+
+.range-warp {
+  margin-left: 64px; margin-top: 40px;
+  ul.rangetabs {
+    margin-left: 48px;
+    li {
+      a { 
+        display: block; padding: 12px 20px ; background-color: rgb(254,236,79); 
+        color: white; text-shadow: 2px 2px 2px #333; font-size: 24px; width: 110px;
+        border-radius: 8px 8px 0px 0px; box-shadow: 0px 1px 4px 2px #333;
+      }
+      a:hover,a.active { background-color: rgb(61,61,61); }
+
+    }
+  }
+  ul.range-list {
+    width: 554px; height: 892px; background-color: rgb(61,61,61); border-radius: 6px;
+    padding: 8px; overflow-y: auto;
+    li {
+      height: 84px; margin-bottom: 8px; background-color: rgb(237,238,237);
+      border-left: 8px solid rgb(178,178,178); border-top: 4px solid rgb(178,178,178);
+      .common-font{ font-size: 22px; margin-top: 34px; margin-left: 12px; }
+      .range{
+        margin-top: 8px; margin-left: 2px; color: #444; font-size: 28px; width: 32px;
+      }
+      .region { @extend .common-font; width: 48px; }
+      .club { @extend .common-font; width: 180px; }
+      .members{ @extend .common-font; width: 64px; }
+      .members-word{ @extend .common-font; width: 64px; }
+      .headimg{
+        img{ border: 2px solid yellow; border-radius: 37px; margin-top: 4px; margin-left: 8px;} 
+      }
+      .teamimg{
+        img{ margin-top: 6px; margin-left: 8px;} 
+      }
+
+
+      .headrange{
+        width: 48px; height: 32px; border-radius: 24px; border: 2px solid white; background-color: rgb(33,180,223);
+        text-align: center; font-size: 24px; color: white; padding-top: 16px;
+        box-shadow: 2px 0px 2px 2px #666; margin-top: 16px; margin-left: 8px;
+      }
+      .username {
+        @extend .common-font; width: 160px;
+      }
+      .score {
+        font-size: 22px; margin-top: 32px; margin-left: 12px; width: 80px;
+      }
+      .sex { margin-top: 22px; }
+      .country { margin-top: 22px; margin-left: 12px; }
+    }
+    li:hover { background-color: rgb(254,204,64); }
+  }
+}
+
+#header{
+  margin: 0 auto;
+  width: 1200px;
+  height: 160px;
+  background-color: rgb(30,30,30);
+
+  .logo{
+    margin-top: 12px;
+  }
+
+  .headermenu{
+    margin-left: 140px; margin-top: 118px; margin-right: 32px;
+    ul{
+      li{ 
+        margin-right: 24px;
+        a { color: white;  font-size: 20px; }
+        a:hover { color: yellow; }
+        a.active { color: yellow; }
+      }
+    }
+  }
+
+  .header-right{
+    margin-left: 0px; margin-top: 95px;
+    .item{ 
+      margin-right: 14px; 
+      img { border-radius: 21px; }
+    }
+    .last{
+      margin-top: -8px;
+    }
+    .lastword {
+      margin-top: 12px;
+      a { color: white;  font-size: 20px; }
+    }
+  }
+  .headeruser{
+    right: 46px; top: 16px;
+    img{ float: left; }
+    a{ color: rgb(234,209,47); font-size: 18px; float: left; margin-left: 12px; margin-top: 18px;}
+
+    #usermailercount{
+      left: 37px; top: 5px; padding: 2px; width: 12px; color: white; background-color: red; border-radius: 8px;
+    }
+  }
+  form.searchbar { 
+    right: 0; top: 102px;
+    input { 
+      width: 218px; height: 32px; border: 1px solid rgb(234,209,46); 
+      background-color: rgb(204,204,204); line-height: 32px; color: grey;
+      margin-bottom: 70px; margin-left: 10px; padding-left: 12px; font-size: 14px;
+    } 
+  }
+  #search-result {
+    right: 0; top: 127px; width: 207px; height: 200px; overflow-y: auto; border: 1px solid rgb(234,209,46);
+    padding: 12px 12px 12px 12px; background-color: rgb(247,247,247);
+    .search-line {
+      padding: 6px 0px; border-bottom: 1px solid #aaa;
+      a { color: grey; }
+    }
+  }
+}
+
+#footer {
+  margin: 0 auto; width: 1200px; height: 190px; background-color: rgb(30,30,30); overflow: hidden; zomm: 1;
+  .footlogo{ margin-top: 56px; margin-left: 206px; }
+  .footline{ margin-top: 40px; }
+  .footlinks { 
+    margin-top: 41px;
+    a { line-height: 30px; height: 30px; font-size: 16px; color: #333; } 
+  }
+  ul.footlinks1{ 
+    margin-left: 30px; a { color: rgb(234,209,46); } }
+  ul.footlinks2{ 
+    margin-left: 70px; a { color: rgb(234,209,46); } }
+  .copyright { color: #666; font-size: 14px; margin-left: 26px; letter-spacing: 0.1em;}
+}
+.content{ margin: 0 auto; width: 1200px;  }
+
+#news{
+  margin: 0 auto; width: 1200px; background-color: white;
+  #news-banner-warp{
+    height: 460px;
+    #news-banner{
+      width: 820px; height: 460px;
+      #maskback{
+        left:0; bottom: 40px; width: 520px; height: 88px; opacity: 0.5; background-color: black; z-index: 10;
+      }
+      #masktitle{
+        left:0; bottom: 6px; width: 520px; height: 88px; z-index: 20; color: white; font-size: 24px; text-align: center;
+      }
+      #titlearrow{
+        right: 0; bottom: 170px;
+      }
+    }
+
+    #news-body{
+      width: 380px; height: 460px;
+      #mews-block{
+        height: 188px; background-color: rgb(160,160,160); border-top: 2px solid white; border-left: 2px solid white;
+      }
+      #news-content{
+        color: #555;
+        height: 226px; background-color: white; padding: 20px 12px; border-top: 2px solid rgb(235,210,47); 
+        border-bottom: 2px solid rgb(235,210,47); margin-right: -1px;
+        #news-title-line{
+          #news-title{
+            font-size: 18px;
+            a { color: #555;}
+          }
+          #new-createdat{
+
+          }
+        }
+        #news-intro{
+          margin-top: 20px; line-height: 1.5em; letter-spacing: 0.1em; font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .news-line{
+    .news-date{
+      width: 300px; color: rgb(235,210,47); font-size: 26px;
+      .news-date-bar{ height: 40px; border-bottom: 3px solid rgb(204,204,204); }
+      .news-date-month{margin-top: 35px; margin-left: 35px;}
+      .news-date-year{margin-top: 20px; margin-left: 35px;}
+      .news-arrow {margin-top: -42px; margin-left: 216px;}
+    }
+    .news-content-warp{
+      width: 900px;
+      .news-content{
+        width: 297px;
+        border: 1px solid rgb(204,204,204);
+
+        .news_tags{
+          height:10px;
+          padding: 15px 25px; color: rgb(235,210,47);
+
+        }
+        .news-img{
+          img{}
+        }
+
+        .news-content-info{
+          height: 180px;
+
+          .news-created_at{
+            padding-top: 47px; padding-left: 28px; color: rgb(235,210,47);
+          }
+          .news-intro{
+            margin-top: 32px; margin-left: 28px; width: 260px; height: 60px; line-height: 1.5em;
+            letter-spacing: 0.1em;
+          }
+          .news-see-all{
+            margin-left: 200px;
+            a{ color: grey; }
+          }
+        }
+      }
+      .news-content-last{ border-right: 2px solid rgb(204,204,204); }
+    }
+  }
+}
+
+#news-detail{
+  margin: 0 auto; width: 1200px; background-color: rgb(128,128,128);
+  #news-detail-left{
+    width: 300px; background-color: white;
+    .news_tags{
+      height:10px; background-color: rgb(235,210,47);
+      padding: 15px 25px; color: white;
+
+    }
+    .news-img{
+      img{}
+    }
+
+    .news-content-info{
+      height: 180px;
+
+      .news-created_at{
+        padding-top: 47px; padding-left: 28px; color: rgb(235,210,47);
+      }
+      .news-intro{
+        margin-top: 32px; margin-left: 28px; width: 260px; height: 60px; line-height: 1.5em;
+        letter-spacing: 0.1em;
+      }
+      .news-see-all{
+        margin-left: 236px;
+        a{ color: grey; }
+      }
+    }
+  }
+  #news-detail-right{
+    width: 897px; background-color: white; border-left: 1px solid rgb(202,202,202);
+    #news-detail-top{
+      margin-top: 70px; padding: 0px 50px;
+
+      a { color: rgb(202,202,202); font-size: 18px; }
+
+    }
+    #news-detail-createdat{
+      margin-top: 40px; color: rgb(235,210,47); padding-left: 50px;
+    }
+    #news-detail-title{
+      color: grey; font-size: 30px; margin-top: 32px; margin-left: 50px;
+    }
+    #news-detail-content{
+      padding: 30px 50px 20px 50px; border-bottom: 2px solid rgb(202,202,202);
+    }
+    #news-detail-bottom{
+      padding: 20px 50px 40px 50px;
+      #news-detail-bottom-line1{
+
+      }
+
+      #news-detail-bottom-line2{
+
+      }
+      span {color: rgb(235,210,47); ;}
+    }
+  }
+}
+
+#showclub{
+  #clubcity{
+
+  }
+  #clublogo{
+    background-color: rgb(204,204,204); padding: 32px 0px;
+    .img{ 
+      img{width: 220px; height: 220px; border: 2px solid yellow; border-radius: 110px; box-shadow: 0px 1px 9px 3px rgb(255, 216, 61);}
+    }
+    .name{ font-size: 32px; color: grey; margin-top: 32px;}
+  }
+  #bags{
+    background-color: rgb(241,241,241); 
+    #bagwarp{
+      width: 864px; margin: 0 auto; border-bottom: 2px solid grey; padding-top: 16px; padding-bottom: 52px;
+      .bagtab{
+        overflow: hidden; zoom:1; padding-top: 12px;
+        a{
+          display: block; float: right;
+          padding: 10px 18px; background-color: rgb(254,230,66); color: #444; font-size: 18px;
+          margin-right: 64px; border-radius: 6px 6px 0px 0px; box-shadow: 0px 1px 9px 1px #666;
+        }
+      }
+      .bagtop{
+        height: 20px; background-color: rgb(42,42,42); border-radius: 6px 6px 0px 0px;
+      }
+      .baglist{
+        padding: 35px; background-color: rgb(128,128,128); 
+        border-top: 10px solid rgb(102,102,102);
+        .bag{
+          margin-right: 10px; margin-left: 10px; margin-bottom: 20px;
+          .bagimg{ text-align: center; }
+          .bagnum{ text-align: center; color: white; font-size: 14px; margin-top: 4px;}
+        }
+      }
+      .bagbottom{
+         background-color: rgb(54,54,54); border-radius: 0px 0px 6px 6px;
+        padding: 12px 0px; overflow: hidden; zoom: 1;
+        a { 
+          display: block; text-align: right; margin-right: 40px; display: block; float: right;
+          padding: 8px 16px; background-color: rgb(254,230,66); color: #444; font-size: 18px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+  #about{
+    background-color: rgb(204,204,204); 
+    #aboutwarp{
+      width: 864px; margin: 0 auto; border-bottom: 2px solid grey; padding-top: 16px; padding-bottom: 52px;
+      #aboutname{
+        font-size: 84px; color: #333; margin-top: 80px;
+      }
+      #aboutdesc{
+        margin-top: 60px; font-size: 18px; color: #666; line-height: 1.5em;
+      }
+    }
+
+  }
+  #contact{
+    background-color: rgb(241,241,241);
+    #contactwarp{
+      width: 864px; margin: 0 auto; border-bottom: 2px solid grey; padding-top: 16px; padding-bottom: 52px;
+      #contactname{
+        font-size: 84px; color: #333; margin-top: 80px;
+      }
+      #contactimg{ margin: 80px 0px 48px 0px; }
+      #contactclub{ font-size: 32px; color: #444; }
+      #clubaddress{
+        font-size: 16px; margin-top: 20px; line-height: 2em;
+      }
+    }
+  }
+}
+
+
+#homepage2{
+  background-color: rgb(242,243,238);
+  .sectionbody-c { width: 1006px; margin: 0 auto;  height: 500px;}
+  .sectiontop{
+    img{margin-bottom: -2px; padding: 0;}
+  }
+  .section1{
+    img {border: 1px solid rgb(242,243,238);}
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 128px;
+      .slides { margin-top: 0px; }
+    }
+  }
+  .section2{
+    height: 800px; background-color: rgb(248,248,240); 
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 128px; height: 670px;
+      .title{ text-align: center; font-size: 100px; }
+      .slides { margin-top: 72px; }
+    }
+  }
+  .section3{
+    background-color: rgb(242,239,232); 
+    .sectionbody {
+      @extend .sectionbody-c;
+    }
+  }
+  .section4{
+    background-color: rgb(248,248,240);
+    .sectionbody {
+      @extend .sectionbody-c;
+    }
+  }
+}
+
+#club {
+  .clubimg{
+    margin:0; padding: 0;
+    img{ padding: 0; margin: 0; width: 1200px; margin-bottom: -2px;}
+  }
+  #city {
+    padding: 60px 120px 0px 120px; background-color: rgb(51,51,51);
+    .title{ font-size: 64px; color: rgb(234,209,47); text-align: center; margin-bottom: 64px;}
+    .cityline{
+      // margin-bottom: 48px;
+      .cityname{ 
+        width: 160px; text-align: left; margin-bottom: 48px;
+        a { font-size: 25px; color: rgb(163,163,163); }
+        a:hover { color: rgb(234,209,47); }
+        .city {
+          ul {
+            li {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#aboutkt{
+  background-color: rgb(242,243,238);
+  .sectionbody-c { width: 1006px; margin: 0 auto; height: 500px;}
+
+  .title{ text-align: center; font-size: 64px; }
+  .sectiontop{}
+  .section1{
+    img {border: 1px solid rgb(242,243,238);}
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 128px;
+      .slides { margin-top: 0px; }
+    }
+  }
+  .section2{
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 128px;
+      .slides { margin-top: 72px; }
+    }
+  }
+  .section3{
+    .sectionbody {
+      @extend .sectionbody-c;
+    }
+  }
+  .section4{
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 128px;
+      .slides { margin-top: 72px; }
+    }
+  }
+}
+
+#homepage{
+  .sectionbody-c { width: 864px; margin: 0 auto; }
+  .section1{
+    height: 640px; background-color: rgb(35,35,35);
+    .sectionbody {
+      @extend .sectionbody-c;
+      .img1{ margin-top: 167px; }
+      .img2{ margin-top: 54px; }
+    }
+  }
+  .section2{ 
+    height: 800px; background-color: rgb(248,247,242);
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 120px; height: 678px; border-bottom: 2px solid grey;
+      .title{ text-align: center; font-size: 100px; }
+      .items{
+        margin-top: 106px;
+        ul{
+          margin-right: 64px; width: 245px;
+          li{
+            .img{ background-color: black; }
+            .imgtitle{ margin-top: 40px; font-size: 48px; color: rgb(236, 190, 104);}
+            .imgdesc{ margin-top: 50px; font-size: 16px; color: #666; line-height: 1.5em; }
+          }
+        }
+        ul.last { margin-right: 0; }
+      }
+    }
+  }
+  .section3{ 
+    background-color: rgb(242,239,232);
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 120px;  border-bottom: 2px solid grey;
+      .title{ text-align: center; font-size: 100px; }
+      ul{
+        margin-top: 120px;
+        li.number{ font-size: 150px; color: black; margin-top: 60px;}
+        li.img{ margin-left: 200px;}
+        li.info{
+          .infotitle{ font-size: 70px; color: rgb(236, 190, 104) }
+          .infodesc{ margin-top: 64px; font-size: 16px; color: #666; line-height: 2em;}
+        }
+      }
+      ul.last { margin-bottom: 85px; }
+
+    }
+  }
+  .section4{ 
+    height: 800px; background-color: rgb(248,247,242);
+    .sectionbody {
+      @extend .sectionbody-c; padding-top: 120px; 
+      .title{ text-align: center; font-size: 100px; }
+      .slides { margin-top: 90px; }
+    }
+  }
+}
+
+#qapage{
+  background-color: white; padding-top: 50px; padding-bottom: 100px;
+  ul.qamenu{ 
+    width: 244px; padding: 16px; margin-left: 166px;
+    padding: 8px 12px;
+    li{
+      a { font-size: 18px; color: #999; display: block; padding: 12px; border-bottom: 2px solid rgb(235,210,47);}
+      a:hover,a.active{ background: url(/assets/newhome/arrow2.jpg) right no-repeat; }
+      a.first{border-top: 2px solid rgb(235,210,47);}
+    }
+  }
+  ul.qacontent{
+    width: 590px; background-color: rgb(235,210,47); margin-left: 40px; border-radius: 16px; padding: 16px; margin-top: -12px;
+    li{
+      background-color: rgb(228,228,228);  border-radius: 6px; margin-bottom: 16px;
+      padding: 12px 24px; font-size: 20px;
+      .title{ }
+      .reply{ margin-top:10px; border-top: 2px solid yellow; padding-top:12px; line-height:1.2em; }
+    }
+    li.last{ margin-bottom: 0px; }
+  }
+}
+
+#game-page{
+  padding-left: 200px; padding-top: 32px; background-color: white; padding-bottom: 32px;
+  .game-page-warp{
+    height: 560px;
+    #leftside{
+      width: 200px;
+      .game-img{}
+      .game-title{
+        margin-top: 6px; font-size: 22px;
+      }
+      .game-club{ font-size: 14px; color: #666; margin-top: 12px;}
+      .game-place{ font-size: 14px; color: #666; margin-top: 8px; }
+      .game-time{ font-size: 14px; color: #666; margin-top: 8px; }
+      .game-traffic{ font-size: 14px; color: #666; margin-top: 8px; }
+      .game-join{
+        margin-top: 20px;
+        a{
+          text-align: center; display: block; padding: 12px 32px; 
+          background-color: rgb(239,209,47); color: #666; width: 160px;
+          margin-top: 32px; border-radius: 6px; box-shadow: 1px 2px 1px 1px #999; 
+          font-size: 24px;
+        }
+      }
+    }
+    #map{
+      width: 500px;height: 500px; margin-left: 100px;
+      .game-back{
+        a{
+          text-align: center; display: block; padding: 12px 32px; 
+          background-color: rgb(239,209,47); color: #666; width: 160px;
+          margin-top: 40px; border-radius: 6px; box-shadow: 1px 2px 1px 1px #999; 
+          font-size: 24px; float: right;
+        }
+      }
+    }
+  }
+  #games-btns{
+    margin-top: 48px;
+    padding-top: 12px; padding-left: 32px;
+    a{
+      display: block; float:left;
+      padding: 10px 18px; background-color: rgb(254,230,66); color: #444; font-size: 18px;
+      border-radius: 6px 6px 0px 0px; box-shadow: 0px 1px 9px 1px #666;
+    }
+    a:hover,a.active{ background-color: rgb(50,50,50); color: white; }
+
+  }
+  .games-warp {
+    background-color: rgb(61,62,63);width: 800px;
+    border-radius: 12px;
+    .games-word{ padding: 12px 24px; color: #ddd; }
+    .games-list {
+      border-top: 6px solid rgb(102,102,104); max-height: 470px; overflow-y: auto;
+      padding: 16px 24px; background-color: rgb(128,128,128);
+      .game{
+        width: 60px; margin-right: 12px; margin-bottom: 14px;
+        .game-img{
+          img{
+            width: 60px; height: 60px; border-radius: 32px; background-color: black; border: 2px solid yellow;
+          }
+        }
+        .game-title{
+          text-align: center; color: white; margin-top: 6px;
+        }
+      }
+    }
+    #game-list2{
+      #item1{ font-size: 20px; color: white; line-height: 20px;}
+      #item2{ 
+        margin-left: 32px;
+        input { height: 20px; line-height: 20px; font-size: 20px; margin-top: -2px;}
+      }
+      #item3{
+        margin-left: 16px;
+        a {
+          padding: 5px 10px; background-color: rgb(254,230,66); color: #444; font-size: 18px; line-height: 20px;
+          border-radius: 6px; box-shadow: 0px 1px 9px 1px #666;
+        }
+      }
+    }
+    .gamesbtn {
+      padding: 8px 32px; overflow: hidden;
+      a {
+        display: block;  float: right;
+        background-color: rgb(251,72,73); padding: 4px 24px; color: white; border-radius: 4px;
+      }
+      a:hover { background-color: yellow; color: black; }
+    } 
+  }
+}
+
+#playkt2-page{
+  background-color: rgb(244,243,239); padding: 100px 300px;
+  .bp{
+    width: 279px; height: 715px;
+    ul{
+      width: 239px; height: 675px; background-color: rgb(158,169,214);
+      padding: 20px; overflow-y: auto;
+      li{
+        a {
+          display: block; color: white;
+          font-size: 18px; height: 18px; line-height: 18px; margin-bottom: 22px;
+        }
+        a:hover,a.active {
+          color: rgb(97, 97, 133);
+        }
+      }
+      z-index: 50;
+    }
+    a { display: block; z-index: 100;}
+  }
+
+  #games{
+    border-radius: 32px; padding: 16px 32px 64px 32px;
+    width: 900px; height: 573px;
+    overflow-x:auto; overflow-y:hidden;
+    background-image: url(/assets/newhome/game/bg.png); border: 1px solid rgb(240,240,240);
+    #games-a{
+      width: 99999px; height: 573px;
+      #nogame{
+        color: #bbb; font-size: 100px; font-weight: bold; text-shadow: 1px 1px 2px grey;
+        margin: 160px; margin-left: 170px;
+      }
+      a#return-btn{ 
+        color: grey; font-size: 24px; padding: 16px; display: block; text-align: center;
+        background-color: rgb(158,170,210); width: 200px; color: white;
+      }
+      a.game{
+        display: inline-block; width: 246px; height: 573px; position: relative; margin-right: 73px;
+        .gameback{ z-index: 0; img { border-radius: 12px;} }
+        .gamename{ 
+          height: 40px; width: 246px; background-color: rgb(24,24,24); z-index: 1; border-radius: 12px 12px 0px 0px;  
+          color: white; font-size: 22px; text-align: center; padding-top: 24px; z-index: 1;
+        }
+        .gamedesc{
+          bottom: 36px; 
+          height: 100px; width: 246px; background-color: rgb(24,24,24); z-index: 1; border-radius: 0px 0px 12px 12px;  
+          color: white; font-size: 14px; text-align: center; padding-top: 28px; line-height: 1.7em;
+          opacity: 0.8; z-index: 1;
+          .gameplace{
+            font-weight: bold; font-size: 16px;
+          }
+        }
+        .bag1{
+          top: 130px; left: 83px;
+        }
+        .bag2back{
+          z-index: 5; background-color: grey; opacity: 0.5; width: 100%; height: 537px; border-radius: 12px;
+        }
+        .bag2{
+          top: 130px; left: 48px; z-index: 10;
+        }
+      }
+    }
+  }
+
+}
+
+#playkt-page{
+  background-color: white;
+  #playkt-page-warp{
+    width: 864px; margin: 0 auto; position: relative;
+    padding: 64px 0;
+    ul.menu{
+      top: 100px; left: -150px; width: 100px;
+      li{
+        a{
+          display: block; width: 32px; padding: 32px 16px; 
+          font-size: 32px; color: white; text-shadow: 1px 1px 1px #333;
+          word-spacing: 1.5em; letter-spacing: 2em; line-height: 1.2em;
+          background-color: rgb(245,222,64); border-radius: 16px 0px 0px 16px; box-shadow: 0px 1px 9px 1px #333;
+        }
+        a.num1{z-index: 300;}
+        a.num2{z-index: 200;}
+        a.num3{z-index: 100;}
+        a:hover,a.active{ background-color: white; color: black; text-shadow: none; }
+      }
+    }
+    #listwarp{
+      top: 100px; left: -95px; padding: 32px 12px; background-color: white; z-index: 50;
+      box-shadow: 0px 1px 9px 1px; border-radius: 0px 16px 16px 16px;
+      ul.list{
+        height: 540px; overflow-y: auto;
+        li{
+          a{ 
+            color: #999; border-bottom: 3px solid #333; line-height: 2em; width: 120px; display: block; 
+            font-size: 20px; padding-left: 32px;
+          }
+          a:hover,a.active {
+            color: #E6C421;
+          }
+        }
+      }
+    }
+    #games{
+      background-color: rgb(201,202,204); border-radius: 32px; padding: 18px 32px 86px 32px;
+      width: 900px; height: 573px;
+      overflow-x:auto; overflow-y:hidden;
+      #games-a{
+        width: 99999px; height: 573px;
+        a.game{
+          display: inline-block; width: 246px; height: 573px; position: relative; margin-right: 73px;
+          .gameback{ z-index: 0; img { border-radius: 12px;} }
+          .gamename{ 
+            height: 40px; width: 246px; background-color: rgb(24,24,24); z-index: 1; border-radius: 12px 12px 0px 0px;  
+            color: white; font-size: 22px; text-align: center; padding-top: 24px; z-index: 1;
+          }
+          .gamedesc{
+            bottom: 36px; 
+            height: 100px; width: 246px; background-color: rgb(24,24,24); z-index: 1; border-radius: 0px 0px 12px 12px;  
+            color: white; font-size: 14px; text-align: center; padding-top: 28px; line-height: 1.7em;
+            opacity: 0.8; z-index: 1;
+            .gameplace{
+              font-weight: bold; font-size: 16px;
+            }
+          }
+          .bag1{
+            top: 130px; left: 83px;
+          }
+          .bag2back{
+            z-index: 5; background-color: grey; opacity: 0.5; width: 100%; height: 537px; border-radius: 12px;
+          }
+          .bag2{
+            top: 130px; left: 48px; z-index: 10;
+          }
+        }
+      }
+    }
+  }
+}
+
+#playkt-oldpage{
+  background-color: white; padding: 12px 12px 0 0;
+  #leftside{
+    margin-top: 20px; width: 412px;
+    .games-title {
+      font-size: 24px; color: #555; margin-left: 24px;
+    }
+    .games-warp {
+      margin-top: 12px; background-color: rgb(61,62,63);
+      .games-word{ padding: 12px 24px; color: #ddd; }
+      .games-list {
+        border-top: 6px solid rgb(102,102,104); height: 470px; overflow-y: auto;
+        padding: 16px 24px; background-color: rgb(128,128,128);
+        .game{
+          width: 60px; margin-right: 12px; margin-bottom: 14px;
+          .game-img{
+            width: 60px; height: 60px; border-radius: 32px; background-color: black; border: 2px solid yellow;
+          }
+          .game-title{
+            text-align: center; color: white; margin-top: 6px;
+          }
+        }
+      }
+      .gamesbtn {
+        padding: 8px 32px; overflow: hidden;
+        a {
+          display: block;  float: right;
+          background-color: rgb(251,72,73); padding: 4px 24px; color: white; border-radius: 4px;
+        }
+        a:hover { background-color: yellow; color: black; }
+      } 
+    }
+  }
+}
+
+#my-menu-warp{
+  background-color: rgb(234,209,46);
+  ul#my-menu{
+    padding: 12px; width: 550px; margin: 0 auto; 
+    li {
+      a { display: block; color: #444; font-size: 20px; padding: 0 32px; }
+      a:hover,a.active { 
+        padding: 18px 32px 14px 32px; background-color: rgb(241,241,241); color: rgb(179,179,58); 
+        margin-top: -20px; margin-bottom: -12px; border-radius: 8px 8px 0px 0px; box-shadow: 0px -7px 7px 2px #333; }
+    }
+  }
+}
+
+#rangebattle-page {
+  height: 1125px; background-color: rgb(255,255,255);
+  #leftside {
+    width: 250px; margin-left: 170px; margin-top: 130px;
+    .headwarp1v1{
+      height: 250px;  
+      .headimg{
+        img{ border: 5px solid rgb(33,180,223); border-radius: 125px; }
+      }
+      .headrange{
+        right: 0; top: 0; width: 70px; height: 45px; border-radius: 35px; border: 2px solid white; background-color: rgb(33,180,223);
+        text-align: center; font-size: 40px; color: white; padding-top: 25px;
+        box-shadow: 2px 0px 2px 2px #666;
+      }
+    }
+    .headwarp2v2{
+      height: 330px;
+      .teamimg{
+        margin-top: -50px;
+        img{ border: 1px solid rgb(234,209,46); padding: 2px; box-shadow: 0px 2px 2px 2px rgb(234,209,46); }
+      }
+      .member-avatar{
+        img { border-radius: 42px; border: 1px solid rgb(234,209,46); padding: 2px; }
+      }
+    }
+    hr { color: #333; margin: 16px 0; }
+    .username{ margin-top: 30px; font-size: 32px; color: #333;}
+    .score{ 
+      width: 234px; margin-left: 8px; font-size: 40px; color: black; border-radius: 16px;
+      background-color: rgb(254,228,80); text-align: center; padding: 20px 0px; box-shadow: 2px 2px 0px 1px #999;
+    }
+    .countrysex{
+      .country{
+        margin-left: 20px;
+      }
+      .sex{
+        margin-left: 20px;
+      }
+      .headrange {
+        margin-left: 20px;
+        width: 40px; height: 28px; border-radius: 20px; border: 1px solid white; background-color: rgb(33,180,223);
+        text-align: center; font-size: 14px; color: white; padding-top: 12px;
+        box-shadow: 2px 0px 2px 2px #666;
+      }
+    }
+    .contract {
+      font-size: 16px; color: #444; line-height: 1.8em; padding: 24px 0px 0px 0px;
+    }
+    .country-club{ margin-top: 148px; }
+    .experience { margin-top: 16px; font-size: 16px; }
+    .inviteimg{ margin-top: 32px; text-align: center; }
+    .invitebtn{ text-align: center; }
+    .qrcode{ text-align: center; margin-top: 32px; }
+  }
+  #rightside{
+    ul.headmenu{
+      margin-left: 40px; margin-bottom: -32px; margin-top: 32px; margin-right: 12px;
+      li {
+        a {
+          display: block; padding: 12px 32px; color: white; text-shadow: 2px 1px 1px #666; font-size: 24px;
+          background-color: rgb(254,212,49); border-radius: 8px 8px 0px 0px; box-shadow: 0px -1px 2px 0px #999;
+        }
+        a:hover,a.active {
+          background-color: rgb(241,241,241); color: black; text-shadow: none;
+        }
+      }
+    }
+  }
+}
+
+#setting-page {
+  height: 560px; background-color: rgb(239,239,229);
+  form{
+    width: 860px; margin: 0 auto;
+    #setting-warp {
+      #leftside{
+        width: 260px; margin-top: 64px;
+        img.setting-avatar { display: block; border: 4px solid rgb(239,209,47); border-radius: 134px; padding: 4px; } 
+        a.upload-btn { 
+          text-align: center; display: block; padding: 8px 32px; 
+          background-color: rgb(239,209,47); color: #666; width: 160px;
+          margin-top: 32px; border-radius: 6px; box-shadow: 1px 2px 1px 1px #999; 
+          margin-left: 20px; font-size: 24px;
+        }
+      }
+      #rightside{
+        width: 440px; margin-top: 64px; background-color: rgb(219,219,209); border-radius: 24px;
+        padding: 55px;
+        .setting-label { color: rgb(104,85,46); font-size: 24px; width: 88px; height: 40px; line-height: 40px; }
+        .setting-input { 
+          input{ 
+            background-color: white; border-radius: 8px; box-shadow: -2px 2px 1px 1px #999;
+            width: 268px; height: 40px; background-image: none; border: none; line-height: 40px;
+            font-size: 20px; padding-left: 32px;
+          } 
+        }
+      }
+    }
+    #submit-warp { 
+      text-align: right; padding: 8px 0px; 
+      border-top: 3px solid rgb(165,165,165); border-bottom: 3px solid rgb(165,165,165); 
+      button {  
+        background-color: rgb(251,103,72); border-radius: 8px; box-shadow: -2px 2px 1px 1px #999;
+        width: 180px; background-image: none; border: none; padding: 6px 0px;
+        font-size: 20px; color: white; cursor: pointer;
+      }
+    }
+  }
+}
+
+#contact{
+  background-color: rgb(244,245,247); padding: 75px;
+  #left-side{
+    width: 525px; height: 745px; background-color: rgb(235,210,47);
+  }
+  #right-side{
+    width: 344px; margin-left: 80px;
+    #title{
+      font-size: 28px; color: #444; margin-top: 12px;
+    }
+    #phone {
+      font-size: 22px; color: #888; margin-top: 40px;
+    }
+    #content{
+      margin-top: 48px;
+      font-size: 16px; color: #bbb; line-height: 1.7em; letter-spacing: 0.1em;
+    }
+    form {
+      margin-top: 32px;
+    }
+  }
+}
+
+#register-login-page{
+  background-color: rgb(244,245,247); padding: 45px 0px 180px 0px;
+  #top-btns{
+    text-align: right; margin-right: 64px;
+    a{ font-size: 16px; color: #444; }
+  }
+  #page-warp{
+    margin: 0 auto; width: 340px; margin-top: 160px;
+    ul {
+      li {
+        a { font-size: 20px; color: #444;  }
+        a.active { color: rgb(235,210,47); }
+      }
+    }
+  }
+}

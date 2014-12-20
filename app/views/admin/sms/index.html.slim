@@ -1,0 +1,46 @@
+= render "admin/users/navigations"
+
+= form_tag admin_sms_path, method: :get do
+  = label_tag '类型：'
+  = select_tag(:keyword, options_for_select([[], ['成功', '1'], ['失败', '0']], params[:keyword]))
+
+  = submit_tag '搜索'
+
+
+
+
+- if flash[:sent]
+  p.notice = '发送成功'
+
+
+table
+  tr
+    th
+      = "ID"
+    th 用户
+    th 邮箱
+    th 手机
+    th 短信内容
+    th 时间
+    th
+  - @sms_records.each do |sms|
+    - time = sms.created_at.to_s
+
+    tr height="45"
+      td
+        = sms.id
+        
+      td 
+        = sms.user.nickname
+
+      td = sms.user.email
+      td = sms.user.phone
+      td = sms.content
+      td = time[0..15]
+      td 
+        - if sms.has_sent
+          = '成功'
+        - else
+          = '失败'
+
+  = paginate @sms_records

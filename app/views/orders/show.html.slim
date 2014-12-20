@@ -1,0 +1,20 @@
+#games_rank_list.game_rank.word_container
+  table width="700px"
+     caption  style="color: #cccc00;font-size: 20px;margin-bottom: 10px;" 
+       | 你兑换了#{@order.gift_name}，用掉米币#{@order.scores}
+     tr
+      td = label_tag '礼品:'
+      td = @order.gift_name
+     tr
+      td = label_tag '米币:'
+      td = @order.scores
+     tr
+      td = label_tag '收货人:'
+      td = @order.receive_by
+     tr
+      td = label_tag '手机:'
+      td = @order.phone
+     tr
+      td = label_tag '收货地址:'
+      td = @order.address
+.clear

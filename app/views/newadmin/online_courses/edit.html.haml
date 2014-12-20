@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    编辑赛事
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource, url: newadmin_online_course_path(resource) do |f|
+    = render partial: "form", locals: { f: f, ftype: :edit  }
+

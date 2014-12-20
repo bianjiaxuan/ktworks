@@ -1,0 +1,32 @@
+#homepage2
+  = render "homevideo"
+
+#contact.clearfix
+  #left-side.fl
+    = image_tag "newhome/contact.jpg"
+  #right-side.fl
+    #title
+      联系我们
+    #phone
+      电话：021 - 888888
+    #content
+      对于KT足球相关疑问及合作
+      %br/
+      欢迎直接填写邮件联系我们
+      %br/
+      我们非常荣幸能为您服务
+    %form#contact-form{action: "/newhome/contact", method: "post"}
+      .mb20
+        %input.text1{type: "text", placeholder: "姓名", name: "contact[xingming]", required: true}
+      .mb20
+        %input.text1{type: "email", placeholder: "E-mail:", name: "contact[email]", required: true}
+      .mb20
+        %input.text1{type: "text", placeholder: "主题:", name: "contact[title]", required: true}
+      .mb20
+        %textarea.textarea1{placeholder: "详细问题", name: "contact[content]", required: true}
+      .mb20
+        %button.button2.submit{type: "submit"}
+          提
+          &nbsp;&nbsp;&nbsp;
+          交
+    = render "shared/flash"

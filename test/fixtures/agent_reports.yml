@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: 
+  invitees_count: 
+  reg_count: 
+
+two:
+  city: 
+  invitees_count: 
+  reg_count: 

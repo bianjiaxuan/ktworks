@@ -1,0 +1,33 @@
+= render "navigations"
+
+table align="center"
+  tr
+    th colspan='5' KT足球身份二维码
+  - (0..@users.count-1).step(5) do |idx|
+    tr
+      td align='center'
+        - if idx < (@users.count) 
+          .qrcode
+            = @users[idx].id.to_s+"---账号："+@users[idx].email+"---密码："+@users[idx].email.to_s.delete('@ktz.cn')
+            /!= image_tag user_qrcode_img_url(@users[idx])
+      td align='center'
+        - if (idx+1) < (@users.count) 
+          .qrcode
+            = @users[idx+1].id.to_s+"---账号："+@users[idx+1].email+"---密码："+@users[idx+1].email.to_s.delete('@ktz.cn')
+            /!= image_tag user_qrcode_img_url(@users[idx+1])
+      td align='center'
+        - if (idx+2) < (@users.count) 
+          .qrcode
+            = @users[idx+2].id.to_s+"---账号："+@users[idx+2].email+"---密码："+@users[idx+2].email.to_s.delete('@ktz.cn')
+            /!= image_tag user_qrcode_img_url(@users[idx+2])
+      td align='center'
+        - if (idx+3) < (@users.count) 
+          .qrcode
+            = @users[idx+3].id.to_s+"---账号："+@users[idx+3].email+"---密码："+@users[idx+3].email.to_s.delete('@ktz.cn')
+            /!= image_tag user_qrcode_img_url(@users[idx+3])
+      td align='center'
+        - if (idx+4) < (@users.count) 
+          .qrcode
+            = @users[idx+4].id.to_s+"---账号："+@users[idx+4].email+"---密码："+@users[idx+4].email.to_s.delete('@ktz.cn')
+            /!= image_tag user_qrcode_img_url(@users[idx+4])
+= paginate @users

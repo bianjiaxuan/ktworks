@@ -1,0 +1,36 @@
+= javascript_include_tag 'ckeditor/init'
+= form_for [:admin, @order] do |f|
+  - if @order.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      ul
+        - @order.errors.full_messages.each do |message|
+          li = message
+  
+  
+
+  .field
+    = f.label "购买产品:"
+    br
+    = f.text_field :gift_name,:value=>nil
+  .field
+    = f.label "KT USER ID:",:value=>nil
+    br
+    = f.text_field :user_id
+    = f.hidden_field :source_type,:value =>1
+  .field
+    = f.label "支付宝:"
+    br
+    = f.text_field :receive_by
+  .field
+    = f.label "手机:"
+    br
+    = f.text_field :phone  
+  .field
+    = f.label "充值金额:"
+    br
+    = f.text_field :scores
+  
+  
+  
+  .actions = f.submit '保存'

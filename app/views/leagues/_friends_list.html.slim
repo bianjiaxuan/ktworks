@@ -1,0 +1,10 @@
+.game_ranks
+   - if @users
+       - @users.each_with_index do |user,index|
+           p
+              = link_to user.nickname, "/user/#{user.id}"
+              = button_tag("  邀请#{user.nickname}组战队",:id=>"ss",:onclick=>"javascript:invite_league('#{user.id}');" ) 
+                   
+                
+   - else
+          p  没有找到          

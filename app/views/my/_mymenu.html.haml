@@ -1,0 +1,10 @@
+#my-menu-warp
+  %ul#my-menu.clearfix
+    %li.fl
+      = link_to "我资料","/my/info1v1",class: ["info1v1","info2v2","infomyclub"].include?(action_name) ? "active" : ""
+    %li.fl
+      = link_to "队资料","/my/infoclub",class: action_name == "infoclub" ? "active" : ""
+    %li.fl
+      = link_to "排行榜","/my/range1v1",class: ["range1v1","range2v2","rangeclub"].include?(action_name) ? "active" : ""
+    %li.fl
+      = link_to "选项","/my/setting",class: action_name == "setting" ? "active" : ""

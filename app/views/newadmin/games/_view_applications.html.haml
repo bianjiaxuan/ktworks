@@ -1,0 +1,14 @@
+.mt20.pd20.w1000.h400.greya{style: "overflow-y: auto;"}
+  - @game.users.each do |_user|
+    .fl.w280.clearfix.ml20.mb20.pd10{style: "border: 2px solid #aaa; border-radius: 8px;"}
+      .fl
+        = image_tag _user.avatar,:size => "80"
+      .fl.ml20
+        .mt10.clearfix
+          .fl.font28
+            Lv.
+            = _user.grade
+          .fr{style: "margin-top: -10px;"}
+            = image_tag "newhome/mail.png",:size => "40x28"
+        .mt20.font28
+          = _user.nickname

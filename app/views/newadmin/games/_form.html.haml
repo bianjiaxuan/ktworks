@@ -1,0 +1,74 @@
+
+<link href="/assets/lib/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/assets/lib/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/assets/lib/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+= javascript_include_tag 'ckeditor/init'
+
+= f.input :avatar, as: :file
+- if resource.avatar.file?
+  .input
+    %label 已上传赛事图片
+    .fl
+      = image_tag resource.avatar.url,:size => "64"
+
+= f.input :name
+
+= f.input :club_id, :collection => Club.all.map { |club| [club.name,club.id] }, include_blank: false
+
+= f.input :country, input_html: {class: "form-control", style: "width: 200px"}, as: :select, collection: Country.where(:kind=>"country").map(&:name), include_blank: false
+
+= f.input :city, input_html: {class: "form-control", style: "width: 200px"}, as: :select, collection: Country.where(:kind=>"city").map(&:name), include_blank: false
+
+= f.input :place
+
+= f.input :time_start, as: :string, input_html: {value: resource.time_start.present? ? resource.time_start.strftime("20%y-%m-%d %H:%M") : Time.now.strftime("20%y-%m-%d %H:%M")}
+
+= f.input :time_end, as: :string, input_html: {value: resource.time_end.present? ? resource.time_end.strftime("20%y-%m-%d %H:%M") : Time.now.strftime("20%y-%m-%d %H:%M")}
+
+= f.input :location, :hint => raw('<a target="blank" href="http://api.map.baidu.com/lbsapi/getpoint/index.html">去百度地图获取经纬度</a>')
+
+= f.input :url, :hint => "例子：shanghai-midi-music-festival 或者 shanghai-midi-yinyuejie"
+
+= f.input :priority, collection: (0..9).to_a, :hint => "显示优先顺序，值高的靠前显示"
+
+= f.input :introduction, as: :text,:size => '100x3'
+
+= f.input :traffic_intro, as: :text,:size => '100x3'
+
+= f.input :arround_intro, as: :text,:size => '100x3'
+
+.input
+  %label
+    比赛详细介绍
+  .fl
+    = f.input :site_introduction, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+.input.mt10
+  %label
+    比赛交通说明
+  .fl
+    = f.input :site_traffic, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+.input.mt10
+  %label
+    比赛周边信息介绍
+  .fl
+    = f.input :site_arround, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} },label: false
+
+/ = f.input :content, :as => :kindeditor, :label => false, :input_html => {  width: "600px", :minWidth => "600px;", :height => "320px",:class => "post-text", :label => false, :required => true }
+.mt20.clearfix
+  .fr.clearfix
+    .mt10.fl
+      = link_to "放弃","/newadmin/games",class: "grey6"
+    .ml10.fl
+      = f.submit "提  交", class: "btn2"
+
+
+:coffeescript
+  $ ->
+    $("#game_time_start").datetimepicker({format: 'yyyy-mm-dd hh:ii',language:  'zh-CN'});
+    $("#game_time_end").datetimepicker({format: 'yyyy-mm-dd hh:ii',language:  'zh-CN'});
+
+    setTimeout ->
+      $("#sidebar").css("height",$("#main-container").height())
+    ,2000
+
+

@@ -1,0 +1,72 @@
+#news-detail.clearfix
+  #news-detail-left.fl
+    .news_tags
+      - if resource.tags.present?
+        = raw resource.tags.gsub(/,|，/,"&nbsp;")
+    .news-img
+      = image_tag resource.banner(:thumb),:size => "300x260"
+
+    .news-content-info
+      .news-created_at
+        = resource.created_at.to_date.to_s
+      .news-intro
+        = resource.title
+
+  #news-detail-right.fl
+    #news-detail-top.clearfix
+      %table.fl
+        %tr
+          %td
+            = image_tag "newhome/news/tag01.jpg"
+          %td{style: "padding-left: 20px;"}
+            本文来自网易体育
+      %table.fr
+        %tr
+          %td
+            = image_tag "newhome/news/share.jpg"
+          %td{style: "padding-left: 20px;"}
+            = link_to "分享","javascript:;",id: "sharedbtn"
+            = render "shared/jiathis"
+
+    #news-detail-createdat
+      = resource.created_at.to_date
+    #news-detail-title
+      = resource.title
+    #news-detail-content
+      = raw resource.content
+    #news-detail-bottom.clearfix
+      #news-detail-bottom-line1.fl
+        .mt20
+          %span
+            本文地址:
+          = request.url
+        .mt20
+          %span
+            本文标签:
+          - if resource.tags.present?
+            = raw resource.tags.gsub(/,|，/,"&nbsp;")
+      #news-detail-bottom-line2.fr
+        %table.mt20
+          %tr
+            %td
+              = image_tag "newhome/news/icon1.jpg"
+            %td{style: "padding-left: 20px;"}
+              = resource.views_count
+              人阅读
+        %table.mt20
+          %tr
+            %td
+              = image_tag "newhome/news/icon2.jpg"
+            %td#zhuan{style: "padding-left: 20px;"}
+              0人转发
+
+:coffeescript
+  $ ->
+    $("body").on "click","#sharedbtn", ->
+      $(this).hide()
+      $("#jiathis").show()
+    setTimeout ->
+      _shared_times = $("span.jiathis_counter").text()
+      $("#zhuan").text _shared_times + "人转发"
+    , 1000
+

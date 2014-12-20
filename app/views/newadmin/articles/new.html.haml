@@ -1,0 +1,9 @@
+#main-container-title
+  %span
+    创建新闻
+#main-container-body
+  = render "shared/flash"
+
+  = simple_form_for resource || Article.new, url: newadmin_articles_path() do |f|
+    = render partial: "form", locals: { f: f, ftype: :new  }
+
